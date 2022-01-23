@@ -7,27 +7,24 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		83540F10279CDD670068BECB /* Infoeduka.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 83540EFD279CDD650068BECB /* Infoeduka.xcdatamodeld */; };
-		83540F11279CDD670068BECB /* Infoeduka.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 83540EFD279CDD650068BECB /* Infoeduka.xcdatamodeld */; };
 		83540F12279CDD670068BECB /* InfoedukaApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83540EFF279CDD650068BECB /* InfoedukaApp.swift */; };
 		83540F13279CDD670068BECB /* InfoedukaApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83540EFF279CDD650068BECB /* InfoedukaApp.swift */; };
-		83540F14279CDD670068BECB /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83540F00279CDD650068BECB /* ContentView.swift */; };
-		83540F15279CDD670068BECB /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83540F00279CDD650068BECB /* ContentView.swift */; };
-		83540F16279CDD670068BECB /* Persistence.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83540F01279CDD650068BECB /* Persistence.swift */; };
-		83540F17279CDD670068BECB /* Persistence.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83540F01279CDD650068BECB /* Persistence.swift */; };
 		83540F18279CDD670068BECB /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 83540F02279CDD670068BECB /* Assets.xcassets */; };
 		83540F19279CDD670068BECB /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 83540F02279CDD670068BECB /* Assets.xcassets */; };
+		83540F23279CE41A0068BECB /* MainView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83540F22279CE41A0068BECB /* MainView.swift */; };
+		83540F24279CE41A0068BECB /* MainView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83540F22279CE41A0068BECB /* MainView.swift */; };
+		83540F26279CE4670068BECB /* Launch Screen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 83540F25279CE4660068BECB /* Launch Screen.storyboard */; };
+		83540F27279CE4670068BECB /* Launch Screen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 83540F25279CE4660068BECB /* Launch Screen.storyboard */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		83540EFE279CDD650068BECB /* Shared.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Shared.xcdatamodel; sourceTree = "<group>"; };
 		83540EFF279CDD650068BECB /* InfoedukaApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InfoedukaApp.swift; sourceTree = "<group>"; };
-		83540F00279CDD650068BECB /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
-		83540F01279CDD650068BECB /* Persistence.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Persistence.swift; sourceTree = "<group>"; };
 		83540F02279CDD670068BECB /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		83540F07279CDD670068BECB /* Infoeduka.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Infoeduka.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		83540F0D279CDD670068BECB /* Infoeduka.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Infoeduka.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		83540F0F279CDD670068BECB /* macOS.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = macOS.entitlements; sourceTree = "<group>"; };
+		83540F22279CE41A0068BECB /* MainView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainView.swift; sourceTree = "<group>"; };
+		83540F25279CE4660068BECB /* Launch Screen.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = "Launch Screen.storyboard"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -51,6 +48,7 @@
 		83540EF7279CDD640068BECB = {
 			isa = PBXGroup;
 			children = (
+				83540F28279CE9540068BECB /* iOS */,
 				83540EFC279CDD650068BECB /* Shared */,
 				83540F0E279CDD670068BECB /* macOS */,
 				83540F08279CDD670068BECB /* Products */,
@@ -61,10 +59,8 @@
 			isa = PBXGroup;
 			children = (
 				83540EFF279CDD650068BECB /* InfoedukaApp.swift */,
-				83540F00279CDD650068BECB /* ContentView.swift */,
-				83540F01279CDD650068BECB /* Persistence.swift */,
+				83540F22279CE41A0068BECB /* MainView.swift */,
 				83540F02279CDD670068BECB /* Assets.xcassets */,
-				83540EFD279CDD650068BECB /* Infoeduka.xcdatamodeld */,
 			);
 			path = Shared;
 			sourceTree = "<group>";
@@ -84,6 +80,14 @@
 				83540F0F279CDD670068BECB /* macOS.entitlements */,
 			);
 			path = macOS;
+			sourceTree = "<group>";
+		};
+		83540F28279CE9540068BECB /* iOS */ = {
+			isa = PBXGroup;
+			children = (
+				83540F25279CE4660068BECB /* Launch Screen.storyboard */,
+			);
+			path = iOS;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -165,6 +169,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				83540F26279CE4670068BECB /* Launch Screen.storyboard in Resources */,
 				83540F18279CDD670068BECB /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -173,6 +178,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				83540F27279CE4670068BECB /* Launch Screen.storyboard in Resources */,
 				83540F19279CDD670068BECB /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -185,9 +191,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				83540F12279CDD670068BECB /* InfoedukaApp.swift in Sources */,
-				83540F16279CDD670068BECB /* Persistence.swift in Sources */,
-				83540F10279CDD670068BECB /* Infoeduka.xcdatamodeld in Sources */,
-				83540F14279CDD670068BECB /* ContentView.swift in Sources */,
+				83540F23279CE41A0068BECB /* MainView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -196,9 +200,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				83540F13279CDD670068BECB /* InfoedukaApp.swift in Sources */,
-				83540F17279CDD670068BECB /* Persistence.swift in Sources */,
-				83540F11279CDD670068BECB /* Infoeduka.xcdatamodeld in Sources */,
-				83540F15279CDD670068BECB /* ContentView.swift in Sources */,
+				83540F24279CE41A0068BECB /* MainView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -329,6 +331,7 @@
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
+				INFOPLIST_KEY_UILaunchStoryboardName = "Launch Screen";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				IPHONEOS_DEPLOYMENT_TARGET = 15.2;
@@ -359,6 +362,7 @@
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
+				INFOPLIST_KEY_UILaunchStoryboardName = "Launch Screen";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				IPHONEOS_DEPLOYMENT_TARGET = 15.2;
@@ -464,19 +468,6 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
-
-/* Begin XCVersionGroup section */
-		83540EFD279CDD650068BECB /* Infoeduka.xcdatamodeld */ = {
-			isa = XCVersionGroup;
-			children = (
-				83540EFE279CDD650068BECB /* Shared.xcdatamodel */,
-			);
-			currentVersion = 83540EFE279CDD650068BECB /* Shared.xcdatamodel */;
-			path = Infoeduka.xcdatamodeld;
-			sourceTree = "<group>";
-			versionGroupType = wrapper.xcdatamodel;
-		};
-/* End XCVersionGroup section */
 	};
 	rootObject = 83540EF8279CDD640068BECB /* Project object */;
 }
