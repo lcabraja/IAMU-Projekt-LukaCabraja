@@ -7,6 +7,64 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		8304A7FA279DB0F2004D9CBF /* InfoedukaHttpRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8304A7F9279DB0F2004D9CBF /* InfoedukaHttpRequest.swift */; };
+		8304A7FB279DB0F2004D9CBF /* InfoedukaHttpRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8304A7F9279DB0F2004D9CBF /* InfoedukaHttpRequest.swift */; };
+		8304A7FD279DB156004D9CBF /* InfoedukaHttpEndpoints.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8304A7FC279DB156004D9CBF /* InfoedukaHttpEndpoints.swift */; };
+		8304A7FE279DB156004D9CBF /* InfoedukaHttpEndpoints.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8304A7FC279DB156004D9CBF /* InfoedukaHttpEndpoints.swift */; };
+		8304A801279DC2F0004D9CBF /* LoginResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8304A800279DC2EF004D9CBF /* LoginResponse.swift */; };
+		8304A802279DC2F0004D9CBF /* LoginResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8304A800279DC2EF004D9CBF /* LoginResponse.swift */; };
+		8304A804279E4001004D9CBF /* VijestiTagoviResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8304A803279E4001004D9CBF /* VijestiTagoviResponse.swift */; };
+		8304A805279E4001004D9CBF /* VijestiTagoviResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8304A803279E4001004D9CBF /* VijestiTagoviResponse.swift */; };
+		8304A807279E419C004D9CBF /* JsonHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8304A806279E419C004D9CBF /* JsonHelper.swift */; };
+		8304A808279E419D004D9CBF /* JsonHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8304A806279E419C004D9CBF /* JsonHelper.swift */; };
+		8304A80A279E4680004D9CBF /* SessionTracker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8304A809279E4680004D9CBF /* SessionTracker.swift */; };
+		8304A80B279E4680004D9CBF /* SessionTracker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8304A809279E4680004D9CBF /* SessionTracker.swift */; };
+		8304A80E279E5144004D9CBF /* NSRegularExpressionExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8304A80D279E5144004D9CBF /* NSRegularExpressionExtension.swift */; };
+		8304A80F279E5144004D9CBF /* NSRegularExpressionExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8304A80D279E5144004D9CBF /* NSRegularExpressionExtension.swift */; };
+		8304A811279E5178004D9CBF /* StringExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8304A810279E5178004D9CBF /* StringExtension.swift */; };
+		8304A812279E5178004D9CBF /* StringExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8304A810279E5178004D9CBF /* StringExtension.swift */; };
+		8304A814279F0AAC004D9CBF /* ResponseProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8304A813279F0AAB004D9CBF /* ResponseProtocol.swift */; };
+		8304A815279F0AAC004D9CBF /* ResponseProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8304A813279F0AAB004D9CBF /* ResponseProtocol.swift */; };
+		8304A818279F2863004D9CBF /* LoginViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8304A817279F2862004D9CBF /* LoginViewModel.swift */; };
+		8304A819279F2863004D9CBF /* LoginViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8304A817279F2862004D9CBF /* LoginViewModel.swift */; };
+		8304A81B279F2B6C004D9CBF /* MainViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8304A81A279F2B6C004D9CBF /* MainViewModel.swift */; };
+		8304A81C279F2B6C004D9CBF /* MainViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8304A81A279F2B6C004D9CBF /* MainViewModel.swift */; };
+		8304A81E279F2D7F004D9CBF /* CredentialsManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8304A81D279F2D7F004D9CBF /* CredentialsManager.swift */; };
+		8304A81F279F2D7F004D9CBF /* CredentialsManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8304A81D279F2D7F004D9CBF /* CredentialsManager.swift */; };
+		8304A82327A079A3004D9CBF /* KategorijeResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8304A82227A079A2004D9CBF /* KategorijeResponse.swift */; };
+		8304A82427A079A4004D9CBF /* KategorijeResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8304A82227A079A2004D9CBF /* KategorijeResponse.swift */; };
+		8304A82727A07A56004D9CBF /* VijestiResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8304A82627A07A56004D9CBF /* VijestiResponse.swift */; };
+		8304A82827A07A56004D9CBF /* VijestiResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8304A82627A07A56004D9CBF /* VijestiResponse.swift */; };
+		8304A82A27A07AA3004D9CBF /* TjedniResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8304A82927A07AA3004D9CBF /* TjedniResponse.swift */; };
+		8304A82B27A07AA3004D9CBF /* TjedniResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8304A82927A07AA3004D9CBF /* TjedniResponse.swift */; };
+		8304A82D27A07B6B004D9CBF /* ispitiPrijavaResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8304A82C27A07B6B004D9CBF /* ispitiPrijavaResponse.swift */; };
+		8304A82E27A07B6B004D9CBF /* ispitiPrijavaResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8304A82C27A07B6B004D9CBF /* ispitiPrijavaResponse.swift */; };
+		8304A83027A07FC9004D9CBF /* IspitiOdjavaResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8304A82F27A07FC8004D9CBF /* IspitiOdjavaResponse.swift */; };
+		8304A83127A07FC9004D9CBF /* IspitiOdjavaResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8304A82F27A07FC8004D9CBF /* IspitiOdjavaResponse.swift */; };
+		8304A83327A08048004D9CBF /* KnjiznicaPodrucjaResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8304A83227A08048004D9CBF /* KnjiznicaPodrucjaResponse.swift */; };
+		8304A83427A08048004D9CBF /* KnjiznicaPodrucjaResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8304A83227A08048004D9CBF /* KnjiznicaPodrucjaResponse.swift */; };
+		8304A83627A080F9004D9CBF /* KnjiznicaPodrucjeOdabirResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8304A83527A080F9004D9CBF /* KnjiznicaPodrucjeOdabirResponse.swift */; };
+		8304A83727A080F9004D9CBF /* KnjiznicaPodrucjeOdabirResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8304A83527A080F9004D9CBF /* KnjiznicaPodrucjeOdabirResponse.swift */; };
+		8304A83927A081B5004D9CBF /* KnjiznicaPosudbaResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8304A83827A081B5004D9CBF /* KnjiznicaPosudbaResponse.swift */; };
+		8304A83A27A081B5004D9CBF /* KnjiznicaPosudbaResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8304A83827A081B5004D9CBF /* KnjiznicaPosudbaResponse.swift */; };
+		8304A83C27A0825B004D9CBF /* KnjiznicaVracenoResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8304A83B27A0825B004D9CBF /* KnjiznicaVracenoResponse.swift */; };
+		8304A83D27A0825B004D9CBF /* KnjiznicaVracenoResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8304A83B27A0825B004D9CBF /* KnjiznicaVracenoResponse.swift */; };
+		8304A83F27A082F7004D9CBF /* MaterijaliResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8304A83E27A082F7004D9CBF /* MaterijaliResponse.swift */; };
+		8304A84027A082F7004D9CBF /* MaterijaliResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8304A83E27A082F7004D9CBF /* MaterijaliResponse.swift */; };
+		8304A84227A08374004D9CBF /* BodoviResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8304A84127A08373004D9CBF /* BodoviResponse.swift */; };
+		8304A84327A08374004D9CBF /* BodoviResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8304A84127A08373004D9CBF /* BodoviResponse.swift */; };
+		8304A84527A08413004D9CBF /* PrisustvaResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8304A84427A08412004D9CBF /* PrisustvaResponse.swift */; };
+		8304A84627A08413004D9CBF /* PrisustvaResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8304A84427A08412004D9CBF /* PrisustvaResponse.swift */; };
+		8304A84827A08553004D9CBF /* GrupeResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8304A84727A08552004D9CBF /* GrupeResponse.swift */; };
+		8304A84927A08553004D9CBF /* GrupeResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8304A84727A08552004D9CBF /* GrupeResponse.swift */; };
+		8304A84B27A0859B004D9CBF /* PraksaResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8304A84A27A0859B004D9CBF /* PraksaResponse.swift */; };
+		8304A84C27A0859B004D9CBF /* PraksaResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8304A84A27A0859B004D9CBF /* PraksaResponse.swift */; };
+		8304A84E27A085CA004D9CBF /* MentoriResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8304A84D27A085CA004D9CBF /* MentoriResponse.swift */; };
+		8304A84F27A085CA004D9CBF /* MentoriResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8304A84D27A085CA004D9CBF /* MentoriResponse.swift */; };
+		8304A85127A08606004D9CBF /* FilterableProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8304A85027A08606004D9CBF /* FilterableProtocol.swift */; };
+		8304A85227A08607004D9CBF /* FilterableProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8304A85027A08606004D9CBF /* FilterableProtocol.swift */; };
+		8304A85427A09194004D9CBF /* FilterEnum.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8304A85327A09194004D9CBF /* FilterEnum.swift */; };
+		8304A85527A09194004D9CBF /* FilterEnum.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8304A85327A09194004D9CBF /* FilterEnum.swift */; };
 		83540F12279CDD670068BECB /* InfoedukaApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83540EFF279CDD650068BECB /* InfoedukaApp.swift */; };
 		83540F13279CDD670068BECB /* InfoedukaApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83540EFF279CDD650068BECB /* InfoedukaApp.swift */; };
 		83540F18279CDD670068BECB /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 83540F02279CDD670068BECB /* Assets.xcassets */; };
@@ -15,9 +73,40 @@
 		83540F24279CE41A0068BECB /* MainView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83540F22279CE41A0068BECB /* MainView.swift */; };
 		83540F26279CE4670068BECB /* Launch Screen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 83540F25279CE4660068BECB /* Launch Screen.storyboard */; };
 		83540F27279CE4670068BECB /* Launch Screen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 83540F25279CE4660068BECB /* Launch Screen.storyboard */; };
+		83540F2A279CF0600068BECB /* LoginView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83540F29279CF0600068BECB /* LoginView.swift */; };
+		83540F2B279CF0600068BECB /* LoginView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83540F29279CF0600068BECB /* LoginView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		8304A7F9279DB0F2004D9CBF /* InfoedukaHttpRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InfoedukaHttpRequest.swift; sourceTree = "<group>"; };
+		8304A7FC279DB156004D9CBF /* InfoedukaHttpEndpoints.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InfoedukaHttpEndpoints.swift; sourceTree = "<group>"; };
+		8304A800279DC2EF004D9CBF /* LoginResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginResponse.swift; sourceTree = "<group>"; };
+		8304A803279E4001004D9CBF /* VijestiTagoviResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VijestiTagoviResponse.swift; sourceTree = "<group>"; };
+		8304A806279E419C004D9CBF /* JsonHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JsonHelper.swift; sourceTree = "<group>"; };
+		8304A809279E4680004D9CBF /* SessionTracker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SessionTracker.swift; sourceTree = "<group>"; };
+		8304A80D279E5144004D9CBF /* NSRegularExpressionExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NSRegularExpressionExtension.swift; sourceTree = "<group>"; };
+		8304A810279E5178004D9CBF /* StringExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StringExtension.swift; sourceTree = "<group>"; };
+		8304A813279F0AAB004D9CBF /* ResponseProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResponseProtocol.swift; sourceTree = "<group>"; };
+		8304A817279F2862004D9CBF /* LoginViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewModel.swift; sourceTree = "<group>"; };
+		8304A81A279F2B6C004D9CBF /* MainViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewModel.swift; sourceTree = "<group>"; };
+		8304A81D279F2D7F004D9CBF /* CredentialsManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CredentialsManager.swift; sourceTree = "<group>"; };
+		8304A82227A079A2004D9CBF /* KategorijeResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KategorijeResponse.swift; sourceTree = "<group>"; };
+		8304A82627A07A56004D9CBF /* VijestiResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VijestiResponse.swift; sourceTree = "<group>"; };
+		8304A82927A07AA3004D9CBF /* TjedniResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TjedniResponse.swift; sourceTree = "<group>"; };
+		8304A82C27A07B6B004D9CBF /* ispitiPrijavaResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ispitiPrijavaResponse.swift; sourceTree = "<group>"; };
+		8304A82F27A07FC8004D9CBF /* IspitiOdjavaResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IspitiOdjavaResponse.swift; sourceTree = "<group>"; };
+		8304A83227A08048004D9CBF /* KnjiznicaPodrucjaResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KnjiznicaPodrucjaResponse.swift; sourceTree = "<group>"; };
+		8304A83527A080F9004D9CBF /* KnjiznicaPodrucjeOdabirResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KnjiznicaPodrucjeOdabirResponse.swift; sourceTree = "<group>"; };
+		8304A83827A081B5004D9CBF /* KnjiznicaPosudbaResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KnjiznicaPosudbaResponse.swift; sourceTree = "<group>"; };
+		8304A83B27A0825B004D9CBF /* KnjiznicaVracenoResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KnjiznicaVracenoResponse.swift; sourceTree = "<group>"; };
+		8304A83E27A082F7004D9CBF /* MaterijaliResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MaterijaliResponse.swift; sourceTree = "<group>"; };
+		8304A84127A08373004D9CBF /* BodoviResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BodoviResponse.swift; sourceTree = "<group>"; };
+		8304A84427A08412004D9CBF /* PrisustvaResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PrisustvaResponse.swift; sourceTree = "<group>"; };
+		8304A84727A08552004D9CBF /* GrupeResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GrupeResponse.swift; sourceTree = "<group>"; };
+		8304A84A27A0859B004D9CBF /* PraksaResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PraksaResponse.swift; sourceTree = "<group>"; };
+		8304A84D27A085CA004D9CBF /* MentoriResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MentoriResponse.swift; sourceTree = "<group>"; };
+		8304A85027A08606004D9CBF /* FilterableProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FilterableProtocol.swift; sourceTree = "<group>"; };
+		8304A85327A09194004D9CBF /* FilterEnum.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FilterEnum.swift; sourceTree = "<group>"; };
 		83540EFF279CDD650068BECB /* InfoedukaApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InfoedukaApp.swift; sourceTree = "<group>"; };
 		83540F02279CDD670068BECB /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		83540F07279CDD670068BECB /* Infoeduka.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Infoeduka.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -25,6 +114,7 @@
 		83540F0F279CDD670068BECB /* macOS.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = macOS.entitlements; sourceTree = "<group>"; };
 		83540F22279CE41A0068BECB /* MainView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainView.swift; sourceTree = "<group>"; };
 		83540F25279CE4660068BECB /* Launch Screen.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = "Launch Screen.storyboard"; sourceTree = "<group>"; };
+		83540F29279CF0600068BECB /* LoginView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -45,6 +135,88 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		8304A7F8279CF33F004D9CBF /* HTTP */ = {
+			isa = PBXGroup;
+			children = (
+				8304A7FF279DC2CD004D9CBF /* ResponseModel */,
+				8304A7F9279DB0F2004D9CBF /* InfoedukaHttpRequest.swift */,
+				8304A7FC279DB156004D9CBF /* InfoedukaHttpEndpoints.swift */,
+				8304A809279E4680004D9CBF /* SessionTracker.swift */,
+			);
+			path = HTTP;
+			sourceTree = "<group>";
+		};
+		8304A7FF279DC2CD004D9CBF /* ResponseModel */ = {
+			isa = PBXGroup;
+			children = (
+				8304A82527A07A1F004D9CBF /* Responses */,
+				8304A806279E419C004D9CBF /* JsonHelper.swift */,
+				8304A813279F0AAB004D9CBF /* ResponseProtocol.swift */,
+				8304A85027A08606004D9CBF /* FilterableProtocol.swift */,
+				8304A85327A09194004D9CBF /* FilterEnum.swift */,
+			);
+			path = ResponseModel;
+			sourceTree = "<group>";
+		};
+		8304A80C279E512F004D9CBF /* Regex */ = {
+			isa = PBXGroup;
+			children = (
+				8304A80D279E5144004D9CBF /* NSRegularExpressionExtension.swift */,
+				8304A810279E5178004D9CBF /* StringExtension.swift */,
+			);
+			path = Regex;
+			sourceTree = "<group>";
+		};
+		8304A816279F27F1004D9CBF /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				8304A817279F2862004D9CBF /* LoginViewModel.swift */,
+				8304A81A279F2B6C004D9CBF /* MainViewModel.swift */,
+			);
+			path = ViewModel;
+			sourceTree = "<group>";
+		};
+		8304A820279F2D86004D9CBF /* Credentials */ = {
+			isa = PBXGroup;
+			children = (
+				8304A81D279F2D7F004D9CBF /* CredentialsManager.swift */,
+			);
+			path = Credentials;
+			sourceTree = "<group>";
+		};
+		8304A821279F3516004D9CBF /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				83540F29279CF0600068BECB /* LoginView.swift */,
+				83540F22279CE41A0068BECB /* MainView.swift */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		8304A82527A07A1F004D9CBF /* Responses */ = {
+			isa = PBXGroup;
+			children = (
+				8304A800279DC2EF004D9CBF /* LoginResponse.swift */,
+				8304A803279E4001004D9CBF /* VijestiTagoviResponse.swift */,
+				8304A82227A079A2004D9CBF /* KategorijeResponse.swift */,
+				8304A82627A07A56004D9CBF /* VijestiResponse.swift */,
+				8304A82927A07AA3004D9CBF /* TjedniResponse.swift */,
+				8304A82C27A07B6B004D9CBF /* ispitiPrijavaResponse.swift */,
+				8304A82F27A07FC8004D9CBF /* IspitiOdjavaResponse.swift */,
+				8304A83227A08048004D9CBF /* KnjiznicaPodrucjaResponse.swift */,
+				8304A83527A080F9004D9CBF /* KnjiznicaPodrucjeOdabirResponse.swift */,
+				8304A83827A081B5004D9CBF /* KnjiznicaPosudbaResponse.swift */,
+				8304A83B27A0825B004D9CBF /* KnjiznicaVracenoResponse.swift */,
+				8304A83E27A082F7004D9CBF /* MaterijaliResponse.swift */,
+				8304A84127A08373004D9CBF /* BodoviResponse.swift */,
+				8304A84427A08412004D9CBF /* PrisustvaResponse.swift */,
+				8304A84727A08552004D9CBF /* GrupeResponse.swift */,
+				8304A84A27A0859B004D9CBF /* PraksaResponse.swift */,
+				8304A84D27A085CA004D9CBF /* MentoriResponse.swift */,
+			);
+			path = Responses;
+			sourceTree = "<group>";
+		};
 		83540EF7279CDD640068BECB = {
 			isa = PBXGroup;
 			children = (
@@ -58,8 +230,12 @@
 		83540EFC279CDD650068BECB /* Shared */ = {
 			isa = PBXGroup;
 			children = (
+				8304A821279F3516004D9CBF /* Views */,
+				8304A820279F2D86004D9CBF /* Credentials */,
+				8304A816279F27F1004D9CBF /* ViewModel */,
+				8304A80C279E512F004D9CBF /* Regex */,
+				8304A7F8279CF33F004D9CBF /* HTTP */,
 				83540EFF279CDD650068BECB /* InfoedukaApp.swift */,
-				83540F22279CE41A0068BECB /* MainView.swift */,
 				83540F02279CDD670068BECB /* Assets.xcassets */,
 			);
 			path = Shared;
@@ -190,8 +366,38 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				8304A804279E4001004D9CBF /* VijestiTagoviResponse.swift in Sources */,
+				8304A83627A080F9004D9CBF /* KnjiznicaPodrucjeOdabirResponse.swift in Sources */,
+				8304A84B27A0859B004D9CBF /* PraksaResponse.swift in Sources */,
+				8304A7FA279DB0F2004D9CBF /* InfoedukaHttpRequest.swift in Sources */,
+				83540F2A279CF0600068BECB /* LoginView.swift in Sources */,
+				8304A80E279E5144004D9CBF /* NSRegularExpressionExtension.swift in Sources */,
+				8304A85427A09194004D9CBF /* FilterEnum.swift in Sources */,
+				8304A801279DC2F0004D9CBF /* LoginResponse.swift in Sources */,
+				8304A85127A08606004D9CBF /* FilterableProtocol.swift in Sources */,
+				8304A81E279F2D7F004D9CBF /* CredentialsManager.swift in Sources */,
+				8304A82A27A07AA3004D9CBF /* TjedniResponse.swift in Sources */,
+				8304A7FD279DB156004D9CBF /* InfoedukaHttpEndpoints.swift in Sources */,
+				8304A82327A079A3004D9CBF /* KategorijeResponse.swift in Sources */,
+				8304A814279F0AAC004D9CBF /* ResponseProtocol.swift in Sources */,
+				8304A84227A08374004D9CBF /* BodoviResponse.swift in Sources */,
+				8304A83327A08048004D9CBF /* KnjiznicaPodrucjaResponse.swift in Sources */,
+				8304A81B279F2B6C004D9CBF /* MainViewModel.swift in Sources */,
+				8304A83027A07FC9004D9CBF /* IspitiOdjavaResponse.swift in Sources */,
+				8304A83F27A082F7004D9CBF /* MaterijaliResponse.swift in Sources */,
+				8304A84827A08553004D9CBF /* GrupeResponse.swift in Sources */,
+				8304A80A279E4680004D9CBF /* SessionTracker.swift in Sources */,
+				8304A818279F2863004D9CBF /* LoginViewModel.swift in Sources */,
+				8304A807279E419C004D9CBF /* JsonHelper.swift in Sources */,
 				83540F12279CDD670068BECB /* InfoedukaApp.swift in Sources */,
+				8304A82727A07A56004D9CBF /* VijestiResponse.swift in Sources */,
+				8304A811279E5178004D9CBF /* StringExtension.swift in Sources */,
+				8304A83927A081B5004D9CBF /* KnjiznicaPosudbaResponse.swift in Sources */,
+				8304A82D27A07B6B004D9CBF /* ispitiPrijavaResponse.swift in Sources */,
 				83540F23279CE41A0068BECB /* MainView.swift in Sources */,
+				8304A84E27A085CA004D9CBF /* MentoriResponse.swift in Sources */,
+				8304A83C27A0825B004D9CBF /* KnjiznicaVracenoResponse.swift in Sources */,
+				8304A84527A08413004D9CBF /* PrisustvaResponse.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -199,8 +405,38 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				8304A805279E4001004D9CBF /* VijestiTagoviResponse.swift in Sources */,
+				8304A83727A080F9004D9CBF /* KnjiznicaPodrucjeOdabirResponse.swift in Sources */,
+				8304A84C27A0859B004D9CBF /* PraksaResponse.swift in Sources */,
+				8304A7FB279DB0F2004D9CBF /* InfoedukaHttpRequest.swift in Sources */,
+				83540F2B279CF0600068BECB /* LoginView.swift in Sources */,
+				8304A80F279E5144004D9CBF /* NSRegularExpressionExtension.swift in Sources */,
+				8304A85527A09194004D9CBF /* FilterEnum.swift in Sources */,
+				8304A802279DC2F0004D9CBF /* LoginResponse.swift in Sources */,
+				8304A85227A08607004D9CBF /* FilterableProtocol.swift in Sources */,
+				8304A81F279F2D7F004D9CBF /* CredentialsManager.swift in Sources */,
+				8304A82B27A07AA3004D9CBF /* TjedniResponse.swift in Sources */,
+				8304A7FE279DB156004D9CBF /* InfoedukaHttpEndpoints.swift in Sources */,
+				8304A82427A079A4004D9CBF /* KategorijeResponse.swift in Sources */,
+				8304A815279F0AAC004D9CBF /* ResponseProtocol.swift in Sources */,
+				8304A84327A08374004D9CBF /* BodoviResponse.swift in Sources */,
+				8304A83427A08048004D9CBF /* KnjiznicaPodrucjaResponse.swift in Sources */,
+				8304A81C279F2B6C004D9CBF /* MainViewModel.swift in Sources */,
+				8304A83127A07FC9004D9CBF /* IspitiOdjavaResponse.swift in Sources */,
+				8304A84027A082F7004D9CBF /* MaterijaliResponse.swift in Sources */,
+				8304A84927A08553004D9CBF /* GrupeResponse.swift in Sources */,
+				8304A80B279E4680004D9CBF /* SessionTracker.swift in Sources */,
+				8304A819279F2863004D9CBF /* LoginViewModel.swift in Sources */,
+				8304A808279E419D004D9CBF /* JsonHelper.swift in Sources */,
 				83540F13279CDD670068BECB /* InfoedukaApp.swift in Sources */,
+				8304A82827A07A56004D9CBF /* VijestiResponse.swift in Sources */,
+				8304A812279E5178004D9CBF /* StringExtension.swift in Sources */,
+				8304A83A27A081B5004D9CBF /* KnjiznicaPosudbaResponse.swift in Sources */,
+				8304A82E27A07B6B004D9CBF /* ispitiPrijavaResponse.swift in Sources */,
 				83540F24279CE41A0068BECB /* MainView.swift in Sources */,
+				8304A84F27A085CA004D9CBF /* MentoriResponse.swift in Sources */,
+				8304A83D27A0825B004D9CBF /* KnjiznicaVracenoResponse.swift in Sources */,
+				8304A84627A08413004D9CBF /* PrisustvaResponse.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
