@@ -11,15 +11,19 @@ struct SessionTracker {
     
     static var session: String? {
         get async {
+            if let sessionString = sessionString {
+                return sessionString
+            }
             return await getSessionCookie()
         }
     }
     
     static var sessionString : String?
+    static var lastLogin: LoginResponseWelcome?
     
     static func reauth() {
         let _ = Task {
-            await getSessionCookie()
+            sessionString = await getSessionCookie()
         }
     }
     
@@ -33,22 +37,23 @@ struct SessionTracker {
         request.setValue("application/json; charset=utf-8", forHTTPHeaderField: "Content-Type")
         request.httpBody = credentialsData
         
-        return await withCheckedContinuation { continuation in
-            let task = URLSession.shared.dataTask(with: request) { (data1, response, error) in
-                if let error = error {
-                    print("error:", error)
-                    return
-                }
-                do {
-                    guard let response = response as? HTTPURLResponse else { return }
-                    guard let cookieHeader = response.allHeaderFields[AnyHashable("Set-Cookie")] as? String else { return }
-                    let bakedCookie = bakeCookie(cookieHeader)
-                    sessionString = bakedCookie
-                    continuation.resume(returning: bakedCookie)
-                }
+        do {
+            let (data, response) = try await URLSession.shared.data(for: request)
+            if let httpResponse = response as? HTTPURLResponse, httpResponse.statusCode == 401 {
+                SessionTracker.reauth()
+                return nil
             }
-            task.resume()
+            guard let response = response as? HTTPURLResponse else { return nil }
+            guard let cookieHeader = response.allHeaderFields[AnyHashable("Set-Cookie")] as? String else { return nil }
+            let bakedCookie = bakeCookie(cookieHeader)
+            sessionString = bakedCookie
+            
+            let loginResponseWelcome = try? newJSONDecoder().decode(LoginResponseWelcome.self, from: data)
+            lastLogin = loginResponseWelcome
+            
+            return bakedCookie
         }
+        catch { return nil }
     }
     
     private static func bakeCookie(_ rawCookie: String) -> String {

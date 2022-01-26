@@ -11,7 +11,7 @@
 import Foundation
 
 // MARK: - BodoviResponseWelcome
-struct BodoviResponseWelcome: Codable, HasInfoedukaURL {
+struct BodoviResponseWelcome: Codable, InfoedukaUrlGet {
     static let endpoint: InfoedukaHttpEndpoints = .bodovi
     let data: [BodoviResponseDatum]
 }

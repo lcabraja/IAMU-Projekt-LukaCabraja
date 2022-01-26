@@ -11,7 +11,7 @@
 import Foundation
 
 // MARK: - KategorijeResponseWelcome
-struct KategorijeResponseWelcome: Codable, HasInfoedukaURL {
+struct KategorijeResponseWelcome: Codable, InfoedukaUrlGet {
     static let endpoint: InfoedukaHttpEndpoints = .kategorije
     let data: [String]
 }

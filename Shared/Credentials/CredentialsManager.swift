@@ -14,7 +14,7 @@ struct CredentialsManager {
     static func set(_ username: String, _ password: String) {
         CredentialsManager.username = username
         CredentialsManager.password = password
-        //SessionTracker.reauth()
+//        SessionTracker.reauth()
     }
     
     static var credentials:  [String: String]? {

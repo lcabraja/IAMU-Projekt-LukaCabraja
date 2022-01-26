@@ -11,7 +11,7 @@
 import Foundation
 
 // MARK: - MaterijaliResponseWelcome
-struct MaterijaliResponseWelcome: Codable, HasInfoedukaURL {
+struct MaterijaliResponseWelcome: Codable, InfoedukaUrlGet {
     static let endpoint: InfoedukaHttpEndpoints = .materijali
     let data: [MaterijaliResponseDatum]
 }
@@ -76,20 +76,8 @@ struct MaterijaliResponseMaterijaliElement: Codable {
     let naziv: String
     let kategorija: MaterijaliResponseKategorija
     let opis, velicina, vrijeme, korisnika: String
-    let contentType: MaterijaliResponseContentType
+    let contentType: String
     let link: String
-}
-
-enum MaterijaliResponseContentType: String, Codable {
-    case applicationMsword = "application/msword"
-    case applicationOctetStream = "application/octet-stream"
-    case applicationPDF = "application/pdf"
-    case applicationVndMSPowerpoint = "application/vnd.ms-powerpoint"
-    case applicationXRarCompressed = "application/x-rar-compressed"
-    case applicationZip = "application/zip"
-    case audioMPEG = "audio/mpeg"
-    case imageJPEG = "image/jpeg"
-    case textPlain = "text/plain"
 }
 
 enum MaterijaliResponseOcjena: Codable {

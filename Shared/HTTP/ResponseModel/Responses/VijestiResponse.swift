@@ -11,7 +11,7 @@
 import Foundation
 
 // MARK: - VijestiResponseWelcome
-struct VijestiResponseWelcome: Codable, HasInfoedukaURL {
+struct VijestiResponseWelcome: Codable, InfoedukaUrlGet {
     static let endpoint: InfoedukaHttpEndpoints = .vijesti
     let data: VijestiResponseData
 }

@@ -11,7 +11,7 @@
 import Foundation
 
 // MARK: - GrupeResponseWelcome
-struct GrupeResponseWelcome: Codable, HasInfoedukaURL {
+struct GrupeResponseWelcome: Codable, InfoedukaUrlGet {
     static let endpoint: InfoedukaHttpEndpoints = .grupe
     let data: [GrupeResponseDatum]
 }

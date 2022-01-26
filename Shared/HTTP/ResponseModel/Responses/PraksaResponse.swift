@@ -11,7 +11,7 @@
 import Foundation
 
 // MARK: - PraksaResponseWelcome
-struct PraksaResponseWelcome: Codable, HasInfoedukaURL {
+struct PraksaResponseWelcome: Codable, InfoedukaUrlGet {
     static let endpoint: InfoedukaHttpEndpoints = .praksa
     let data: PraksaResponseData
 }

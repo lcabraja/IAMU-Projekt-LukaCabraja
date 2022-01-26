@@ -11,7 +11,7 @@
 import Foundation
 
 // MARK: - TjedniResponseWelcome
-struct TjedniResponseWelcome: Codable, HasInfoedukaURL {
+struct TjedniResponseWelcome: Codable, InfoedukaUrlGet {
     static let endpoint: InfoedukaHttpEndpoints = .tjedni
     let data: [TjedniResponseDatum]
 }

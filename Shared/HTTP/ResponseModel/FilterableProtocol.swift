@@ -7,4 +7,4 @@
 
 import Foundation
 
-protocol HasFilterableInfoedukaURL: HasInfoedukaURL { }
+protocol HasFilterableInfoedukaURL: InfoedukaUrlGet { }

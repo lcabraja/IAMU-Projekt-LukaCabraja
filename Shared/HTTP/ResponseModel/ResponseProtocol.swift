@@ -7,6 +7,6 @@
 
 import Foundation
 
-protocol HasInfoedukaURL {
+protocol InfoedukaUrlGet {
     static var endpoint: InfoedukaHttpEndpoints { get }
 }

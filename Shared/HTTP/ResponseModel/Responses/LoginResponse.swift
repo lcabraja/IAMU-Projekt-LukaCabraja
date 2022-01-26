@@ -11,7 +11,7 @@
 import Foundation
 
 // MARK: - LoginResponseWelcome
-struct LoginResponseWelcome: Codable, HasInfoedukaURL {
+struct LoginResponseWelcome: Codable {
     static let endpoint: InfoedukaHttpEndpoints = .login
     let data: LoginResponseData
     
