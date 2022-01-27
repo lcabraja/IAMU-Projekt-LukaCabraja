@@ -2,10 +2,10 @@
 //  PrisustvaResponse.swift
 //  Infoeduka
 //
-// This file was generated from JSON Schema using quicktype, do not modify it directly.
-// To parse the JSON, add this file to your project and do:
+//  This file was generated from JSON Schema using quicktype, do not modify it directly.
+//  To parse the JSON, add this file to your project and do:
 //
-//   let prisustvaResponseWelcome = try? newJSONDecoder().decode(PrisustvaResponseWelcome.self, from: jsonData)
+//  let prisustvaResponseWelcome = try? newJSONDecoder().decode(PrisustvaResponseWelcome.self, from: jsonData)
 //
 
 import Foundation
@@ -14,6 +14,31 @@ import Foundation
 struct PrisustvaResponseWelcome: Codable, InfoedukaUrlGet {
     static let endpoint: InfoedukaHttpEndpoints = .prisustva
     let data: [PrisustvaResponseDatum]
+    
+    func flatten() -> [PrisustvaResponsePredmeti] {
+        var _subjects = Set<PrisustvaResponsePredmeti>()
+        for semester in data {
+            for year in semester.godine {
+                for subject in year.predmeti {
+                    _subjects.insert(subject)
+                }
+            }
+        }
+        return Array(_subjects)
+    }
+    
+//    func findByName(_ className: String) -> PrisustvaResponsePredmeti? {
+//        for semester in data {
+//            for year in semester.godine {
+//                for subject in year.predmeti {
+//                    if "\(subject.predmet) (\(subject.sifra))" == className {
+//                        return subject
+//                    }
+//                }
+//            }
+//        }
+//        return nil
+//    }
 }
 
 // MARK: - PrisustvaResponseDatum
@@ -30,7 +55,16 @@ struct PrisustvaResponseGodine: Codable {
 }
 
 // MARK: - PrisustvaResponsePredmeti
-struct PrisustvaResponsePredmeti: Codable {
+struct PrisustvaResponsePredmeti: Codable, Hashable {
+    static func == (lhs: PrisustvaResponsePredmeti, rhs: PrisustvaResponsePredmeti) -> Bool {
+        lhs.idPredmet == rhs.idPredmet
+    }
+    
+    func hash(into hasher: inout Hasher) {
+        hasher.combine(idPredmet)
+        hasher.combine(sifra)
+    }
+    
     let idPredmet: Int
     let predmet, sifra: String
     let ects: Int
@@ -131,7 +165,7 @@ enum PrisustvaResponseVrijeme: String, Codable {
 enum PrisustvaResponseOcjena: Codable {
     case integer(Int)
     case string(String)
-
+    
     init(from decoder: Decoder) throws {
         let container = try decoder.singleValueContainer()
         if let x = try? container.decode(Int.self) {
@@ -144,7 +178,7 @@ enum PrisustvaResponseOcjena: Codable {
         }
         throw DecodingError.typeMismatch(PrisustvaResponseOcjena.self, DecodingError.Context(codingPath: decoder.codingPath, debugDescription: "Wrong type for PrisustvaResponseOcjena"))
     }
-
+    
     func encode(to encoder: Encoder) throws {
         var container = encoder.singleValueContainer()
         switch self {

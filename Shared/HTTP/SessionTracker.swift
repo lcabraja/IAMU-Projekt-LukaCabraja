@@ -27,7 +27,10 @@ struct SessionTracker {
         }
     }
     
+    private static var authorizing: Bool = false
+    
     static func getSessionCookie() async -> String? {
+        if !authorizing { authorizing = true } else { return nil }
         guard let credentials = CredentialsManager.credentials else { return nil }
         let url = InfoedukaHttpEndpoints.login.url
         let credentialsData = try! JSONSerialization.data(withJSONObject: credentials, options: [])
@@ -51,6 +54,7 @@ struct SessionTracker {
             let loginResponseWelcome = try? newJSONDecoder().decode(LoginResponseWelcome.self, from: data)
             lastLogin = loginResponseWelcome
             
+            authorizing = false
             return bakedCookie
         }
         catch { return nil }

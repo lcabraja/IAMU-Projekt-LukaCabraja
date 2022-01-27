@@ -2,10 +2,10 @@
 //  BodoviResponse.swift
 //  Infoeduka
 //
-// This file was generated from JSON Schema using quicktype, do not modify it directly.
-// To parse the JSON, add this file to your project and do:
+//  This file was generated from JSON Schema using quicktype, do not modify it directly.
+//  To parse the JSON, add this file to your project and do:
 //
-//   let bodoviResponseWelcome = try? newJSONDecoder().decode(BodoviResponseWelcome.self, from: jsonData)
+//  let bodoviResponseWelcome = try? newJSONDecoder().decode(BodoviResponseWelcome.self, from: jsonData)
 //
 
 import Foundation

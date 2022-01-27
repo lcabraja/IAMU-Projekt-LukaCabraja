@@ -15,7 +15,7 @@ struct InfoedukaApp: App {
     var body: some Scene {
         WindowGroup {
             if (!login.hasCredentials) {
-                LoginView(model: login, mvm: mainView.updateModel)
+                LoginView(model: login, mvm: mainView.prepareModel)
             } else {
                 MainView(model: mainView)
             }

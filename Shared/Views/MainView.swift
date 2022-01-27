@@ -9,160 +9,103 @@ import SwiftUI
 
 struct MainView: View {
     @ObservedObject var model: MainViewModel
-    @State var which: Bool = false
     
     var body: some View {
         VStack {
-            if which {
-                TabView {
-                    modelLoginView
-                    modelVijestiTagoviView
-                    modelKategorijeView
-                    modelVijestiView
-                    modelTjedniView
-                    modelIspitiPrijavaView
-                    modelIspitiOdjavaView
-                    modelKnjiznicaPodrucjaView
-                    
+            Text("Infoeduka")
+                .font(.largeTitle)
+                .gradientForeground(colors: [.red, .orange])
+            Spacer()
+            raspored
+        }
+    }
+    
+    var raspored: some View {
+        List {
+            ForEach(model.uniqueDays) { day in
+                Section(header: Text(day.day)) { // day of the week
+                    ForEach(model.weeks.onDay(day)) { course in
+                        RasporedItem(item: course, attendance: model.attendance)
+                    }
                 }
-                .tabViewStyle(.page)
-            } else {
-                TabView {
-                    modelKnjiznicaPodrucjeOdabirView
-                    modelKnjiznicaPosudbaView
-                    modelKnjiznicaVracenoView
-                    modelMaterijaliView
-                    modelBodoviView
-                    modelPrisustvaView
-                    modelGrupeView
-                    modelPraksaView
-                    modelMentoriView
-                }
-                .tabViewStyle(.page)
-            }
-            Button("switcho") {
-                which.toggle()
             }
         }
     }
     
-    var modelLoginView: some View {
-        if let m = model.modelLogin {
-            return Text(String(describing: m))
-        } else {
-            return Text("Loading...")
+    struct RasporedItem: View {
+        var item: MainViewModel.IdentifiableScheduleItem
+        var attendance: (String, TjedniResponseTip) -> Double?
+        
+        private var color: Color {
+            switch self.item.tip {
+            case .predavanje: return Color.blue
+            case .vježbe: return Color.orange
+            case .ispit: return Color.purple
+            }
+        }
+        
+        var body: some View {
+            ZStack {
+                VStack {
+                    Text("\(item.terminPocetak) - \(item.terminKraj)")
+                        .foregroundColor(color)
+                        .font(.title2)
+                    Divider()
+                        .background(color)
+                        .padding(.horizontal, 32)
+                    Text(item.predmetClear)
+                        .font(.title3)
+                    HStack {
+                        Location(hall: item.dvorana, teams: item.teamsCode)
+                        Spacer()
+                        Attendance(percent: attendance(item.predmet, item.tip), type: item.tip)
+                    }
+                }
+            }
         }
     }
-    var modelVijestiTagoviView: some View {
-        if let m = model.modelVijestiTagovi {
-            return Text(String(describing: m))
-        } else {
-            return Text("Loading...")
+    
+    struct Location: View {
+        let hall: String
+        let teams: String
+        
+        @State var physical: Bool = true
+        
+        var body: some View {
+            Text(physical ? hall : teams)
+                .lineLimit(1)
+                .padding(8)
+                .background(
+                    RoundedRectangle(cornerRadius: 10).fill(.secondary)
+                )
+                .onTapGesture {
+                    if !teams.isEmpty {
+                        physical.toggle()
+                    }
+                }
         }
     }
-    var modelKategorijeView: some View {
-        if let m = model.modelKategorije {
-            return Text(String(describing: m))
-        } else {
-            return Text("Loading...")
+    
+    struct Attendance: View {
+        var percent: Double?
+        var type: TjedniResponseTip
+        
+        private var color: Color {
+            switch type {
+            case .predavanje: return percent! >= 0.5 ? Color.green : Color.red
+            case .vježbe: return percent! >= 0.6 ? Color.yellow : Color.purple
+            default: return Color.blue
+            }
         }
-    }
-    var modelVijestiView: some View {
-        if let m = model.modelVijesti {
-            return Text(String(describing: m))
-        } else {
-            return Text("Loading...")
-        }
-    }
-    var modelTjedniView: some View {
-        if let m = model.modelTjedni {
-            return Text(String(describing: m))
-        } else {
-            return Text("Loading...")
-        }
-    }
-    var modelIspitiPrijavaView: some View {
-        if let m = model.modelIspitiPrijava {
-            return Text(String(describing: m))
-        } else {
-            return Text("Loading...")
-        }
-    }
-    var modelIspitiOdjavaView: some View {
-        if let m = model.modelIspitiOdjava {
-            return Text(String(describing: m))
-        } else {
-            return Text("Loading...")
-        }
-    }
-    var modelKnjiznicaPodrucjaView: some View {
-        if let m = model.modelKnjiznicaPodrucja {
-            return Text(String(describing: m))
-        } else {
-            return Text("Loading...")
-        }
-    }
-    var modelKnjiznicaPodrucjeOdabirView: some View {
-        if let m = model.modelKnjiznicaPodrucjeOdabir {
-            return Text(String(describing: m))
-        } else {
-            return Text("Loading...")
-        }
-    }
-    var modelKnjiznicaPosudbaView: some View {
-        if let m = model.modelKnjiznicaPosudba {
-            return Text(String(describing: m))
-        } else {
-            return Text("Loading...")
-        }
-    }
-    var modelKnjiznicaVracenoView: some View {
-        if let m = model.modelKnjiznicaVraceno {
-            return Text(String(describing: m))
-        } else {
-            return Text("Loading...")
-        }
-    }
-    var modelMaterijaliView: some View {
-        if let m = model.modelMaterijali {
-            return Text(String(describing: m))
-        } else {
-            return Text("Loading...")
-        }
-    }
-    var modelBodoviView: some View {
-        if let m = model.modelBodovi {
-            return Text(String(describing: m))
-        } else {
-            return Text("Loading...")
-        }
-    }
-    var modelPrisustvaView: some View {
-        if let m = model.modelPrisustva {
-            return Text(String(describing: m))
-        } else {
-            return Text("Loading...")
-        }
-    }
-    var modelGrupeView: some View {
-        if let m = model.modelGrupe {
-            return Text(String(describing: m))
-        } else {
-            return Text("Loading...")
-        }
-    }
-    var modelPraksaView: some View {
-        if let m = model.modelPraksa {
-            return Text(String(describing: m))
-        } else {
-            return Text("Loading...")
-        }
-    }
-    var modelMentoriView: some View {
-        if let m = model.modelMentori {
-            return Text(String(describing: m))
-        } else {
-            return Text("Loading...")
+        
+        var body: some View {
+            if percent != nil && type != .ispit {
+                Circle()
+                    .stroke(lineWidth: 10)
+                    .foregroundColor(color)
+            } else {
+                Circle().fill(.pink)
+            }
         }
     }
 }
@@ -172,5 +115,16 @@ struct MainView_Previews: PreviewProvider {
     static var previews: some View {
         MainView(model: mainView)
             .preferredColorScheme(.dark)
+    }
+}
+
+extension View {
+    public func gradientForeground(colors: [Color]) -> some View {
+        self.overlay(LinearGradient(
+            gradient: .init(colors: colors),
+            startPoint: .leading,
+            endPoint: .trailing)
+        )
+        .mask(self)
     }
 }

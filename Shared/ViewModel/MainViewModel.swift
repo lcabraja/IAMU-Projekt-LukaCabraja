@@ -8,109 +8,118 @@
 import Foundation
 
 class MainViewModel: ObservableObject {
-    @Published var modelLogin: LoginResponseWelcome?
-    @Published var modelVijestiTagovi: VijestiTagoviResponseWelcome?
-    @Published var modelKategorije: KategorijeResponseWelcome?
-    @Published var modelVijesti: VijestiResponseWelcome?
     @Published var modelTjedni: TjedniResponseWelcome?
+    @Published var modelVijesti: VijestiResponseWelcome?
     @Published var modelIspitiPrijava: IspitiPrijavaResponseWelcome?
     @Published var modelIspitiOdjava: IspitiOdjavaResponseWelcome?
-    @Published var modelKnjiznicaPodrucja: KnjiznicaPodrucjaResponseWelcome?
-    @Published var modelKnjiznicaPodrucjeOdabir: KnjiznicaPodrucjeOdabirResponseWelcome?
-    @Published var modelKnjiznicaPosudba: KnjiznicaPosudbaResponseWelcome?
-    @Published var modelKnjiznicaVraceno: KnjiznicaVracenoResponseWelcome?
     @Published var modelMaterijali: MaterijaliResponseWelcome?
     @Published var modelBodovi: BodoviResponseWelcome?
     @Published var modelPrisustva: PrisustvaResponseWelcome?
-    @Published var modelGrupe: GrupeResponseWelcome?
-    @Published var modelPraksa: PraksaResponseWelcome?
-    @Published var modelMentori: MentoriResponseWelcome?
+    @Published var modelLogin: LoginResponseWelcome?
     
-    func updateModel() {
+    func prepareModel() {
         let _ = Task {
-            if let m = await InfoedukaHttpRequest<VijestiTagoviResponseWelcome>.fetch() {
-                DispatchQueue.main.async {
-                    self.modelVijestiTagovi = m
-                }
+            await InfoedukaHttpRequest<TjedniResponseWelcome>.fetch() { model in self.modelTjedni = model }
+            await InfoedukaHttpRequest<PrisustvaResponseWelcome>.fetch() { model in self.modelPrisustva = model }
+
+            if false {
+                await InfoedukaHttpRequest<VijestiResponseWelcome>.fetch() { model in self.modelVijesti = model }
+                await InfoedukaHttpRequest<IspitiPrijavaResponseWelcome>.fetch() { model in self.modelIspitiPrijava = model }
+                await InfoedukaHttpRequest<IspitiOdjavaResponseWelcome>.fetch() { model in self.modelIspitiOdjava = model }
+                await InfoedukaHttpRequest<MaterijaliResponseWelcome>.fetch() { model in self.modelMaterijali = model }
+                await InfoedukaHttpRequest<BodoviResponseWelcome>.fetch() { model in self.modelBodovi = model }
             }
-            if let m = await InfoedukaHttpRequest<KategorijeResponseWelcome>.fetch() {
-                DispatchQueue.main.async {
-                    self.modelKategorije = m
-                }
-            }
-            if let m = await InfoedukaHttpRequest<VijestiResponseWelcome>.fetch() {
-                DispatchQueue.main.async {
-                    self.modelVijesti = m
-                }
-            }
-            if let m = await InfoedukaHttpRequest<TjedniResponseWelcome>.fetch() {
-                DispatchQueue.main.async {
-                    self.modelTjedni = m
-                }
-            }
-            if let m = await InfoedukaHttpRequest<IspitiPrijavaResponseWelcome>.fetch() {
-                DispatchQueue.main.async {
-                    self.modelIspitiPrijava = m
-                }
-            }
-            if let m = await InfoedukaHttpRequest<IspitiOdjavaResponseWelcome>.fetch() {
-                DispatchQueue.main.async {
-                    self.modelIspitiOdjava = m
-                }
-            }
-            if let m = await InfoedukaHttpRequest<KnjiznicaPodrucjaResponseWelcome>.fetch() {
-                DispatchQueue.main.async {
-                    self.modelKnjiznicaPodrucja = m
-                }
-            }
-            if let m = await InfoedukaHttpRequest<KnjiznicaPodrucjeOdabirResponseWelcome>.fetch(){
-                DispatchQueue.main.async {
-                    self.modelKnjiznicaPodrucjeOdabir = m
-                }
-            }
-            if let m = await InfoedukaHttpRequest<KnjiznicaPosudbaResponseWelcome>.fetch() {
-                DispatchQueue.main.async {
-                    self.modelKnjiznicaPosudba = m
-                }
-            }
-            if let m = await InfoedukaHttpRequest<KnjiznicaVracenoResponseWelcome>.fetch() {
-                DispatchQueue.main.async {
-                    self.modelKnjiznicaVraceno = m
-                }
-            }
-            if let m = await InfoedukaHttpRequest<MaterijaliResponseWelcome>.fetch() {
-                DispatchQueue.main.async {
-                    self.modelMaterijali = m
-                }
-            }
-            if let m = await InfoedukaHttpRequest<BodoviResponseWelcome>.fetch() {
-                DispatchQueue.main.async {
-                    self.modelBodovi = m
-                }
-            }
-            if let m = await InfoedukaHttpRequest<PrisustvaResponseWelcome>.fetch() {
-                DispatchQueue.main.async {
-                    self.modelPrisustva = m
-                }
-            }
-            if let m = await InfoedukaHttpRequest<GrupeResponseWelcome>.fetch() {
-                DispatchQueue.main.async {
-                    self.modelGrupe = m
-                }
-            }
-            if let m = await InfoedukaHttpRequest<PraksaResponseWelcome>.fetch() {
-                DispatchQueue.main.async {
-                    self.modelPraksa = m
-                }
-            }
-            if let m = await InfoedukaHttpRequest<MentoriResponseWelcome>.fetch() {
-                DispatchQueue.main.async {
-                    self.modelMentori = m
-                }
-            }
-            DispatchQueue.main.async {
-                self.modelLogin = SessionTracker.lastLogin
-            }
+            DispatchQueue.main.async { self.modelLogin = SessionTracker.lastLogin }
         }
+    }
+    
+    private var subjectsAttendance: [PrisustvaResponsePredmeti]? {
+        modelPrisustva?.flatten()
+    }
+    
+    var weeks: [IdentifiableScheduleItem] {
+        guard let data = modelTjedni?.data else { return [] }
+        var _weeks = [IdentifiableScheduleItem]()
+        for week in data {
+            _weeks.append(IdentifiableScheduleItem(week))
+        }
+        return _weeks
+    }
+    
+    var uniqueDays: [IdentifiableDay] {
+        guard let data = modelTjedni?.data else { return [] }
+        var _days = Set<IdentifiableDay>()
+        var _id = 0
+        for day in data {
+            _days.insert(IdentifiableDay(day: day.datum, id: _id))
+            _id += 1
+        }
+        return Array(_days)
+    }
+    
+    func attendance(for className: String, type: TjedniResponseTip) -> Double? {
+        guard type != TjedniResponseTip.ispit else { return nil }
+        guard let attendance = subjectsAttendance?.findByName(className)?.dodatno.prisustva else { return nil }
+        switch type {
+        case .predavanje: return attendance.predavanja.postotakOdradjeno
+        case .vježbe: return attendance.vjezbe.postotakOdradjeno
+        default: return nil
+        }
+    }
+    
+    struct IdentifiableScheduleItem: Identifiable {
+        private static var _idIterator = 0
+        private static var idIterator: Int {
+            _idIterator += 1
+            return _idIterator - 1
+        }
+        
+        var predmetClear: String {
+            let regex = "\\(.+" // Izrada aplikacija za mobilne uređaje (21-00-47)
+            return self.predmet.replacingOccurrences(of: regex, with: "", options: [.regularExpression])
+        }
+        
+        var teamsCode: String {
+            let string = "MS Teams kod za prijavu: " // MS Teams kod za prijavu: wlh0c7n
+            return self.url.replacingOccurrences(of: string, with: "", options: [])
+        }
+        
+        let datum, terminPocetak, terminKraj: String
+        let terminTrajanje: Int
+        let dvorana, url, nastavnik: String
+        let tip: TjedniResponseTip
+        let predmet: String
+        let onlineNapomena: String?
+        let id: Int
+        
+        init(_ t: TjedniResponseDatum) {
+            datum = t.datum
+            terminPocetak = t.terminPocetak
+            terminKraj = t.terminKraj
+            terminTrajanje = t.terminTrajanje
+            dvorana = t.dvorana
+            url = t.url
+            nastavnik = t.nastavnik
+            tip = t.tip
+            predmet = t.predmet
+            onlineNapomena = t.onlineNapomena
+            id = IdentifiableScheduleItem.idIterator
+        }
+    }
+    struct IdentifiableDay: Identifiable, Hashable {
+        let day: String
+        let id: Int
+    }
+}
+
+extension Array where Element == MainViewModel.IdentifiableScheduleItem {
+    func onDay(_ day: MainViewModel.IdentifiableDay) -> [MainViewModel.IdentifiableScheduleItem] {
+        self.filter { $0.datum == day.day }
+    }
+}
+
+extension Array where Element == PrisustvaResponsePredmeti {
+    func findByName(_ subjectName: String) -> Element? {
+        self.filter({ "\($0.predmet) (\($0.sifra))" == subjectName }).first
     }
 }

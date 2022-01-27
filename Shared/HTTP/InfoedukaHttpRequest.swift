@@ -36,4 +36,11 @@ struct InfoedukaHttpRequest<ReturnType> where ReturnType: Decodable, ReturnType:
         let welcome = try? newJSONDecoder().decode(ReturnType.self, from: response)
         return welcome
     }
+    
+    static func fetch(callback: @escaping (ReturnType?) -> Void) async {
+        let model = await fetch()
+        DispatchQueue.main.async {
+            callback(model)
+        }
+    }
 }

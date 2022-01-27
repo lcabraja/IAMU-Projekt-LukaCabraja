@@ -35,7 +35,7 @@ struct LoginView_Previews: PreviewProvider {
     static var previews: some View {
         let model = LoginViewModel()
         let mainView = MainViewModel()
-        LoginView(model: model, mvm: mainView.updateModel)
+        LoginView(model: model, mvm: mainView.prepareModel)
             .preferredColorScheme(.light)
     }
 }
