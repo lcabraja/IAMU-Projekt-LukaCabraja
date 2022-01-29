@@ -18,7 +18,7 @@ struct SessionTracker {
         }
     }
     
-    static var sessionString : String?
+    private static var sessionString : String?
     static var lastLogin: LoginResponseWelcome?
     
     static func reauth() {
@@ -31,7 +31,7 @@ struct SessionTracker {
     
     static func getSessionCookie() async -> String? {
         if !authorizing { authorizing = true } else { return nil }
-        guard let credentials = CredentialsManager.credentials else { return nil }
+        guard let credentials = sharedCredentialsManager.credentialsJSON else { return nil }
         let url = InfoedukaHttpEndpoints.login.url
         let credentialsData = try! JSONSerialization.data(withJSONObject: credentials, options: [])
         
@@ -40,24 +40,20 @@ struct SessionTracker {
         request.setValue("application/json; charset=utf-8", forHTTPHeaderField: "Content-Type")
         request.httpBody = credentialsData
         
-        do {
-            let (data, response) = try await URLSession.shared.data(for: request)
-            if let httpResponse = response as? HTTPURLResponse, httpResponse.statusCode == 401 {
-                SessionTracker.reauth()
-                return nil
-            }
-            guard let response = response as? HTTPURLResponse else { return nil }
-            guard let cookieHeader = response.allHeaderFields[AnyHashable("Set-Cookie")] as? String else { return nil }
-            let bakedCookie = bakeCookie(cookieHeader)
+        guard let (data, response) = await HttpRequest.getResponse(request) else { return nil }
+        guard let httpResponse = response as? HTTPURLResponse else { return nil }
+        guard httpResponse.statusCode == 200 else { sharedCredentialsManager.credentials = nil; return nil }
+        guard let cookieHeader = httpResponse.allHeaderFields[AnyHashable("Set-Cookie")] as? String else { return nil }
+        let bakedCookie = bakeCookie(cookieHeader)
+        let loginResponseWelcome = try? newJSONDecoder().decode(LoginResponseWelcome.self, from: data)
+        
+        defer {
             sessionString = bakedCookie
-            
-            let loginResponseWelcome = try? newJSONDecoder().decode(LoginResponseWelcome.self, from: data)
             lastLogin = loginResponseWelcome
-            
             authorizing = false
-            return bakedCookie
         }
-        catch { return nil }
+        
+        return bakedCookie
     }
     
     private static func bakeCookie(_ rawCookie: String) -> String {

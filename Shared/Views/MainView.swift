@@ -23,7 +23,7 @@ struct MainView: View {
     var raspored: some View {
         List {
             ForEach(model.uniqueDays) { day in
-                Section(header: Text(day.day)) { // day of the week
+                Section(header: Text(day.id)) { // day of the week
                     ForEach(model.weeks.onDay(day)) { course in
                         RasporedItem(item: course, attendance: model.attendance)
                     }
@@ -58,7 +58,9 @@ struct MainView: View {
                     HStack {
                         Location(hall: item.dvorana, teams: item.teamsCode)
                         Spacer()
-                        Attendance(percent: attendance(item.predmet, item.tip), type: item.tip)
+                        if let percent = attendance(item.predmet, item.tip) {
+                            Attendance(percent: percent , type: item.tip)
+                        }
                     }
                 }
             }
@@ -87,25 +89,28 @@ struct MainView: View {
     }
     
     struct Attendance: View {
-        var percent: Double?
+        var percent: Double
         var type: TjedniResponseTip
         
         private var color: Color {
             switch type {
-            case .predavanje: return percent! >= 0.5 ? Color.green : Color.red
-            case .vježbe: return percent! >= 0.6 ? Color.yellow : Color.purple
-            default: return Color.blue
+            case .predavanje: return percent >= 0.5 ? Color.green : Color.red
+            case .vježbe: return percent >= 0.6 ? Color.green : Color.red
+            default: return Color.red
             }
         }
         
         var body: some View {
-            if percent != nil && type != .ispit {
-                Circle()
-                    .stroke(lineWidth: 10)
-                    .foregroundColor(color)
-            } else {
-                Circle().fill(.pink)
-            }
+//          draw a semicircle
+//            if percent != nil && type != .ispit {
+//                Circle()
+//                    .stroke(lineWidth: 10)
+//                    .foregroundColor(color)
+//            } else {
+//                Circle().fill(.pink)
+//            }
+            Text("\(Int(percent))%")
+                .foregroundColor(color)
         }
     }
 }

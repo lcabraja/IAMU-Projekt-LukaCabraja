@@ -7,19 +7,27 @@
 
 import Foundation
 
-struct InfoedukaHttpRequest<ReturnType> where ReturnType: Decodable, ReturnType: InfoedukaUrlGet {
-    
-    private static func get(_ request: URLRequest) async -> Data? {
+struct HttpRequest {
+    static func getResponse(_ request: URLRequest) async -> (Data, URLResponse)? {
         do {
             let (data, response) = try await URLSession.shared.data(for: request)
-            if let httpResponse = response as? HTTPURLResponse, httpResponse.statusCode == 401 {
-                SessionTracker.reauth()
-                return nil
-            }
-            return data
+            return (data, response)
         }
         catch { return nil }
     }
+    
+    static func get(_ request: URLRequest) async -> Data? {
+        guard let (data, response) = await getResponse(request) else { return nil }
+        if let httpResponse = response as? HTTPURLResponse, httpResponse.statusCode == 401 {
+            SessionTracker.reauth()
+            return nil
+        }
+        return data
+    }
+ }
+
+
+struct InfoedukaHttpRequest<ReturnType> where ReturnType: Decodable, ReturnType: InfoedukaUrlGet {
     
     static func fetch() async -> ReturnType? {
         guard
@@ -28,8 +36,8 @@ struct InfoedukaHttpRequest<ReturnType> where ReturnType: Decodable, ReturnType:
         var request = URLRequest(url: ReturnType.self.endpoint.url)
         request.httpMethod = "get"
         request.setValue(sessionCookie, forHTTPHeaderField: "Cookies")
-        guard let response = await get(request) else {
-            guard let secondResponse = await get(request) else { return nil }
+        guard let response = await HttpRequest.get(request) else {
+            guard let secondResponse = await HttpRequest.get(request) else { return nil }
             let welcome = try? newJSONDecoder().decode(ReturnType.self, from: secondResponse)
             return welcome
         }

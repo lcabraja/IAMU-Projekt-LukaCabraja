@@ -7,18 +7,11 @@
 
 import Foundation
 
-class LoginViewModel: ObservableObject  {
-    @Published var hasCredentials: Bool
-    
-    init() {
-        hasCredentials = CredentialsManager.hasCredentials
-    }
+struct LoginViewModel  { 
     
     // MARK: - Intents
     
     func setCredentials(_ username: String, _ password: String) {
-        CredentialsManager.set(username, password)
-        objectWillChange.send()
-        hasCredentials = true
+        sharedCredentialsManager.credentials = (username, password)
     }
 }

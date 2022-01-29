@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct LoginView: View {
-    var model: LoginViewModel
+    var model = LoginViewModel()
     var mvm: () -> Void
     
     @State private var username: String = ""
@@ -23,7 +23,6 @@ struct LoginView: View {
                     .padding(.bottom)
                 Button("Login") {
                     model.setCredentials(username, password)
-                    mvm()
                 }
                 .font(.largeTitle)
             }
@@ -35,7 +34,7 @@ struct LoginView_Previews: PreviewProvider {
     static var previews: some View {
         let model = LoginViewModel()
         let mainView = MainViewModel()
-        LoginView(model: model, mvm: mainView.prepareModel)
+        LoginView(model: model, mvm: mainView.fetchData)
             .preferredColorScheme(.light)
     }
 }

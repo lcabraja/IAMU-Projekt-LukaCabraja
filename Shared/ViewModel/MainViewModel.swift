@@ -17,10 +17,15 @@ class MainViewModel: ObservableObject {
     @Published var modelPrisustva: PrisustvaResponseWelcome?
     @Published var modelLogin: LoginResponseWelcome?
     
-    func prepareModel() {
+    init() {
+        sharedCredentialsManager.subscribe(subscriber: fetchData)
+    }
+    
+    func fetchData() {
+        guard sharedCredentialsManager.hasCredentials else { return }
         let _ = Task {
-            await InfoedukaHttpRequest<TjedniResponseWelcome>.fetch() { model in self.modelTjedni = model }
-            await InfoedukaHttpRequest<PrisustvaResponseWelcome>.fetch() { model in self.modelPrisustva = model }
+            if self.modelTjedni == nil { await InfoedukaHttpRequest<TjedniResponseWelcome>.fetch() { model in self.modelTjedni = model }}
+            if self.modelPrisustva == nil { await InfoedukaHttpRequest<PrisustvaResponseWelcome>.fetch() { model in self.modelPrisustva = model }}
 
             if false {
                 await InfoedukaHttpRequest<VijestiResponseWelcome>.fetch() { model in self.modelVijesti = model }
@@ -46,15 +51,23 @@ class MainViewModel: ObservableObject {
         return _weeks
     }
     
+    private var dateFormatter: DateFormatter {
+        let _df = DateFormatter()
+        _df.dateFormat = "dd.MM.yyyy."
+        return _df
+    }
+    
     var uniqueDays: [IdentifiableDay] {
         guard let data = modelTjedni?.data else { return [] }
         var _days = Set<IdentifiableDay>()
-        var _id = 0
-        for day in data {
-            _days.insert(IdentifiableDay(day: day.datum, id: _id))
-            _id += 1
+        data.forEach { _days.insert(IdentifiableDay(id: $0.datum)) }
+        return Array(_days).sorted {
+            guard
+                let lhs = dateFormatter.date(from: $0.id),
+                let rhs = dateFormatter.date(from: $1.id)
+            else { return false }
+            return lhs < rhs
         }
-        return Array(_days)
     }
     
     func attendance(for className: String, type: TjedniResponseTip) -> Double? {
@@ -107,14 +120,13 @@ class MainViewModel: ObservableObject {
         }
     }
     struct IdentifiableDay: Identifiable, Hashable {
-        let day: String
-        let id: Int
+        let id: String
     }
 }
 
 extension Array where Element == MainViewModel.IdentifiableScheduleItem {
     func onDay(_ day: MainViewModel.IdentifiableDay) -> [MainViewModel.IdentifiableScheduleItem] {
-        self.filter { $0.datum == day.day }
+        self.filter { $0.datum == day.id }
     }
 }
 

@@ -9,13 +9,12 @@ import SwiftUI
 
 @main
 struct InfoedukaApp: App {
-    @ObservedObject private var login = LoginViewModel()
-    @State private var mainView = MainViewModel()
-    
+    @ObservedObject private var mainView = MainViewModel()
+
     var body: some Scene {
         WindowGroup {
-            if (!login.hasCredentials) {
-                LoginView(model: login, mvm: mainView.prepareModel)
+            if !sharedCredentialsManager.hasCredentials {
+                LoginView(mvm: mainView.fetchData)
             } else {
                 MainView(model: mainView)
             }

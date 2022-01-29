@@ -7,25 +7,38 @@
 
 import Foundation
 
-struct CredentialsManager {
-    static var username: String?
-    static var password: String?
-    
-    static func set(_ username: String, _ password: String) {
-        CredentialsManager.username = username
-        CredentialsManager.password = password
-//        SessionTracker.reauth()
+let sharedCredentialsManager = CredentialsManager()
+
+class CredentialsManager: ObservableObject {
+    @Published var credentials: (username: String, password: String)? {
+        didSet {
+            notifySubscribers()
+        }
     }
     
-    static var credentials:  [String: String]? {
+    public typealias subscriber = () -> Void
+    
+    func subscribe(subscriber: @escaping subscriber) {
+        self.subscribers.append(subscriber)
+    }
+    
+    private var subscribers = [subscriber]()
+    
+    private func notifySubscribers() {
+        for subscriber in self.subscribers {
+            subscriber()
+        }
+    }
+    
+    var credentialsJSON:  [String: String]? {
         guard
-            let username = CredentialsManager.username,
-            let password = CredentialsManager.password
+            let username = self.credentials?.username,
+            let password = self.credentials?.password
         else { return nil }
         return ["username": username, "password": password]
     }
     
-    static var hasCredentials: Bool {
+    var hasCredentials: Bool {
         return credentials != nil
     }
 }
