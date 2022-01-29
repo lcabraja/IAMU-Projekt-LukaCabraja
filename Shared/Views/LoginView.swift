@@ -9,14 +9,28 @@ import SwiftUI
 
 struct LoginView: View {
     var model = LoginViewModel()
-    var mvm: () -> Void
     
     @State private var username: String = ""
     @State private var password: String = ""
     
+    @State private var launched: Bool = true
+    @Namespace private var namespace
+    private var launchScreenAnimationID = "LaunchScreenAnimation"
+    
+    
     var body: some View {
+        if launched {
+            Image(uiImage: UIImage(named: "algebra-logo")!)
+                .matchedGeometryEffect(id: launchScreenAnimationID, in: namespace)
+                .onAppear {
+                    withAnimation(.easeOut(duration: 0.3)) {
+                        launched = false
+                    }
+                }
+        } else {
             VStack {
                 Image(uiImage: UIImage(named: "algebra-logo")!)
+                    .matchedGeometryEffect(id: launchScreenAnimationID, in: namespace)
                 TextField("Username", text: $username)
                     .padding(.bottom)
                 SecureField("Password", text: $password)
@@ -27,14 +41,13 @@ struct LoginView: View {
                 .font(.largeTitle)
             }
             .padding()
+        }
     }
 }
 
 struct LoginView_Previews: PreviewProvider {
     static var previews: some View {
-        let model = LoginViewModel()
-        let mainView = MainViewModel()
-        LoginView(model: model, mvm: mainView.fetchData)
+        LoginView()
             .preferredColorScheme(.light)
     }
 }

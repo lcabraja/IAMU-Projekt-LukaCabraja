@@ -71,8 +71,6 @@
 		83540F19279CDD670068BECB /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 83540F02279CDD670068BECB /* Assets.xcassets */; };
 		83540F23279CE41A0068BECB /* MainView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83540F22279CE41A0068BECB /* MainView.swift */; };
 		83540F24279CE41A0068BECB /* MainView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83540F22279CE41A0068BECB /* MainView.swift */; };
-		83540F26279CE4670068BECB /* Launch Screen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 83540F25279CE4660068BECB /* Launch Screen.storyboard */; };
-		83540F27279CE4670068BECB /* Launch Screen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 83540F25279CE4660068BECB /* Launch Screen.storyboard */; };
 		83540F2A279CF0600068BECB /* LoginView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83540F29279CF0600068BECB /* LoginView.swift */; };
 		83540F2B279CF0600068BECB /* LoginView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83540F29279CF0600068BECB /* LoginView.swift */; };
 /* End PBXBuildFile section */
@@ -113,8 +111,8 @@
 		83540F0D279CDD670068BECB /* Infoeduka.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Infoeduka.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		83540F0F279CDD670068BECB /* macOS.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = macOS.entitlements; sourceTree = "<group>"; };
 		83540F22279CE41A0068BECB /* MainView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainView.swift; sourceTree = "<group>"; };
-		83540F25279CE4660068BECB /* Launch Screen.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = "Launch Screen.storyboard"; sourceTree = "<group>"; };
 		83540F29279CF0600068BECB /* LoginView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginView.swift; sourceTree = "<group>"; };
+		8363996327A57EBD00B1B6A4 /* Infoeduka--iOS--Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = "Infoeduka--iOS--Info.plist"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -220,6 +218,7 @@
 		83540EF7279CDD640068BECB = {
 			isa = PBXGroup;
 			children = (
+				8363996327A57EBD00B1B6A4 /* Infoeduka--iOS--Info.plist */,
 				83540F28279CE9540068BECB /* iOS */,
 				83540EFC279CDD650068BECB /* Shared */,
 				83540F0E279CDD670068BECB /* macOS */,
@@ -261,7 +260,6 @@
 		83540F28279CE9540068BECB /* iOS */ = {
 			isa = PBXGroup;
 			children = (
-				83540F25279CE4660068BECB /* Launch Screen.storyboard */,
 			);
 			path = iOS;
 			sourceTree = "<group>";
@@ -345,7 +343,6 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				83540F26279CE4670068BECB /* Launch Screen.storyboard in Resources */,
 				83540F18279CDD670068BECB /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -354,7 +351,6 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				83540F27279CE4670068BECB /* Launch Screen.storyboard in Resources */,
 				83540F19279CDD670068BECB /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -564,10 +560,9 @@
 				DEVELOPMENT_TEAM = DADDNKA7TR;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = "Infoeduka--iOS--Info.plist";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
-				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
-				INFOPLIST_KEY_UILaunchStoryboardName = "Launch Screen";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				IPHONEOS_DEPLOYMENT_TARGET = 15.2;
@@ -595,10 +590,9 @@
 				DEVELOPMENT_TEAM = DADDNKA7TR;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = "Infoeduka--iOS--Info.plist";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
-				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
-				INFOPLIST_KEY_UILaunchStoryboardName = "Launch Screen";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				IPHONEOS_DEPLOYMENT_TARGET = 15.2;
