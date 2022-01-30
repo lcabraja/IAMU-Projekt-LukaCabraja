@@ -11,13 +11,11 @@ import SwiftUI
 struct InfoedukaApp: App {
     @ObservedObject private var mainView = MainViewModel()
 
-    let development: Bool = true
+    let development: Bool = false
     var isInDevelopment: Bool {
         if development { do { sleep(2) } }
         return true
     }
-    
-//    @State var animated:
     
     var body: some Scene {
         WindowGroup {
