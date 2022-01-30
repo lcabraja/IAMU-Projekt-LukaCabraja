@@ -73,6 +73,7 @@
 		83540F24279CE41A0068BECB /* MainView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83540F22279CE41A0068BECB /* MainView.swift */; };
 		83540F2A279CF0600068BECB /* LoginView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83540F29279CF0600068BECB /* LoginView.swift */; };
 		83540F2B279CF0600068BECB /* LoginView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83540F29279CF0600068BECB /* LoginView.swift */; };
+		83D0E4B327A734A1004E924A /* VijestiBackgroundRefershTask.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83D0E4B227A734A1004E924A /* VijestiBackgroundRefershTask.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -112,6 +113,7 @@
 		83540F0F279CDD670068BECB /* macOS.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = macOS.entitlements; sourceTree = "<group>"; };
 		83540F22279CE41A0068BECB /* MainView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainView.swift; sourceTree = "<group>"; };
 		83540F29279CF0600068BECB /* LoginView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginView.swift; sourceTree = "<group>"; };
+		83D0E4B227A734A1004E924A /* VijestiBackgroundRefershTask.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VijestiBackgroundRefershTask.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -258,8 +260,17 @@
 		83540F28279CE9540068BECB /* iOS */ = {
 			isa = PBXGroup;
 			children = (
+				83D0E4B127A73450004E924A /* Tasks */,
 			);
 			path = iOS;
+			sourceTree = "<group>";
+		};
+		83D0E4B127A73450004E924A /* Tasks */ = {
+			isa = PBXGroup;
+			children = (
+				83D0E4B227A734A1004E924A /* VijestiBackgroundRefershTask.swift */,
+			);
+			path = Tasks;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -373,6 +384,7 @@
 				8304A82A27A07AA3004D9CBF /* TjedniResponse.swift in Sources */,
 				8304A7FD279DB156004D9CBF /* InfoedukaHttpEndpoints.swift in Sources */,
 				8304A82327A079A3004D9CBF /* KategorijeResponse.swift in Sources */,
+				83D0E4B327A734A1004E924A /* VijestiBackgroundRefershTask.swift in Sources */,
 				8304A814279F0AAC004D9CBF /* ResponseProtocol.swift in Sources */,
 				8304A84227A08374004D9CBF /* BodoviResponse.swift in Sources */,
 				8304A83327A08048004D9CBF /* KnjiznicaPodrucjaResponse.swift in Sources */,
