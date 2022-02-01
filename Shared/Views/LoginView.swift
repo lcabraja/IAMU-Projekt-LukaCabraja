@@ -17,6 +17,7 @@ struct LoginView: View {
     @Namespace private var namespace
     private var launchScreenAnimationID = "LaunchScreenAnimation"
     
+    @State private var passwordGot = ""
     
     var body: some View {
         if launched {

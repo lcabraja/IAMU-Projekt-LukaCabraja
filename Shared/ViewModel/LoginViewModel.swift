@@ -12,6 +12,6 @@ struct LoginViewModel  {
     // MARK: - Intents
     
     func setCredentials(_ username: String, _ password: String) {
-        sharedCredentialsManager.credentials = (username, password)
+        sharedCredentialsManager.credentials = CredentialsManager.Credentials(username: username, password: password)
     }
 }

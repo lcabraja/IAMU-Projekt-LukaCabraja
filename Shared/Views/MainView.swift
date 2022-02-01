@@ -101,14 +101,6 @@ struct MainView: View {
         }
         
         var body: some View {
-//          draw a semicircle
-//            if percent != nil && type != .ispit {
-//                Circle()
-//                    .stroke(lineWidth: 10)
-//                    .foregroundColor(color)
-//            } else {
-//                Circle().fill(.pink)
-//            }
             Text("\(Int(percent))%")
                 .foregroundColor(color)
         }

@@ -73,7 +73,10 @@
 		83540F24279CE41A0068BECB /* MainView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83540F22279CE41A0068BECB /* MainView.swift */; };
 		83540F2A279CF0600068BECB /* LoginView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83540F29279CF0600068BECB /* LoginView.swift */; };
 		83540F2B279CF0600068BECB /* LoginView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83540F29279CF0600068BECB /* LoginView.swift */; };
+		83A0219B27A95B7E00A517AF /* UserDefaults.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83A0219A27A95B7E00A517AF /* UserDefaults.swift */; };
 		83D0E4B327A734A1004E924A /* VijestiBackgroundRefershTask.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83D0E4B227A734A1004E924A /* VijestiBackgroundRefershTask.swift */; };
+		83D0E4B627A7416B004E924A /* LocalNotificationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83D0E4B527A7416B004E924A /* LocalNotificationManager.swift */; };
+		83D0E4B827A8705F004E924A /* KeychainAccess.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83D0E4B727A8705F004E924A /* KeychainAccess.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -113,7 +116,10 @@
 		83540F0F279CDD670068BECB /* macOS.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = macOS.entitlements; sourceTree = "<group>"; };
 		83540F22279CE41A0068BECB /* MainView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainView.swift; sourceTree = "<group>"; };
 		83540F29279CF0600068BECB /* LoginView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginView.swift; sourceTree = "<group>"; };
+		83A0219A27A95B7E00A517AF /* UserDefaults.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDefaults.swift; sourceTree = "<group>"; };
 		83D0E4B227A734A1004E924A /* VijestiBackgroundRefershTask.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VijestiBackgroundRefershTask.swift; sourceTree = "<group>"; };
+		83D0E4B527A7416B004E924A /* LocalNotificationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocalNotificationManager.swift; sourceTree = "<group>"; };
+		83D0E4B727A8705F004E924A /* KeychainAccess.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeychainAccess.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -229,6 +235,9 @@
 		83540EFC279CDD650068BECB /* Shared */ = {
 			isa = PBXGroup;
 			children = (
+				83A0219927A95B5F00A517AF /* DataManagement */,
+				83D0E4B927A87065004E924A /* Keychain */,
+				83D0E4B427A74154004E924A /* Notifications */,
 				8304A821279F3516004D9CBF /* Views */,
 				8304A820279F2D86004D9CBF /* Credentials */,
 				8304A816279F27F1004D9CBF /* ViewModel */,
@@ -265,12 +274,36 @@
 			path = iOS;
 			sourceTree = "<group>";
 		};
+		83A0219927A95B5F00A517AF /* DataManagement */ = {
+			isa = PBXGroup;
+			children = (
+				83A0219A27A95B7E00A517AF /* UserDefaults.swift */,
+			);
+			path = DataManagement;
+			sourceTree = "<group>";
+		};
 		83D0E4B127A73450004E924A /* Tasks */ = {
 			isa = PBXGroup;
 			children = (
 				83D0E4B227A734A1004E924A /* VijestiBackgroundRefershTask.swift */,
 			);
 			path = Tasks;
+			sourceTree = "<group>";
+		};
+		83D0E4B427A74154004E924A /* Notifications */ = {
+			isa = PBXGroup;
+			children = (
+				83D0E4B527A7416B004E924A /* LocalNotificationManager.swift */,
+			);
+			path = Notifications;
+			sourceTree = "<group>";
+		};
+		83D0E4B927A87065004E924A /* Keychain */ = {
+			isa = PBXGroup;
+			children = (
+				83D0E4B727A8705F004E924A /* KeychainAccess.swift */,
+			);
+			path = Keychain;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -373,6 +406,7 @@
 			files = (
 				8304A804279E4001004D9CBF /* VijestiTagoviResponse.swift in Sources */,
 				8304A83627A080F9004D9CBF /* KnjiznicaPodrucjeOdabirResponse.swift in Sources */,
+				83D0E4B627A7416B004E924A /* LocalNotificationManager.swift in Sources */,
 				8304A84B27A0859B004D9CBF /* PraksaResponse.swift in Sources */,
 				8304A7FA279DB0F2004D9CBF /* InfoedukaHttpRequest.swift in Sources */,
 				83540F2A279CF0600068BECB /* LoginView.swift in Sources */,
@@ -402,8 +436,10 @@
 				8304A82D27A07B6B004D9CBF /* ispitiPrijavaResponse.swift in Sources */,
 				83540F23279CE41A0068BECB /* MainView.swift in Sources */,
 				8304A84E27A085CA004D9CBF /* MentoriResponse.swift in Sources */,
+				83A0219B27A95B7E00A517AF /* UserDefaults.swift in Sources */,
 				8304A83C27A0825B004D9CBF /* KnjiznicaVracenoResponse.swift in Sources */,
 				8304A84527A08413004D9CBF /* PrisustvaResponse.swift in Sources */,
+				83D0E4B827A8705F004E924A /* KeychainAccess.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -572,6 +608,7 @@
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = "Infoeduka--iOS--Info.plist";
+				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.education";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
@@ -603,6 +640,7 @@
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = "Infoeduka--iOS--Info.plist";
+				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.education";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
