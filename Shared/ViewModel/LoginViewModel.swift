@@ -7,11 +7,11 @@
 
 import Foundation
 
-struct LoginViewModel  { 
+class LoginViewModel: ObservableObject  {
     
     // MARK: - Intents
     
     func setCredentials(_ username: String, _ password: String) {
-        sharedCredentialsManager.credentials = CredentialsManager.Credentials(username: username, password: password)
+        CredentialsManager.shared.credentials = CredentialsManager.Credentials(username: username, password: password)
     }
 }

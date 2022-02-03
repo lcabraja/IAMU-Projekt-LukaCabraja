@@ -6,13 +6,27 @@
 //
 
 import Foundation
-import BackgroundTasks
-import Combine
+
+enum DownloadError: Error {
+    case failed
+}
+
+private actor MainViewModelStore {
+    private var loadedTjedni: TjedniResponseWelcome?
+    
+    func loadTjedni() async throws -> TjedniResponseWelcome {
+        guard let tjedniResponse = await InfoedukaHttpRequest<TjedniResponseWelcome>.fetch()
+        else { throw DownloadError.failed }
+        loadedTjedni = tjedniResponse
+        return tjedniResponse
+    }
+}
 
 class MainViewModel: ObservableObject {
     // MARK: - data
     
     @Published var modelTjedni: TjedniResponseWelcome?
+    @Published var fetchingTjedni: Bool = false
     @Published var modelVijesti: VijestiResponseWelcome?
     @Published var modelIspitiPrijava: IspitiPrijavaResponseWelcome?
     @Published var modelIspitiOdjava: IspitiOdjavaResponseWelcome?
@@ -20,91 +34,7 @@ class MainViewModel: ObservableObject {
     @Published var modelBodovi: BodoviResponseWelcome?
     @Published var modelPrisustva: PrisustvaResponseWelcome?
     @Published var modelLogin: LoginResponseWelcome?
-    
-    // MARK: - init
-    
-    init() {
-        sharedCredentialsManager.subscribe(subscriber: fetchData)
-        
-//        register()
-//        scheduleAppRefresh()
-    }
-    
-    // MARK: - fetch
-    
-    func fetchData() {
-        print("fetching")
-        guard sharedCredentialsManager.hasCredentials else { return }
-        print("past guard")
-        let _ = Task {
-            if self.modelTjedni == nil { await InfoedukaHttpRequest<TjedniResponseWelcome>.fetch() { model in self.modelTjedni = model }}
-            if self.modelPrisustva == nil { await InfoedukaHttpRequest<PrisustvaResponseWelcome>.fetch() { model in self.modelPrisustva = model }}
-
-            if false {
-                await InfoedukaHttpRequest<VijestiResponseWelcome>.fetch() { model in self.modelVijesti = model }
-                await InfoedukaHttpRequest<IspitiPrijavaResponseWelcome>.fetch() { model in self.modelIspitiPrijava = model }
-                await InfoedukaHttpRequest<IspitiOdjavaResponseWelcome>.fetch() { model in self.modelIspitiOdjava = model }
-                await InfoedukaHttpRequest<MaterijaliResponseWelcome>.fetch() { model in self.modelMaterijali = model }
-                await InfoedukaHttpRequest<BodoviResponseWelcome>.fetch() { model in self.modelBodovi = model }
-            }
-            DispatchQueue.main.async { self.modelLogin = SessionTracker.lastLogin }
-        }
-    }
-    
-    // MARK: - background task
-    
-    let taskIdentifier = "hr.algebra.infoeduka.vijestirefresh"
-    var cancellables = Set<AnyCancellable>()
-    
-    static func processData(data: VijestiResponseWelcome) {
-        let stringData = String(describing: data)
-        let index = stringData.index(stringData.startIndex, offsetBy: 100)
-        print("data fetched @ \(Date()): \(stringData[..<index])...")
-        LocalNotificationManager.shared.sendNotification(title: "Test", substitle: nil, body: "\(data)", launchIn: 0.5)
-    }
-    
-     func getNews() {
-         URLSession.shared.dataTaskPublisher(for: VijestiResponseWelcome.endpoint.url)
-             .map { $0.data }
-             .decode(type: VijestiResponseWelcome.self, decoder: newJSONDecoder())
-//             .receive(on: DispatchQueue.main)
-             .sink(
-                receiveCompletion: { print("Received completion: \($0)") },
-                receiveValue: { data in
-                    print("cum 2")
-                    print("\(data)")
-                }
-             )
-             .store(in: &cancellables)
-     }
-    
-    func register() {
-        BGTaskScheduler.shared.register(forTaskWithIdentifier: taskIdentifier, using: nil) { task in
-            self.handleAppRefresh(task: task as! BGAppRefreshTask)
-        }
-    }
-    
-    func scheduleAppRefresh() {
-        let request = BGAppRefreshTaskRequest(identifier: taskIdentifier)
-        request.earliestBeginDate = Date(timeIntervalSinceNow: 1 * 60)
-        do {
-            try BGTaskScheduler.shared.submit(request)
-            print("Scheduled app refresh.")
-        } catch {
-            print("Could not schedule app refresh: \(error)")
-        }
-    }
-    
-    func handleAppRefresh(task: BGAppRefreshTask) {
-        print("cum")
-        scheduleAppRefresh()
-        task.expirationHandler = {
-            print("expired")
-            
-        }
-        self.getNews()
-        task.setTaskCompleted(success: true)
-    }
+    private let store = MainViewModelStore()
     
     // MARK: - ui translation
     
@@ -125,6 +55,20 @@ class MainViewModel: ObservableObject {
         let _df = DateFormatter()
         _df.dateFormat = "dd.MM.yyyy."
         return _df
+    }
+    
+    var nextDay: IdentifiableDay? {
+        let calendar = Calendar.current
+        let today = calendar.component(.day, from: Date())
+        let month = calendar.component(.month, from: Date())
+        return uniqueDays
+            .filter {
+                guard let date = dateFormatter.date(from: $0.id) else { return false }
+                return
+                    month <= calendar.component(.month, from: date) &&
+                    today <= calendar.component(.day, from: date)
+            }
+            .first
     }
     
     var uniqueDays: [IdentifiableDay] {
@@ -155,6 +99,20 @@ class MainViewModel: ObservableObject {
         private static var idIterator: Int {
             _idIterator += 1
             return _idIterator - 1
+        }
+        
+        var duration: String {
+            var startTime = terminPocetak
+            var endTime = terminKraj
+            if startTime.count > 5 {
+                let startIndex = startTime.index(startTime.startIndex, offsetBy: 5)
+                startTime = String(startTime[..<startIndex])
+            }
+            if endTime.count > 5 {
+                let endIndex = endTime.index(endTime.startIndex, offsetBy: 5)
+                endTime = String(startTime[..<endIndex])
+            }
+            return "\(startTime) - \(endTime)"
         }
         
         var predmetClear: String {
@@ -194,9 +152,28 @@ class MainViewModel: ObservableObject {
     }
 }
 
+extension MainViewModel {
+    @MainActor
+    func fetchTjedni() async throws {
+        fetchingTjedni = true
+        defer { fetchingTjedni = false }
+        let loadedTjedni = try await store.loadTjedni()
+        modelTjedni = loadedTjedni
+    }
+    
+    @MainActor
+    func fetchVijesti() async throws {
+        fetchingTjedni = true
+        defer { fetchingTjedni = false }
+        let loadedTjedni = try await store.loadTjedni()
+        modelTjedni = loadedTjedni
+    }
+}
+
 extension Array where Element == MainViewModel.IdentifiableScheduleItem {
-    func onDay(_ day: MainViewModel.IdentifiableDay) -> [MainViewModel.IdentifiableScheduleItem] {
-        self.filter { $0.datum == day.id }
+    func onDay(_ day: MainViewModel.IdentifiableDay?) -> [MainViewModel.IdentifiableScheduleItem] {
+        guard let day = day else { return [] }
+        return self.filter { $0.datum == day.id }
     }
 }
 

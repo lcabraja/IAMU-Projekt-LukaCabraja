@@ -5,10 +5,10 @@
 //  Created by lcabraja on 1/24/22.
 //
 
+import SwiftUI
 import Foundation
 
 struct SessionTracker {
-    
     static var session: String? {
         get async {
             if let sessionString = sessionString {
@@ -31,7 +31,7 @@ struct SessionTracker {
     
     static func getSessionCookie() async -> String? {
         if !authorizing { authorizing = true } else { return nil }
-        guard let credentials = sharedCredentialsManager.credentialsJSON else { return nil }
+        guard let credentials = CredentialsManager.shared.credentialsJSON else { return nil }
         let url = InfoedukaHttpEndpoints.login.url
         let credentialsData = try! JSONSerialization.data(withJSONObject: credentials, options: [])
         
@@ -42,7 +42,7 @@ struct SessionTracker {
         
         guard let (data, response) = await HttpRequest.getResponse(request) else { return nil }
         guard let httpResponse = response as? HTTPURLResponse else { return nil }
-        guard httpResponse.statusCode == 200 else { sharedCredentialsManager.credentials = nil; return nil }
+        guard httpResponse.statusCode == 200 else { CredentialsManager.shared.credentials = nil; return nil }
         guard let cookieHeader = httpResponse.allHeaderFields[AnyHashable("Set-Cookie")] as? String else { return nil }
         let bakedCookie = bakeCookie(cookieHeader)
         let loginResponseWelcome = try? newJSONDecoder().decode(LoginResponseWelcome.self, from: data)

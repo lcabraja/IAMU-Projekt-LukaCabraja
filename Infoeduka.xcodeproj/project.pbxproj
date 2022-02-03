@@ -74,6 +74,14 @@
 		83540F2A279CF0600068BECB /* LoginView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83540F29279CF0600068BECB /* LoginView.swift */; };
 		83540F2B279CF0600068BECB /* LoginView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83540F29279CF0600068BECB /* LoginView.swift */; };
 		83A0219B27A95B7E00A517AF /* UserDefaults.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83A0219A27A95B7E00A517AF /* UserDefaults.swift */; };
+		83A0219D27AAEC8700A517AF /* LaunchViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83A0219C27AAEC8700A517AF /* LaunchViewModel.swift */; };
+		83A0219E27AAEC9600A517AF /* LaunchViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83A0219C27AAEC8700A517AF /* LaunchViewModel.swift */; };
+		83A021A127AB19F900A517AF /* DateParser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83A021A027AB19F900A517AF /* DateParser.swift */; };
+		83A021A427AB4A9F00A517AF /* HomeTabView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83A021A327AB4A9F00A517AF /* HomeTabView.swift */; };
+		83A021A627AB4D2800A517AF /* SubjectsTabView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83A021A527AB4D2800A517AF /* SubjectsTabView.swift */; };
+		83A021A827AB4D3500A517AF /* ExamsTabView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83A021A727AB4D3500A517AF /* ExamsTabView.swift */; };
+		83A021AA27AB4D4100A517AF /* ScheduleTabView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83A021A927AB4D4100A517AF /* ScheduleTabView.swift */; };
+		83A021AC27AB4D4C00A517AF /* MeTabView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83A021AB27AB4D4C00A517AF /* MeTabView.swift */; };
 		83D0E4B327A734A1004E924A /* VijestiBackgroundRefershTask.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83D0E4B227A734A1004E924A /* VijestiBackgroundRefershTask.swift */; };
 		83D0E4B627A7416B004E924A /* LocalNotificationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83D0E4B527A7416B004E924A /* LocalNotificationManager.swift */; };
 		83D0E4B827A8705F004E924A /* KeychainAccess.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83D0E4B727A8705F004E924A /* KeychainAccess.swift */; };
@@ -117,6 +125,13 @@
 		83540F22279CE41A0068BECB /* MainView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainView.swift; sourceTree = "<group>"; };
 		83540F29279CF0600068BECB /* LoginView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginView.swift; sourceTree = "<group>"; };
 		83A0219A27A95B7E00A517AF /* UserDefaults.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDefaults.swift; sourceTree = "<group>"; };
+		83A0219C27AAEC8700A517AF /* LaunchViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = LaunchViewModel.swift; path = Shared/ViewModel/LaunchViewModel.swift; sourceTree = SOURCE_ROOT; };
+		83A021A027AB19F900A517AF /* DateParser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateParser.swift; sourceTree = "<group>"; };
+		83A021A327AB4A9F00A517AF /* HomeTabView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeTabView.swift; sourceTree = "<group>"; };
+		83A021A527AB4D2800A517AF /* SubjectsTabView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SubjectsTabView.swift; sourceTree = "<group>"; };
+		83A021A727AB4D3500A517AF /* ExamsTabView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExamsTabView.swift; sourceTree = "<group>"; };
+		83A021A927AB4D4100A517AF /* ScheduleTabView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScheduleTabView.swift; sourceTree = "<group>"; };
+		83A021AB27AB4D4C00A517AF /* MeTabView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MeTabView.swift; sourceTree = "<group>"; };
 		83D0E4B227A734A1004E924A /* VijestiBackgroundRefershTask.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VijestiBackgroundRefershTask.swift; sourceTree = "<group>"; };
 		83D0E4B527A7416B004E924A /* LocalNotificationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocalNotificationManager.swift; sourceTree = "<group>"; };
 		83D0E4B727A8705F004E924A /* KeychainAccess.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeychainAccess.swift; sourceTree = "<group>"; };
@@ -175,6 +190,7 @@
 		8304A816279F27F1004D9CBF /* ViewModel */ = {
 			isa = PBXGroup;
 			children = (
+				83A0219C27AAEC8700A517AF /* LaunchViewModel.swift */,
 				8304A817279F2862004D9CBF /* LoginViewModel.swift */,
 				8304A81A279F2B6C004D9CBF /* MainViewModel.swift */,
 			);
@@ -194,6 +210,11 @@
 			children = (
 				83540F29279CF0600068BECB /* LoginView.swift */,
 				83540F22279CE41A0068BECB /* MainView.swift */,
+				83A021A327AB4A9F00A517AF /* HomeTabView.swift */,
+				83A021A527AB4D2800A517AF /* SubjectsTabView.swift */,
+				83A021A727AB4D3500A517AF /* ExamsTabView.swift */,
+				83A021A927AB4D4100A517AF /* ScheduleTabView.swift */,
+				83A021AB27AB4D4C00A517AF /* MeTabView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -235,6 +256,7 @@
 		83540EFC279CDD650068BECB /* Shared */ = {
 			isa = PBXGroup;
 			children = (
+				83A0219F27AB19E900A517AF /* Parsing */,
 				83A0219927A95B5F00A517AF /* DataManagement */,
 				83D0E4B927A87065004E924A /* Keychain */,
 				83D0E4B427A74154004E924A /* Notifications */,
@@ -280,6 +302,14 @@
 				83A0219A27A95B7E00A517AF /* UserDefaults.swift */,
 			);
 			path = DataManagement;
+			sourceTree = "<group>";
+		};
+		83A0219F27AB19E900A517AF /* Parsing */ = {
+			isa = PBXGroup;
+			children = (
+				83A021A027AB19F900A517AF /* DateParser.swift */,
+			);
+			path = Parsing;
 			sourceTree = "<group>";
 		};
 		83D0E4B127A73450004E924A /* Tasks */ = {
@@ -407,10 +437,12 @@
 				8304A804279E4001004D9CBF /* VijestiTagoviResponse.swift in Sources */,
 				8304A83627A080F9004D9CBF /* KnjiznicaPodrucjeOdabirResponse.swift in Sources */,
 				83D0E4B627A7416B004E924A /* LocalNotificationManager.swift in Sources */,
+				83A021A427AB4A9F00A517AF /* HomeTabView.swift in Sources */,
 				8304A84B27A0859B004D9CBF /* PraksaResponse.swift in Sources */,
 				8304A7FA279DB0F2004D9CBF /* InfoedukaHttpRequest.swift in Sources */,
 				83540F2A279CF0600068BECB /* LoginView.swift in Sources */,
 				8304A80E279E5144004D9CBF /* NSRegularExpressionExtension.swift in Sources */,
+				83A021AC27AB4D4C00A517AF /* MeTabView.swift in Sources */,
 				8304A85427A09194004D9CBF /* FilterEnum.swift in Sources */,
 				8304A801279DC2F0004D9CBF /* LoginResponse.swift in Sources */,
 				8304A85127A08606004D9CBF /* FilterableProtocol.swift in Sources */,
@@ -423,6 +455,9 @@
 				8304A84227A08374004D9CBF /* BodoviResponse.swift in Sources */,
 				8304A83327A08048004D9CBF /* KnjiznicaPodrucjaResponse.swift in Sources */,
 				8304A81B279F2B6C004D9CBF /* MainViewModel.swift in Sources */,
+				83A021A827AB4D3500A517AF /* ExamsTabView.swift in Sources */,
+				83A0219D27AAEC8700A517AF /* LaunchViewModel.swift in Sources */,
+				83A021A627AB4D2800A517AF /* SubjectsTabView.swift in Sources */,
 				8304A83027A07FC9004D9CBF /* IspitiOdjavaResponse.swift in Sources */,
 				8304A83F27A082F7004D9CBF /* MaterijaliResponse.swift in Sources */,
 				8304A84827A08553004D9CBF /* GrupeResponse.swift in Sources */,
@@ -431,9 +466,11 @@
 				8304A807279E419C004D9CBF /* JsonHelper.swift in Sources */,
 				83540F12279CDD670068BECB /* InfoedukaApp.swift in Sources */,
 				8304A82727A07A56004D9CBF /* VijestiResponse.swift in Sources */,
+				83A021A127AB19F900A517AF /* DateParser.swift in Sources */,
 				8304A811279E5178004D9CBF /* StringExtension.swift in Sources */,
 				8304A83927A081B5004D9CBF /* KnjiznicaPosudbaResponse.swift in Sources */,
 				8304A82D27A07B6B004D9CBF /* ispitiPrijavaResponse.swift in Sources */,
+				83A021AA27AB4D4100A517AF /* ScheduleTabView.swift in Sources */,
 				83540F23279CE41A0068BECB /* MainView.swift in Sources */,
 				8304A84E27A085CA004D9CBF /* MentoriResponse.swift in Sources */,
 				83A0219B27A95B7E00A517AF /* UserDefaults.swift in Sources */,
@@ -476,6 +513,7 @@
 				8304A83A27A081B5004D9CBF /* KnjiznicaPosudbaResponse.swift in Sources */,
 				8304A82E27A07B6B004D9CBF /* ispitiPrijavaResponse.swift in Sources */,
 				83540F24279CE41A0068BECB /* MainView.swift in Sources */,
+				83A0219E27AAEC9600A517AF /* LaunchViewModel.swift in Sources */,
 				8304A84F27A085CA004D9CBF /* MentoriResponse.swift in Sources */,
 				8304A83D27A0825B004D9CBF /* KnjiznicaVracenoResponse.swift in Sources */,
 				8304A84627A08413004D9CBF /* PrisustvaResponse.swift in Sources */,

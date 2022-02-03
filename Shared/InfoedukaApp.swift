@@ -9,12 +9,8 @@ import SwiftUI
 
 @main
 struct InfoedukaApp: App {
-    @ObservedObject private var mainView = MainViewModel()
-
-    init() {
-        mainView.register()
-        mainView.scheduleAppRefresh()
-    }
+    
+    @StateObject var model = LaunchViewModel()
     
     let development: Bool = false
     var isInDevelopment: Bool {
@@ -25,10 +21,12 @@ struct InfoedukaApp: App {
     var body: some Scene {
         WindowGroup {
             if isInDevelopment {
-                if !sharedCredentialsManager.hasCredentials {
-                    LoginView()
+                if !CredentialsManager.shared.hasCredentials {
+                    LoginView().task {
+                        try? await model.fetchCredentials()
+                    }
                 } else {
-                    MainView(model: mainView)
+                    MainView()
                 }
             }
         }

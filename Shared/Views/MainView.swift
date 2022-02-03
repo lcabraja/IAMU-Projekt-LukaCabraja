@@ -8,109 +8,47 @@
 import SwiftUI
 
 struct MainView: View {
-    @ObservedObject var model: MainViewModel
+    @StateObject var model = MainViewModel()
     
     var body: some View {
-        VStack {
-            Text("Infoeduka")
-                .font(.largeTitle)
-                .gradientForeground(colors: [.red, .orange])
-            Spacer()
-            raspored
-        }
-    }
-    
-    var raspored: some View {
-        List {
-            ForEach(model.uniqueDays) { day in
-                Section(header: Text(day.id)) { // day of the week
-                    ForEach(model.weeks.onDay(day)) { course in
-                        RasporedItem(item: course, attendance: model.attendance)
-                    }
+        TabView {
+            HomeTabView()
+                .task {
+                    let _ = try? await (model.fetchTjedni(), model.fetchVijesti())
                 }
-            }
-        }
-    }
-    
-    struct RasporedItem: View {
-        var item: MainViewModel.IdentifiableScheduleItem
-        var attendance: (String, TjedniResponseTip) -> Double?
-        
-        private var color: Color {
-            switch self.item.tip {
-            case .predavanje: return Color.blue
-            case .vježbe: return Color.orange
-            case .ispit: return Color.purple
-            }
-        }
-        
-        var body: some View {
-            ZStack {
-                VStack {
-                    Text("\(item.terminPocetak) - \(item.terminKraj)")
-                        .foregroundColor(color)
-                        .font(.title2)
-                    Divider()
-                        .background(color)
-                        .padding(.horizontal, 32)
-                    Text(item.predmetClear)
-                        .font(.title3)
-                    HStack {
-                        Location(hall: item.dvorana, teams: item.teamsCode)
-                        Spacer()
-                        if let percent = attendance(item.predmet, item.tip) {
-                            Attendance(percent: percent , type: item.tip)
-                        }
-                    }
+                .tabItem {
+                    Image(systemName: "house")
+                        .algebrientForeground()
+                    Text("Početna")
                 }
-            }
-        }
-    }
-    
-    struct Location: View {
-        let hall: String
-        let teams: String
-        
-        @State var physical: Bool = true
-        
-        var body: some View {
-            Text(physical ? hall : teams)
-                .lineLimit(1)
-                .padding(8)
-                .background(
-                    RoundedRectangle(cornerRadius: 10).fill(.secondary)
-                )
-                .onTapGesture {
-                    if !teams.isEmpty {
-                        physical.toggle()
-                    }
+            SubjectsTabView()
+                .tabItem {
+                    Image(systemName: "rectangle.on.rectangle")
+                    Text("Predmeti")
+                }
+            ExamsTabView()
+                .tabItem {
+                    Image(systemName: "calendar")
+                    Text("Ispiti")
+                }
+            ScheduleTabView()
+                .tabItem {
+                    Image(systemName: "list.bullet.rectangle.portrait")
+                    Text("Raspored")
+                }
+            MeTabView()
+                .tabItem {
+                    Image(systemName: "person.crop.circle")
+                    Text("Ja")
                 }
         }
-    }
-    
-    struct Attendance: View {
-        var percent: Double
-        var type: TjedniResponseTip
-        
-        private var color: Color {
-            switch type {
-            case .predavanje: return percent >= 0.5 ? Color.green : Color.red
-            case .vježbe: return percent >= 0.6 ? Color.green : Color.red
-            default: return Color.red
-            }
-        }
-        
-        var body: some View {
-            Text("\(Int(percent))%")
-                .foregroundColor(color)
-        }
+        .environmentObject(model)
     }
 }
 
 struct MainView_Previews: PreviewProvider {
-    static var mainView = MainViewModel()
     static var previews: some View {
-        MainView(model: mainView)
+        MainView()
             .preferredColorScheme(.dark)
     }
 }
@@ -123,5 +61,11 @@ extension View {
             endPoint: .trailing)
         )
         .mask(self)
+    }
+    
+    public func algebrientForeground() -> some View {
+        let algeborange = Color.init(red: 226, green: 114, blue: 16) // #E27210
+        let algebred = Color.init(red: 196, green: 15, blue: 97) // #C40F61
+        return self.gradientForeground(colors: [algeborange, algebred])
     }
 }

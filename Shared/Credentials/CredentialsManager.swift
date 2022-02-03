@@ -5,18 +5,17 @@
 //  Created by lcabraja on 1/24/22.
 //
 
+import SwiftUI
 import Foundation
-
-let sharedCredentialsManager = CredentialsManager()
 
 class CredentialsManager: ObservableObject {
     private static let UserDefaultsUsername = "hr.algebra.infoeduka.username"
     
+    public static let shared = CredentialsManager()
+    
     init() {
-        hasCredentials = (try? KeychainAccess.shared.entry(forKey: "lcabraja")) != nil
+        hasCredentials = credentials != nil
     }
-    
-    
     
     var credentials: Credentials? {
         get {
@@ -38,20 +37,20 @@ class CredentialsManager: ObservableObject {
         }
     }
     
-    public typealias subscriber = () -> Void
-    
-    func subscribe(subscriber: @escaping subscriber) {
-        self.subscribers.append(subscriber)
-    }
-    
-    private var subscribers = [subscriber]()
-    
-    private func notifySubscribers() {
-        print("notifying...")
-        for subscriber in self.subscribers {
-            subscriber()
-        }
-    }
+//    public typealias subscriber = () -> Void
+//
+//    func subscribe(subscriber: @escaping subscriber) {
+//        self.subscribers.append(subscriber)
+//    }
+//
+//    private var subscribers = [subscriber]()
+//
+//    private func notifySubscribers() {
+//        print("notifying...")
+//        for subscriber in self.subscribers {
+//            subscriber()
+//        }
+//    }
     
     var credentialsJSON:  [String: String]? {
         guard
@@ -61,13 +60,7 @@ class CredentialsManager: ObservableObject {
         return ["username": username, "password": password]
     }
     
-    @Published var hasCredentials: Bool = false {
-        didSet {
-            if hasCredentials {
-                notifySubscribers()
-            }
-        }
-    }
+    @Published var hasCredentials: Bool = false
     
     struct Credentials {
         let username: String

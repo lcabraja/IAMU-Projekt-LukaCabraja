@@ -2,7 +2,7 @@
 //  LocalNotificationManager.swift
 //  Infoeduka (iOS)
 //
-//  Created by doss on 1/30/22.
+//  Created by lcabraja on 1/30/22.
 //
 
 import Foundation
