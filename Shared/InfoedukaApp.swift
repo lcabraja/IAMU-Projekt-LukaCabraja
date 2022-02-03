@@ -14,6 +14,12 @@ struct InfoedukaApp: App {
     
     let development: Bool = false
     var isInDevelopment: Bool {
+        for family: String in UIFont.familyNames {
+            print(family)
+            for names: String in UIFont.fontNames(forFamilyName: family) {
+                print("== \(names)")
+            }
+        }
         if development { do { sleep(2) } }
         return true
     }

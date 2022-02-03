@@ -65,6 +65,24 @@
 		8304A85227A08607004D9CBF /* FilterableProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8304A85027A08606004D9CBF /* FilterableProtocol.swift */; };
 		8304A85427A09194004D9CBF /* FilterEnum.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8304A85327A09194004D9CBF /* FilterEnum.swift */; };
 		8304A85527A09194004D9CBF /* FilterEnum.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8304A85327A09194004D9CBF /* FilterEnum.swift */; };
+		8318A4A427AC50D800002BEF /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 8318A4A327AC50D800002BEF /* Preview Assets.xcassets */; };
+		8318A4A527AC50D800002BEF /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 8318A4A327AC50D800002BEF /* Preview Assets.xcassets */; };
+		8318A4A827AC619D00002BEF /* PreviewMainViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8318A4A727AC619D00002BEF /* PreviewMainViewModel.swift */; };
+		8318A4A927AC619D00002BEF /* PreviewMainViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8318A4A727AC619D00002BEF /* PreviewMainViewModel.swift */; };
+		8318A4AD27AC62B200002BEF /* PreviewTjedniResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8318A4AC27AC62B200002BEF /* PreviewTjedniResponse.swift */; };
+		8318A4AE27AC62B200002BEF /* PreviewTjedniResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8318A4AC27AC62B200002BEF /* PreviewTjedniResponse.swift */; };
+		8318A4B627AC7F4200002BEF /* Stolzl-Light.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 8318A4B027AC7F4200002BEF /* Stolzl-Light.ttf */; };
+		8318A4B727AC7F4200002BEF /* Stolzl-Light.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 8318A4B027AC7F4200002BEF /* Stolzl-Light.ttf */; };
+		8318A4B827AC7F4200002BEF /* Stolzl-Thin.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 8318A4B127AC7F4200002BEF /* Stolzl-Thin.ttf */; };
+		8318A4B927AC7F4200002BEF /* Stolzl-Thin.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 8318A4B127AC7F4200002BEF /* Stolzl-Thin.ttf */; };
+		8318A4BA27AC7F4200002BEF /* Stolzl-Medium.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 8318A4B227AC7F4200002BEF /* Stolzl-Medium.ttf */; };
+		8318A4BB27AC7F4200002BEF /* Stolzl-Medium.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 8318A4B227AC7F4200002BEF /* Stolzl-Medium.ttf */; };
+		8318A4BC27AC7F4200002BEF /* Stolzl-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 8318A4B327AC7F4200002BEF /* Stolzl-Bold.ttf */; };
+		8318A4BD27AC7F4200002BEF /* Stolzl-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 8318A4B327AC7F4200002BEF /* Stolzl-Bold.ttf */; };
+		8318A4BE27AC7F4200002BEF /* Stolzl-Book.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 8318A4B427AC7F4200002BEF /* Stolzl-Book.ttf */; };
+		8318A4BF27AC7F4200002BEF /* Stolzl-Book.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 8318A4B427AC7F4200002BEF /* Stolzl-Book.ttf */; };
+		8318A4C027AC7F4200002BEF /* Stolzl-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 8318A4B527AC7F4200002BEF /* Stolzl-Regular.ttf */; };
+		8318A4C127AC7F4200002BEF /* Stolzl-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 8318A4B527AC7F4200002BEF /* Stolzl-Regular.ttf */; };
 		83540F12279CDD670068BECB /* InfoedukaApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83540EFF279CDD650068BECB /* InfoedukaApp.swift */; };
 		83540F13279CDD670068BECB /* InfoedukaApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83540EFF279CDD650068BECB /* InfoedukaApp.swift */; };
 		83540F18279CDD670068BECB /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 83540F02279CDD670068BECB /* Assets.xcassets */; };
@@ -117,6 +135,15 @@
 		8304A84D27A085CA004D9CBF /* MentoriResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MentoriResponse.swift; sourceTree = "<group>"; };
 		8304A85027A08606004D9CBF /* FilterableProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FilterableProtocol.swift; sourceTree = "<group>"; };
 		8304A85327A09194004D9CBF /* FilterEnum.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FilterEnum.swift; sourceTree = "<group>"; };
+		8318A4A327AC50D800002BEF /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
+		8318A4A727AC619D00002BEF /* PreviewMainViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PreviewMainViewModel.swift; sourceTree = "<group>"; };
+		8318A4AC27AC62B200002BEF /* PreviewTjedniResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PreviewTjedniResponse.swift; sourceTree = "<group>"; };
+		8318A4B027AC7F4200002BEF /* Stolzl-Light.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Stolzl-Light.ttf"; sourceTree = "<group>"; };
+		8318A4B127AC7F4200002BEF /* Stolzl-Thin.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Stolzl-Thin.ttf"; sourceTree = "<group>"; };
+		8318A4B227AC7F4200002BEF /* Stolzl-Medium.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Stolzl-Medium.ttf"; sourceTree = "<group>"; };
+		8318A4B327AC7F4200002BEF /* Stolzl-Bold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "Stolzl-Bold.ttf"; path = "Shared/Fonts/Stolzl-Bold.ttf"; sourceTree = SOURCE_ROOT; };
+		8318A4B427AC7F4200002BEF /* Stolzl-Book.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Stolzl-Book.ttf"; sourceTree = "<group>"; };
+		8318A4B527AC7F4200002BEF /* Stolzl-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Stolzl-Regular.ttf"; sourceTree = "<group>"; };
 		83540EFF279CDD650068BECB /* InfoedukaApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InfoedukaApp.swift; sourceTree = "<group>"; };
 		83540F02279CDD670068BECB /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		83540F07279CDD670068BECB /* Infoeduka.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Infoeduka.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -243,6 +270,53 @@
 			path = Responses;
 			sourceTree = "<group>";
 		};
+		8318A4A227AC50A900002BEF /* Preview Content */ = {
+			isa = PBXGroup;
+			children = (
+				8318A4AB27AC629600002BEF /* HTTP */,
+				8318A4A627AC618B00002BEF /* ViewModels */,
+				8318A4A327AC50D800002BEF /* Preview Assets.xcassets */,
+			);
+			path = "Preview Content";
+			sourceTree = "<group>";
+		};
+		8318A4A627AC618B00002BEF /* ViewModels */ = {
+			isa = PBXGroup;
+			children = (
+				8318A4A727AC619D00002BEF /* PreviewMainViewModel.swift */,
+			);
+			path = ViewModels;
+			sourceTree = "<group>";
+		};
+		8318A4AA27AC627E00002BEF /* Responses */ = {
+			isa = PBXGroup;
+			children = (
+				8318A4AC27AC62B200002BEF /* PreviewTjedniResponse.swift */,
+			);
+			path = Responses;
+			sourceTree = "<group>";
+		};
+		8318A4AB27AC629600002BEF /* HTTP */ = {
+			isa = PBXGroup;
+			children = (
+				8318A4AA27AC627E00002BEF /* Responses */,
+			);
+			path = HTTP;
+			sourceTree = "<group>";
+		};
+		8318A4AF27AC7EC500002BEF /* Fonts */ = {
+			isa = PBXGroup;
+			children = (
+				8318A4B327AC7F4200002BEF /* Stolzl-Bold.ttf */,
+				8318A4B427AC7F4200002BEF /* Stolzl-Book.ttf */,
+				8318A4B027AC7F4200002BEF /* Stolzl-Light.ttf */,
+				8318A4B227AC7F4200002BEF /* Stolzl-Medium.ttf */,
+				8318A4B527AC7F4200002BEF /* Stolzl-Regular.ttf */,
+				8318A4B127AC7F4200002BEF /* Stolzl-Thin.ttf */,
+			);
+			path = Fonts;
+			sourceTree = "<group>";
+		};
 		83540EF7279CDD640068BECB = {
 			isa = PBXGroup;
 			children = (
@@ -256,6 +330,8 @@
 		83540EFC279CDD650068BECB /* Shared */ = {
 			isa = PBXGroup;
 			children = (
+				8318A4AF27AC7EC500002BEF /* Fonts */,
+				8318A4A227AC50A900002BEF /* Preview Content */,
 				83A0219F27AB19E900A517AF /* Parsing */,
 				83A0219927A95B5F00A517AF /* DataManagement */,
 				83D0E4B927A87065004E924A /* Keychain */,
@@ -415,7 +491,14 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				8318A4BE27AC7F4200002BEF /* Stolzl-Book.ttf in Resources */,
+				8318A4A427AC50D800002BEF /* Preview Assets.xcassets in Resources */,
 				83540F18279CDD670068BECB /* Assets.xcassets in Resources */,
+				8318A4B627AC7F4200002BEF /* Stolzl-Light.ttf in Resources */,
+				8318A4B827AC7F4200002BEF /* Stolzl-Thin.ttf in Resources */,
+				8318A4C027AC7F4200002BEF /* Stolzl-Regular.ttf in Resources */,
+				8318A4BA27AC7F4200002BEF /* Stolzl-Medium.ttf in Resources */,
+				8318A4BC27AC7F4200002BEF /* Stolzl-Bold.ttf in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -423,7 +506,14 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				8318A4BF27AC7F4200002BEF /* Stolzl-Book.ttf in Resources */,
+				8318A4A527AC50D800002BEF /* Preview Assets.xcassets in Resources */,
 				83540F19279CDD670068BECB /* Assets.xcassets in Resources */,
+				8318A4B727AC7F4200002BEF /* Stolzl-Light.ttf in Resources */,
+				8318A4B927AC7F4200002BEF /* Stolzl-Thin.ttf in Resources */,
+				8318A4C127AC7F4200002BEF /* Stolzl-Regular.ttf in Resources */,
+				8318A4BB27AC7F4200002BEF /* Stolzl-Medium.ttf in Resources */,
+				8318A4BD27AC7F4200002BEF /* Stolzl-Bold.ttf in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -444,6 +534,7 @@
 				8304A80E279E5144004D9CBF /* NSRegularExpressionExtension.swift in Sources */,
 				83A021AC27AB4D4C00A517AF /* MeTabView.swift in Sources */,
 				8304A85427A09194004D9CBF /* FilterEnum.swift in Sources */,
+				8318A4AD27AC62B200002BEF /* PreviewTjedniResponse.swift in Sources */,
 				8304A801279DC2F0004D9CBF /* LoginResponse.swift in Sources */,
 				8304A85127A08606004D9CBF /* FilterableProtocol.swift in Sources */,
 				8304A81E279F2D7F004D9CBF /* CredentialsManager.swift in Sources */,
@@ -458,6 +549,7 @@
 				83A021A827AB4D3500A517AF /* ExamsTabView.swift in Sources */,
 				83A0219D27AAEC8700A517AF /* LaunchViewModel.swift in Sources */,
 				83A021A627AB4D2800A517AF /* SubjectsTabView.swift in Sources */,
+				8318A4A827AC619D00002BEF /* PreviewMainViewModel.swift in Sources */,
 				8304A83027A07FC9004D9CBF /* IspitiOdjavaResponse.swift in Sources */,
 				8304A83F27A082F7004D9CBF /* MaterijaliResponse.swift in Sources */,
 				8304A84827A08553004D9CBF /* GrupeResponse.swift in Sources */,
@@ -484,6 +576,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				8318A4A927AC619D00002BEF /* PreviewMainViewModel.swift in Sources */,
 				8304A805279E4001004D9CBF /* VijestiTagoviResponse.swift in Sources */,
 				8304A83727A080F9004D9CBF /* KnjiznicaPodrucjeOdabirResponse.swift in Sources */,
 				8304A84C27A0859B004D9CBF /* PraksaResponse.swift in Sources */,
@@ -493,6 +586,7 @@
 				8304A85527A09194004D9CBF /* FilterEnum.swift in Sources */,
 				8304A802279DC2F0004D9CBF /* LoginResponse.swift in Sources */,
 				8304A85227A08607004D9CBF /* FilterableProtocol.swift in Sources */,
+				8318A4AE27AC62B200002BEF /* PreviewTjedniResponse.swift in Sources */,
 				8304A81F279F2D7F004D9CBF /* CredentialsManager.swift in Sources */,
 				8304A82B27A07AA3004D9CBF /* TjedniResponse.swift in Sources */,
 				8304A7FE279DB156004D9CBF /* InfoedukaHttpEndpoints.swift in Sources */,
@@ -642,6 +736,7 @@
 				ASSETCATALOG_COMPILER_INCLUDE_ALL_APPICON_ASSETS = NO;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_ASSET_PATHS = "Shared/Preview\\ Content/HTTP Shared/Preview\\ Content/HTTP/Responses Shared/Preview\\ Content/ViewModels Shared/Preview\\ Content/ViewModels/PreviewMainViewModel.swift Shared/Preview\\ Content/HTTP/Responses/PreviewTjedniResponse.swift Shared/Preview\\ Content/Preview\\ Assets.xcassets Shared/Preview\\ Content";
 				DEVELOPMENT_TEAM = DADDNKA7TR;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
@@ -674,6 +769,7 @@
 				ASSETCATALOG_COMPILER_INCLUDE_ALL_APPICON_ASSETS = NO;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_ASSET_PATHS = "Shared/Preview\\ Content/HTTP Shared/Preview\\ Content/HTTP/Responses Shared/Preview\\ Content/ViewModels Shared/Preview\\ Content/ViewModels/PreviewMainViewModel.swift Shared/Preview\\ Content/HTTP/Responses/PreviewTjedniResponse.swift Shared/Preview\\ Content/Preview\\ Assets.xcassets Shared/Preview\\ Content";
 				DEVELOPMENT_TEAM = DADDNKA7TR;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;

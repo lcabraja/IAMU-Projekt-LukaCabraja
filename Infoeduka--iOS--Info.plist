@@ -6,6 +6,15 @@
 	<array>
 		<string>hr.algebra.infoeduka.vijestirefresh</string>
 	</array>
+	<key>UIAppFonts</key>
+	<array>
+		<string>Stolzl-Bold.ttf</string>
+		<string>Stolzl-Book.ttf</string>
+		<string>Stolzl-Light.ttf</string>
+		<string>Stolzl-Medium.ttf</string>
+		<string>Stolzl-Regular.ttf</string>
+		<string>Stolzl-Thin.ttf</string>
+	</array>
 	<key>UIBackgroundModes</key>
 	<array>
 		<string>fetch</string>

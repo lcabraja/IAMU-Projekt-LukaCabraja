@@ -10,10 +10,15 @@ import SwiftUI
 struct HomeTabView: View {
     @EnvironmentObject var model: MainViewModel
     
+    
+//    return self.gradientForeground(colors: [algeborange, algebred])
+    
     var body: some View {
         VStack(alignment: .leading) {
             Text("Danas") // TODO: Next day of the week / today
-                .font(.title)
+                .font(Font.custom("Stolzl-Medium", size: 20))
+                .padding([.leading], 7)
+                .padding([.bottom], 14)
             Raspored(model: model)
         }
     }
@@ -25,6 +30,8 @@ struct HomeTabView: View {
             List(model.weeks.onDay(model.nextDay)) { course in
                     RasporedItem(item: course, attendance: model.attendance)
             }
+            .padding(.horizontal, -10)
+            .listStyle(.plain)
             .refreshable {
                 try? await model.fetchTjedni()
             }
@@ -46,10 +53,10 @@ struct HomeTabView: View {
         var body: some View {
             VStack(alignment: .leading) {
                 Text(item.predmetClear)
-                    .font(.title)
+                    .font(Font.custom("Stolzl-Regular", size: 17))
                 HStack {
                     Text(item.duration)
-                        .font(.title2)
+                        .font(Font.custom("Stolzl-Regular", size: 17))
                         .foregroundColor(color)
                     Spacer()
                     Location(hall: item.dvorana, teams: item.teamsCode)
@@ -67,13 +74,16 @@ struct HomeTabView: View {
         var body: some View {
             HStack {
                 Text(physical ? hall : teams)
+                    .font(Font.custom("Stolzl-Book", size: 13))
+                    .foregroundColor(.black)
                     .lineLimit(1)
                 Image(systemName: "video.bubble.left")
                     .algebrientForeground()
             }
-            .padding(8)
+            .padding(5)
             .background(
-                RoundedRectangle(cornerRadius: 180).fill(.secondary)
+                RoundedRectangle(cornerRadius: 16)
+                    .fill(Color(UIColor.label))
             )
             .onTapGesture {
                 if !teams.isEmpty {
@@ -87,5 +97,7 @@ struct HomeTabView: View {
 struct HomeTabView_Previews: PreviewProvider {
     static var previews: some View {
         HomeTabView()
+            .preferredColorScheme(.dark)
+            .environmentObject(MainViewModel.preview)
     }
 }

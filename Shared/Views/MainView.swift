@@ -29,11 +29,13 @@ struct MainView: View {
             ExamsTabView()
                 .tabItem {
                     Image(systemName: "calendar")
+                        .algebrientForeground()
                     Text("Ispiti")
                 }
             ScheduleTabView()
                 .tabItem {
                     Image(systemName: "list.bullet.rectangle.portrait")
+                        .algebrientForeground()
                     Text("Raspored")
                 }
             MeTabView()
@@ -48,7 +50,7 @@ struct MainView: View {
 
 struct MainView_Previews: PreviewProvider {
     static var previews: some View {
-        MainView()
+        MainView(model: MainViewModel.preview)
             .preferredColorScheme(.dark)
     }
 }
@@ -64,8 +66,8 @@ extension View {
     }
     
     public func algebrientForeground() -> some View {
-        let algeborange = Color.init(red: 226, green: 114, blue: 16) // #E27210
-        let algebred = Color.init(red: 196, green: 15, blue: 97) // #C40F61
+        let algeborange = Color(red: 226.0/255.0, green: 114.0/255.0, blue: 16.0/255.0) // #E27210
+        let algebred = Color(red: 196.0/255.0, green: 15.0/255.0, blue: 97.0/255.0) // #C40F61
         return self.gradientForeground(colors: [algeborange, algebred])
     }
 }
