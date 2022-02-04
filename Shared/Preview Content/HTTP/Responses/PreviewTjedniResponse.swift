@@ -2,7 +2,7 @@
 //  PreviewTjedniResponse.swift
 //  Infoeduka
 //
-//  Created by doss on 2/3/22.
+//  Created by lcabraja on 2/3/22.
 //
 
 import Foundation
