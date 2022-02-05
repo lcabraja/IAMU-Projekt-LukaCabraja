@@ -33,6 +33,7 @@ enum InfoedukaHttpEndpoints: String, CaseIterable {
     case praksa = "https://student.racunarstvo.hr/digitalnareferada/api/student/zavrsni/praksa"
     case mentori = "https://student.racunarstvo.hr/digitalnareferada/api/student/zavrsni/mentori"
     // case odabir = "https://student.racunarstvo.hr/digitalnareferada/api/student/zavrsni/odabir"
+    case osobno = "https://student.racunarstvo.hr/digitalnareferada/api/student/osobno"
     
     var url: URL {
         URL(string: self.rawValue)!

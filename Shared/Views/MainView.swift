@@ -10,39 +10,54 @@ import SwiftUI
 struct MainView: View {
     @StateObject var model = MainViewModel()
     
+    @State var selected = 0
     var body: some View {
-        TabView {
+        TabView(selection: $selected) {
             HomeTabView()
                 .task {
-                    let _ = try? await (model.fetchTjedni(), model.fetchVijesti())
+                    let _ = try? await (
+                        model.fetchTjedni(),
+                        model.fetchOsobno(),
+                        model.fetchVijesti(),
+                        model.fetchMaterijali()
+                    )
                 }
                 .tabItem {
-                    Image(systemName: "house")
-                        .algebrientForeground()
+                    selected == 0 ?
+                        Image("house.fill") :
+                        Image(systemName: "house.fill")
                     Text("Početna")
                 }
+                .tag(0)
             SubjectsTabView()
                 .tabItem {
-                    Image(systemName: "rectangle.on.rectangle")
+                    selected == 1 ?
+                        Image("rectangle.fill.on.rectangle.fill") :
+                        Image(systemName: "rectangle.on.rectangle.fill")
                     Text("Predmeti")
                 }
+                .tag(1)
             ExamsTabView()
                 .tabItem {
-                    Image(systemName: "calendar")
-                        .algebrientForeground()
+                    selected == 2 ? Image("calendar") : Image(systemName: "calendar")
                     Text("Ispiti")
                 }
+                .tag(2)
             ScheduleTabView()
                 .tabItem {
-                    Image(systemName: "list.bullet.rectangle.portrait")
-                        .algebrientForeground()
+                    selected == 3 ? Image("list.bullet.rectangle.portrait.fill") :
+                    Image(systemName: "list.bullet.rectangle.portrait.fill")
                     Text("Raspored")
                 }
+                .tag(3)
             MeTabView()
                 .tabItem {
-                    Image(systemName: "person.crop.circle")
+                    selected == 4 ?
+                        Image("person.crop.circle.fill") :
+                        Image(systemName: "person.crop.circle.fill")
                     Text("Ja")
                 }
+                .tag(4)
         }
         .environmentObject(model)
     }
@@ -52,22 +67,5 @@ struct MainView_Previews: PreviewProvider {
     static var previews: some View {
         MainView(model: MainViewModel.preview)
             .preferredColorScheme(.dark)
-    }
-}
-
-extension View {
-    public func gradientForeground(colors: [Color]) -> some View {
-        self.overlay(LinearGradient(
-            gradient: .init(colors: colors),
-            startPoint: .leading,
-            endPoint: .trailing)
-        )
-        .mask(self)
-    }
-    
-    public func algebrientForeground() -> some View {
-        let algeborange = Color(red: 226.0/255.0, green: 114.0/255.0, blue: 16.0/255.0) // #E27210
-        let algebred = Color(red: 196.0/255.0, green: 15.0/255.0, blue: 97.0/255.0) // #C40F61
-        return self.gradientForeground(colors: [algeborange, algebred])
     }
 }

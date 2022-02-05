@@ -10,13 +10,12 @@ import SwiftUI
 struct HomeTabView: View {
     @EnvironmentObject var model: MainViewModel
     
-    
 //    return self.gradientForeground(colors: [algeborange, algebred])
     
     var body: some View {
         VStack(alignment: .leading) {
             Text("Danas") // TODO: Next day of the week / today
-                .font(Font.custom("Stolzl-Medium", size: 20))
+                .algebraFont(.StolzlMedium, size: 20)
                 .padding([.leading], 7)
                 .padding([.bottom], 14)
             Raspored(model: model)
@@ -53,10 +52,10 @@ struct HomeTabView: View {
         var body: some View {
             VStack(alignment: .leading) {
                 Text(item.predmetClear)
-                    .font(Font.custom("Stolzl-Regular", size: 17))
+                    .algebraFont(.StolzlRegular, size: 17)
                 HStack {
                     Text(item.duration)
-                        .font(Font.custom("Stolzl-Regular", size: 17))
+                        .algebraFont(.StolzlRegular, size: 17)
                         .foregroundColor(color)
                     Spacer()
                     Location(hall: item.dvorana, teams: item.teamsCode)
@@ -74,8 +73,8 @@ struct HomeTabView: View {
         var body: some View {
             HStack {
                 Text(physical ? hall : teams)
-                    .font(Font.custom("Stolzl-Book", size: 13))
-                    .foregroundColor(.black)
+                    .algebraFont(.StolzlBook, size: 13)
+//                    .foregroundColor()
                     .lineLimit(1)
                 Image(systemName: "video.bubble.left")
                     .algebrientForeground()
@@ -83,7 +82,7 @@ struct HomeTabView: View {
             .padding(5)
             .background(
                 RoundedRectangle(cornerRadius: 16)
-                    .fill(Color(UIColor.label))
+                    .fill(.primary)
             )
             .onTapGesture {
                 if !teams.isEmpty {

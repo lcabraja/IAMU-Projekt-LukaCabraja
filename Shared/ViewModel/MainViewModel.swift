@@ -13,12 +13,36 @@ enum DownloadError: Error {
 
 private actor MainViewModelStore {
     private var loadedTjedni: TjedniResponseWelcome?
+    private var loadedOsobno: OsobnoResponseWelcome?
+    private var loadedVijesti: VijestiResponseWelcome?
+    private var loadedMaterijali: MaterijaliResponseWelcome?
     
     func loadTjedni() async throws -> TjedniResponseWelcome {
         guard let tjedniResponse = await InfoedukaHttpRequest<TjedniResponseWelcome>.fetch()
         else { throw DownloadError.failed }
         loadedTjedni = tjedniResponse
         return tjedniResponse
+    }
+    
+    func loadOsobno() async throws -> OsobnoResponseWelcome {
+        guard let osobnoResponse = await InfoedukaHttpRequest<OsobnoResponseWelcome>.fetch()
+        else { throw DownloadError.failed }
+        loadedOsobno = osobnoResponse
+        return osobnoResponse
+    }
+    
+    func loadVijesti() async throws -> VijestiResponseWelcome {
+        guard let vijestiResponse = await InfoedukaHttpRequest<VijestiResponseWelcome>.fetch()
+        else { throw DownloadError.failed }
+        loadedVijesti = vijestiResponse
+        return vijestiResponse
+    }
+    
+    func loadMaterijali() async throws -> MaterijaliResponseWelcome {
+        guard let materijaliResponse = await InfoedukaHttpRequest<MaterijaliResponseWelcome>.fetch()
+        else { throw DownloadError.failed }
+        loadedMaterijali = materijaliResponse
+        return materijaliResponse
     }
 }
 
@@ -27,10 +51,14 @@ class MainViewModel: ObservableObject {
     
     @Published var modelTjedni: TjedniResponseWelcome?
     @Published var fetchingTjedni: Bool = false
+    @Published var modelOsobno: OsobnoResponseWelcome?
+    @Published var fetchingOsobno: Bool = false
     @Published var modelVijesti: VijestiResponseWelcome?
+    @Published var fetchingVijesti: Bool = false
     @Published var modelIspitiPrijava: IspitiPrijavaResponseWelcome?
     @Published var modelIspitiOdjava: IspitiOdjavaResponseWelcome?
     @Published var modelMaterijali: MaterijaliResponseWelcome?
+    @Published var fetchingMaterijali: Bool = false
     @Published var modelBodovi: BodoviResponseWelcome?
     @Published var modelPrisustva: PrisustvaResponseWelcome?
     @Published var modelLogin: LoginResponseWelcome?
@@ -152,6 +180,8 @@ class MainViewModel: ObservableObject {
     }
 }
 
+// MARK: - actors
+
 extension MainViewModel {
     @MainActor
     func fetchTjedni() async throws {
@@ -162,11 +192,27 @@ extension MainViewModel {
     }
     
     @MainActor
+    func fetchOsobno() async throws {
+        fetchingOsobno = true
+        defer { fetchingOsobno = false }
+        let loadedOsobno = try await store.loadOsobno()
+        modelOsobno = loadedOsobno
+    }
+    
+    @MainActor
     func fetchVijesti() async throws {
-        fetchingTjedni = true
-        defer { fetchingTjedni = false }
-        let loadedTjedni = try await store.loadTjedni()
-        modelTjedni = loadedTjedni
+        fetchingVijesti = true
+        defer { fetchingVijesti = false }
+        let loadedVijesti = try await store.loadVijesti()
+        modelVijesti = loadedVijesti
+    }
+    
+    @MainActor
+    func fetchMaterijali() async throws {
+        fetchingMaterijali = true
+        defer { fetchingMaterijali = false }
+        let loadedMaterijali = try await store.loadMaterijali()
+        modelMaterijali = loadedMaterijali
     }
 }
 

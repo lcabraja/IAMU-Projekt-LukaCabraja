@@ -12,28 +12,14 @@ struct InfoedukaApp: App {
     
     @StateObject var model = LaunchViewModel()
     
-    let development: Bool = false
-    var isInDevelopment: Bool {
-        for family: String in UIFont.familyNames {
-            print(family)
-            for names: String in UIFont.fontNames(forFamilyName: family) {
-                print("== \(names)")
-            }
-        }
-        if development { do { sleep(2) } }
-        return true
-    }
-    
     var body: some Scene {
         WindowGroup {
-            if isInDevelopment {
-                if !CredentialsManager.shared.hasCredentials {
-                    LoginView().task {
-                        try? await model.fetchCredentials()
-                    }
-                } else {
-                    MainView()
+            if !CredentialsManager.shared.hasCredentials {
+                LoginView().task {
+                    try? await model.fetchCredentials()
                 }
+            } else {
+                MainView()
             }
         }
     }

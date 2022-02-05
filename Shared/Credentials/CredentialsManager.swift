@@ -11,6 +11,10 @@ import Foundation
 class CredentialsManager: ObservableObject {
     private static let UserDefaultsUsername = "hr.algebra.infoeduka.username"
     
+    public static func getUsername() -> String? {
+        return UserDefaults.standard.codable(forKey: CredentialsManager.UserDefaultsUsername)
+    }
+    
     public static let shared = CredentialsManager()
     
     init() {

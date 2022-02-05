@@ -91,6 +91,15 @@
 		83540F24279CE41A0068BECB /* MainView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83540F22279CE41A0068BECB /* MainView.swift */; };
 		83540F2A279CF0600068BECB /* LoginView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83540F29279CF0600068BECB /* LoginView.swift */; };
 		83540F2B279CF0600068BECB /* LoginView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83540F29279CF0600068BECB /* LoginView.swift */; };
+		8386AB3127AEA9B70069479E /* OsobnoResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8386AB3027AEA9B70069479E /* OsobnoResponse.swift */; };
+		8386AB3227AEA9B70069479E /* OsobnoResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8386AB3027AEA9B70069479E /* OsobnoResponse.swift */; };
+		83973D2B27AD5D0600DD120D /* GradientExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83973D2A27AD5D0600DD120D /* GradientExtension.swift */; };
+		83973D2D27AD69BB00DD120D /* ColorExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83973D2C27AD69BB00DD120D /* ColorExtension.swift */; };
+		83973D2F27AD6FC100DD120D /* Documentation.docc in Sources */ = {isa = PBXBuildFile; fileRef = 83973D2E27AD6FC000DD120D /* Documentation.docc */; };
+		83973D3127AD725600DD120D /* FontExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83973D3027AD725600DD120D /* FontExtension.swift */; };
+		83973D3227AD725600DD120D /* FontExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83973D3027AD725600DD120D /* FontExtension.swift */; };
+		83973D3327AD726D00DD120D /* ColorExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83973D2C27AD69BB00DD120D /* ColorExtension.swift */; };
+		83973D3427AD727000DD120D /* GradientExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83973D2A27AD5D0600DD120D /* GradientExtension.swift */; };
 		83A0219B27A95B7E00A517AF /* UserDefaults.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83A0219A27A95B7E00A517AF /* UserDefaults.swift */; };
 		83A0219D27AAEC8700A517AF /* LaunchViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83A0219C27AAEC8700A517AF /* LaunchViewModel.swift */; };
 		83A0219E27AAEC9600A517AF /* LaunchViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83A0219C27AAEC8700A517AF /* LaunchViewModel.swift */; };
@@ -151,6 +160,11 @@
 		83540F0F279CDD670068BECB /* macOS.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = macOS.entitlements; sourceTree = "<group>"; };
 		83540F22279CE41A0068BECB /* MainView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainView.swift; sourceTree = "<group>"; };
 		83540F29279CF0600068BECB /* LoginView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginView.swift; sourceTree = "<group>"; };
+		8386AB3027AEA9B70069479E /* OsobnoResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OsobnoResponse.swift; sourceTree = "<group>"; };
+		83973D2A27AD5D0600DD120D /* GradientExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GradientExtension.swift; sourceTree = "<group>"; };
+		83973D2C27AD69BB00DD120D /* ColorExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorExtension.swift; sourceTree = "<group>"; };
+		83973D2E27AD6FC000DD120D /* Documentation.docc */ = {isa = PBXFileReference; lastKnownFileType = folder.documentationcatalog; path = Documentation.docc; sourceTree = "<group>"; };
+		83973D3027AD725600DD120D /* FontExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FontExtension.swift; sourceTree = "<group>"; };
 		83A0219A27A95B7E00A517AF /* UserDefaults.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDefaults.swift; sourceTree = "<group>"; };
 		83A0219C27AAEC8700A517AF /* LaunchViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = LaunchViewModel.swift; path = Shared/ViewModel/LaunchViewModel.swift; sourceTree = SOURCE_ROOT; };
 		83A021A027AB19F900A517AF /* DateParser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateParser.swift; sourceTree = "<group>"; };
@@ -235,6 +249,7 @@
 		8304A821279F3516004D9CBF /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				83973D2927AD5CEF00DD120D /* ViewExtensions */,
 				83540F29279CF0600068BECB /* LoginView.swift */,
 				83540F22279CE41A0068BECB /* MainView.swift */,
 				83A021A327AB4A9F00A517AF /* HomeTabView.swift */,
@@ -266,6 +281,7 @@
 				8304A84727A08552004D9CBF /* GrupeResponse.swift */,
 				8304A84A27A0859B004D9CBF /* PraksaResponse.swift */,
 				8304A84D27A085CA004D9CBF /* MentoriResponse.swift */,
+				8386AB3027AEA9B70069479E /* OsobnoResponse.swift */,
 			);
 			path = Responses;
 			sourceTree = "<group>";
@@ -343,6 +359,7 @@
 				8304A7F8279CF33F004D9CBF /* HTTP */,
 				83540EFF279CDD650068BECB /* InfoedukaApp.swift */,
 				83540F02279CDD670068BECB /* Assets.xcassets */,
+				83973D2E27AD6FC000DD120D /* Documentation.docc */,
 			);
 			path = Shared;
 			sourceTree = "<group>";
@@ -370,6 +387,16 @@
 				83D0E4B127A73450004E924A /* Tasks */,
 			);
 			path = iOS;
+			sourceTree = "<group>";
+		};
+		83973D2927AD5CEF00DD120D /* ViewExtensions */ = {
+			isa = PBXGroup;
+			children = (
+				83973D2A27AD5D0600DD120D /* GradientExtension.swift */,
+				83973D2C27AD69BB00DD120D /* ColorExtension.swift */,
+				83973D3027AD725600DD120D /* FontExtension.swift */,
+			);
+			path = ViewExtensions;
 			sourceTree = "<group>";
 		};
 		83A0219927A95B5F00A517AF /* DataManagement */ = {
@@ -541,7 +568,9 @@
 				8304A82A27A07AA3004D9CBF /* TjedniResponse.swift in Sources */,
 				8304A7FD279DB156004D9CBF /* InfoedukaHttpEndpoints.swift in Sources */,
 				8304A82327A079A3004D9CBF /* KategorijeResponse.swift in Sources */,
+				83973D2D27AD69BB00DD120D /* ColorExtension.swift in Sources */,
 				83D0E4B327A734A1004E924A /* VijestiBackgroundRefershTask.swift in Sources */,
+				83973D2F27AD6FC100DD120D /* Documentation.docc in Sources */,
 				8304A814279F0AAC004D9CBF /* ResponseProtocol.swift in Sources */,
 				8304A84227A08374004D9CBF /* BodoviResponse.swift in Sources */,
 				8304A83327A08048004D9CBF /* KnjiznicaPodrucjaResponse.swift in Sources */,
@@ -552,6 +581,7 @@
 				8318A4A827AC619D00002BEF /* PreviewMainViewModel.swift in Sources */,
 				8304A83027A07FC9004D9CBF /* IspitiOdjavaResponse.swift in Sources */,
 				8304A83F27A082F7004D9CBF /* MaterijaliResponse.swift in Sources */,
+				83973D3127AD725600DD120D /* FontExtension.swift in Sources */,
 				8304A84827A08553004D9CBF /* GrupeResponse.swift in Sources */,
 				8304A80A279E4680004D9CBF /* SessionTracker.swift in Sources */,
 				8304A818279F2863004D9CBF /* LoginViewModel.swift in Sources */,
@@ -567,7 +597,9 @@
 				8304A84E27A085CA004D9CBF /* MentoriResponse.swift in Sources */,
 				83A0219B27A95B7E00A517AF /* UserDefaults.swift in Sources */,
 				8304A83C27A0825B004D9CBF /* KnjiznicaVracenoResponse.swift in Sources */,
+				83973D2B27AD5D0600DD120D /* GradientExtension.swift in Sources */,
 				8304A84527A08413004D9CBF /* PrisustvaResponse.swift in Sources */,
+				8386AB3127AEA9B70069479E /* OsobnoResponse.swift in Sources */,
 				83D0E4B827A8705F004E924A /* KeychainAccess.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -582,6 +614,7 @@
 				8304A84C27A0859B004D9CBF /* PraksaResponse.swift in Sources */,
 				8304A7FB279DB0F2004D9CBF /* InfoedukaHttpRequest.swift in Sources */,
 				83540F2B279CF0600068BECB /* LoginView.swift in Sources */,
+				83973D3227AD725600DD120D /* FontExtension.swift in Sources */,
 				8304A80F279E5144004D9CBF /* NSRegularExpressionExtension.swift in Sources */,
 				8304A85527A09194004D9CBF /* FilterEnum.swift in Sources */,
 				8304A802279DC2F0004D9CBF /* LoginResponse.swift in Sources */,
@@ -602,11 +635,14 @@
 				8304A819279F2863004D9CBF /* LoginViewModel.swift in Sources */,
 				8304A808279E419D004D9CBF /* JsonHelper.swift in Sources */,
 				83540F13279CDD670068BECB /* InfoedukaApp.swift in Sources */,
+				8386AB3227AEA9B70069479E /* OsobnoResponse.swift in Sources */,
 				8304A82827A07A56004D9CBF /* VijestiResponse.swift in Sources */,
 				8304A812279E5178004D9CBF /* StringExtension.swift in Sources */,
 				8304A83A27A081B5004D9CBF /* KnjiznicaPosudbaResponse.swift in Sources */,
 				8304A82E27A07B6B004D9CBF /* ispitiPrijavaResponse.swift in Sources */,
 				83540F24279CE41A0068BECB /* MainView.swift in Sources */,
+				83973D3327AD726D00DD120D /* ColorExtension.swift in Sources */,
+				83973D3427AD727000DD120D /* GradientExtension.swift in Sources */,
 				83A0219E27AAEC9600A517AF /* LaunchViewModel.swift in Sources */,
 				8304A84F27A085CA004D9CBF /* MentoriResponse.swift in Sources */,
 				8304A83D27A0825B004D9CBF /* KnjiznicaVracenoResponse.swift in Sources */,
