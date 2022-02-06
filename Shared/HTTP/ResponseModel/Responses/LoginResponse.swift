@@ -14,10 +14,6 @@ import Foundation
 struct LoginResponseWelcome: Codable {
     static let endpoint: InfoedukaHttpEndpoints = .login
     let data: LoginResponseData
-    
-    init (data: LoginResponseData) {
-        self.data = data
-    }
 }
 
 // MARK: - LoginResponseData
