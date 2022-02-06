@@ -17,6 +17,11 @@ private actor MainViewModelStore {
     private var loadedVijesti: VijestiResponseWelcome?
     private var loadedMaterijali: MaterijaliResponseWelcome?
     
+    func loadLogin() throws -> LoginResponseWelcome {
+        guard let loginResponse = SessionTracker.lastLogin else { throw DownloadError.failed }
+        return loginResponse
+    }
+    
     func loadTjedni() async throws -> TjedniResponseWelcome {
         guard let tjedniResponse = await InfoedukaHttpRequest<TjedniResponseWelcome>.fetch()
         else { throw DownloadError.failed }
@@ -49,6 +54,7 @@ private actor MainViewModelStore {
 class MainViewModel: ObservableObject {
     // MARK: - data
     
+    @Published var modelLogin: LoginResponseWelcome?
     @Published var modelTjedni: TjedniResponseWelcome?
     @Published var fetchingTjedni: Bool = false
     @Published var modelOsobno: OsobnoResponseWelcome?
@@ -61,8 +67,11 @@ class MainViewModel: ObservableObject {
     @Published var fetchingMaterijali: Bool = false
     @Published var modelBodovi: BodoviResponseWelcome?
     @Published var modelPrisustva: PrisustvaResponseWelcome?
-    @Published var modelLogin: LoginResponseWelcome?
     private let store = MainViewModelStore()
+    
+    init() {
+        modelLogin = SessionTracker.lastLogin
+    }
     
     // MARK: - ui translation
     
@@ -191,6 +200,7 @@ class MainViewModel: ObservableObject {
 // MARK: - actors
 
 extension MainViewModel {
+    
     @MainActor
     func fetchTjedni() async throws {
         fetchingTjedni = true
