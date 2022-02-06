@@ -15,10 +15,11 @@ struct MeTabView: View {
     var body: some View {
         VStack {
             settings
-            Spacer()
             topText
             ProfilePic(imageUrl: model.modelOsobno?.data.slika ?? "")
+                .padding(.vertical)
             bottomText
+            jmbag
             Spacer()
         }
     }
@@ -30,31 +31,55 @@ struct MeTabView: View {
                 isModal = true
             }) {
                 Image(systemName: "slider.horizontal.3")
-                    .font(.system(size: 32))
+                    .font(.system(size: 34))
                     .algebrientForeground()
             }.sheet(isPresented: $isModal) {
                 Settings()
             }
         }
+        .padding(.horizontal, 13)
     }
     
     
-    @ViewBuilder var topText: some View {
-        Text("Grupa: \(SessionTracker.lastLogin?.data.dodatno.status.grupa ?? "")")
-            .algebraFont(.StolzlMedium, size: 17, relativeTo: .title)
-            .foregroundColor(.secondary)
-        Text(model.modelMaterijali?.data.first?.godine.first?.smjer ?? "")
-            .algebraFont(.StolzlMedium, size: 17, relativeTo: .title)
-            .foregroundColor(.primary)
+    var topText: some View {
+        VStack {
+            Text("Grupa: \(model.modelLogin?.data.dodatno.status.grupa ?? "")")
+                .algebraFont(.StolzlMedium, size: 17, relativeTo: .title)
+                .foregroundColor(.secondary)
+                .padding(.bottom, 1)
+            Text(model.modelMaterijali?.data.first?.godine.first?.smjer ?? "Programsko Inženjerstvo")
+                .algebraFont(.StolzlMedium, size: 17, relativeTo: .title)
+                .foregroundColor(.primary)
+        }
+        .padding(.bottom)
     }
     
-    @ViewBuilder var bottomText: some View {
-        Text(SessionTracker.lastLogin?.data.korisnik ?? "")
-            .algebraFont(.StolzlRegular, size: 17)
-            .foregroundColor(.primary)
-        Text("\(CredentialsManager.getUsername() ?? "")@racunarstvo.hr")
-            .algebraFont(.StolzlBook, size: 13)
-            .foregroundColor(.secondary)
+    var bottomText: some View {
+        Group {
+            Text(model.modelLogin?.data.korisnik ?? "")
+                .algebraFont(.StolzlRegular, size: 17)
+                .foregroundColor(.primary)
+            Text("\(CredentialsManager.getUsername() ?? "")@racunarstvo.hr")
+                .algebraFont(.StolzlBook, size: 13)
+                .foregroundColor(.secondary)
+        }
+        .padding(4)
+    }
+    
+    var jmbag: some View {
+        HStack {
+            Image(systemName: "person.text.rectangle")
+                .font(.title)
+                .algebrientForeground()
+            Text("JMBAG:")
+                .algebraFont(.StolzlBook, size: 13)
+                .foregroundColor(.secondary)
+            Text(model.modelOsobno?.data.jmbag ?? "")
+                .algebraFont(.StolzlRegular, size: 17)
+                .foregroundColor(.secondary)
+            Spacer()
+        }
+        .padding([.top, .horizontal])
     }
 }
 
@@ -83,22 +108,26 @@ struct ProfilePic: View {
         }
         .aspectRatio(1, contentMode: .fit)
         .frame(maxWidth: .infinity)
-        .padding([.horizontal], 100)
+        .padding([.horizontal], 124)
     }
 }
 
 struct Settings: View {
     var body: some View {
-        Button(action: {
+        Button("Sign Out") {
             CredentialsManager.shared.credentials = nil
-        }) {
-            Text("Sign Out")
         }
     }
 }
 
 struct MeTabView_Previews: PreviewProvider {
     static var previews: some View {
-        MeTabView()
+        Group {
+            MeTabView()
+                .preferredColorScheme(.dark)
+            MeTabView()
+                .preferredColorScheme(.light)
+        }
+        .environmentObject(MainViewModel.preview)
     }
 }
