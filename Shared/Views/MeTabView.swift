@@ -99,9 +99,12 @@ struct ProfilePic: View {
                 Image("algebrient.person.crop.circle.fill")
                     .resizable()
             case .empty:
-                Circle()
-                    .stroke()
-                    .fill(Color("AccentColor"))
+                ZStack {
+                    ProgressView()
+                    Circle()
+                        .strokeBorder()
+                        .algebrientForeground()
+                }
             @unknown default:
                 ProgressView()
             }
