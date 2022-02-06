@@ -12,6 +12,8 @@ extension MainViewModel {
     static var preview: MainViewModel {
         let model = MainViewModel()
         model.modelTjedni = TjedniResponseWelcome.preview
+        model.modelLogin = LoginResponseWelcome.preview
+        model.modelOsobno = OsobnoResponseWelcome.preview
         return model
     }
 }

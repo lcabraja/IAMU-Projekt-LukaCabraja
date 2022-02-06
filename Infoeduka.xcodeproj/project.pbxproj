@@ -78,6 +78,10 @@
 		8318A4BF27AC7F4200002BEF /* Stolzl-Book.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 8318A4B427AC7F4200002BEF /* Stolzl-Book.ttf */; };
 		8318A4C027AC7F4200002BEF /* Stolzl-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 8318A4B527AC7F4200002BEF /* Stolzl-Regular.ttf */; };
 		8318A4C127AC7F4200002BEF /* Stolzl-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 8318A4B527AC7F4200002BEF /* Stolzl-Regular.ttf */; };
+		834B9F4227B04D5600F36AC5 /* PreviewLoginResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 834B9F4127B04D5600F36AC5 /* PreviewLoginResponse.swift */; };
+		834B9F4327B04D5600F36AC5 /* PreviewLoginResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 834B9F4127B04D5600F36AC5 /* PreviewLoginResponse.swift */; };
+		834B9F4527B052DE00F36AC5 /* PreviewOsobnoResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 834B9F4427B052DD00F36AC5 /* PreviewOsobnoResponse.swift */; };
+		834B9F4627B052DE00F36AC5 /* PreviewOsobnoResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 834B9F4427B052DD00F36AC5 /* PreviewOsobnoResponse.swift */; };
 		83540F12279CDD670068BECB /* InfoedukaApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83540EFF279CDD650068BECB /* InfoedukaApp.swift */; };
 		83540F13279CDD670068BECB /* InfoedukaApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83540EFF279CDD650068BECB /* InfoedukaApp.swift */; };
 		83540F18279CDD670068BECB /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 83540F02279CDD670068BECB /* Assets.xcassets */; };
@@ -145,6 +149,8 @@
 		8318A4B327AC7F4200002BEF /* Stolzl-Bold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "Stolzl-Bold.ttf"; path = "Shared/Fonts/Stolzl-Bold.ttf"; sourceTree = SOURCE_ROOT; };
 		8318A4B427AC7F4200002BEF /* Stolzl-Book.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Stolzl-Book.ttf"; sourceTree = "<group>"; };
 		8318A4B527AC7F4200002BEF /* Stolzl-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Stolzl-Regular.ttf"; sourceTree = "<group>"; };
+		834B9F4127B04D5600F36AC5 /* PreviewLoginResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PreviewLoginResponse.swift; sourceTree = "<group>"; };
+		834B9F4427B052DD00F36AC5 /* PreviewOsobnoResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PreviewOsobnoResponse.swift; sourceTree = "<group>"; };
 		83540EFF279CDD650068BECB /* InfoedukaApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InfoedukaApp.swift; sourceTree = "<group>"; };
 		83540F02279CDD670068BECB /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		83540F07279CDD670068BECB /* Infoeduka.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Infoeduka.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -282,6 +288,8 @@
 			isa = PBXGroup;
 			children = (
 				8318A4AC27AC62B200002BEF /* PreviewTjedniResponse.swift */,
+				834B9F4127B04D5600F36AC5 /* PreviewLoginResponse.swift */,
+				834B9F4427B052DD00F36AC5 /* PreviewOsobnoResponse.swift */,
 			);
 			path = Responses;
 			sourceTree = "<group>";
@@ -518,6 +526,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				8304A804279E4001004D9CBF /* VijestiTagoviResponse.swift in Sources */,
+				834B9F4527B052DE00F36AC5 /* PreviewOsobnoResponse.swift in Sources */,
+				834B9F4227B04D5600F36AC5 /* PreviewLoginResponse.swift in Sources */,
 				83C2761727B00E77009FDB8E /* DateExtension.swift in Sources */,
 				8304A83627A080F9004D9CBF /* KnjiznicaPodrucjeOdabirResponse.swift in Sources */,
 				83D0E4B627A7416B004E924A /* LocalNotificationManager.swift in Sources */,
@@ -584,6 +594,7 @@
 				8304A85227A08607004D9CBF /* FilterableProtocol.swift in Sources */,
 				8318A4AE27AC62B200002BEF /* PreviewTjedniResponse.swift in Sources */,
 				8304A82B27A07AA3004D9CBF /* TjedniResponse.swift in Sources */,
+				834B9F4627B052DE00F36AC5 /* PreviewOsobnoResponse.swift in Sources */,
 				8304A7FE279DB156004D9CBF /* InfoedukaHttpEndpoints.swift in Sources */,
 				8304A82427A079A4004D9CBF /* KategorijeResponse.swift in Sources */,
 				8304A815279F0AAC004D9CBF /* ResponseProtocol.swift in Sources */,
@@ -603,6 +614,7 @@
 				8304A82E27A07B6B004D9CBF /* ispitiPrijavaResponse.swift in Sources */,
 				83540F24279CE41A0068BECB /* MainView.swift in Sources */,
 				83973D3327AD726D00DD120D /* ColorExtension.swift in Sources */,
+				834B9F4327B04D5600F36AC5 /* PreviewLoginResponse.swift in Sources */,
 				83973D3427AD727000DD120D /* GradientExtension.swift in Sources */,
 				8304A84F27A085CA004D9CBF /* MentoriResponse.swift in Sources */,
 				8304A83D27A0825B004D9CBF /* KnjiznicaVracenoResponse.swift in Sources */,
