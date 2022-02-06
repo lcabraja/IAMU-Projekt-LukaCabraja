@@ -14,14 +14,6 @@ struct MainView: View {
     var body: some View {
         TabView(selection: $selected) {
             HomeTabView()
-                .task {
-                    let _ = try? await (
-                        model.fetchTjedni(),
-                        model.fetchOsobno(),
-                        model.fetchVijesti(),
-                        model.fetchMaterijali()
-                    )
-                }
                 .tabItem {
                     Image(selected == 0
                           ? "algebrient.house.fill"
@@ -61,6 +53,14 @@ struct MainView: View {
                     Text("Ja")
                 }
                 .tag(4)
+        }
+        .task {
+            let _ = try? await (
+                model.fetchTjedni(),
+                model.fetchOsobno(),
+                model.fetchVijesti(),
+                model.fetchMaterijali()
+            )
         }
         .environmentObject(model)
     }
