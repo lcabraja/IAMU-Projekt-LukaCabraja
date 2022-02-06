@@ -23,38 +23,41 @@ struct MainView: View {
                     )
                 }
                 .tabItem {
-                    selected == 0 ?
-                        Image("house.fill") :
-                        Image(systemName: "house.fill")
+                    Image(selected == 0
+                          ? "algebrient.house.fill"
+                          : "black.house.fill")
                     Text("Početna")
                 }
                 .tag(0)
             SubjectsTabView()
                 .tabItem {
-                    selected == 1 ?
-                        Image("rectangle.fill.on.rectangle.fill") :
-                        Image(systemName: "rectangle.on.rectangle.fill")
+                    Image(selected == 1
+                          ? "algebrient.rectangle.fill.on.rectangle.fill"
+                          : "black.rectangle.fill.on.rectangle.fill")
                     Text("Predmeti")
                 }
                 .tag(1)
             ExamsTabView()
                 .tabItem {
-                    selected == 2 ? Image("calendar") : Image(systemName: "calendar")
+                    Image(selected == 2
+                          ? "algebrient.list.bullet.rectangle.portrait.fill"
+                          : "black.list.bullet.rectangle.portrait.fill")
                     Text("Ispiti")
                 }
                 .tag(2)
             ScheduleTabView()
                 .tabItem {
-                    selected == 3 ? Image("list.bullet.rectangle.portrait.fill") :
-                    Image(systemName: "list.bullet.rectangle.portrait.fill")
+                    Image(selected == 3
+                          ? "algebrient.calendar"
+                          : "black.calendar")
                     Text("Raspored")
                 }
                 .tag(3)
             MeTabView()
                 .tabItem {
-                    selected == 4 ?
-                        Image("person.crop.circle.fill") :
-                        Image(systemName: "person.crop.circle.fill")
+                    Image(selected == 4
+                          ? "algebrient.person.crop.circle.fill"
+                          : "black.person.crop.circle.fill")
                     Text("Ja")
                 }
                 .tag(4)
@@ -67,5 +70,8 @@ struct MainView_Previews: PreviewProvider {
     static var previews: some View {
         MainView(model: MainViewModel.preview)
             .preferredColorScheme(.dark)
+        
+        MainView(model: MainViewModel.preview)
+            .preferredColorScheme(.light)
     }
 }
