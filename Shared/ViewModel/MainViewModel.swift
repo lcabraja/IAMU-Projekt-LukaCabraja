@@ -85,6 +85,14 @@ class MainViewModel: ObservableObject {
         return _df
     }
     
+    var nextDayText: String? {
+        guard
+            let firstDay = nextDay,
+            let date = dateFormatter.date(from: firstDay.id)
+        else { return nil }
+        return date.dayOfWeek()
+    }
+    
     var nextDay: IdentifiableDay? {
         let calendar = Calendar.current
         let today = calendar.component(.day, from: Date())

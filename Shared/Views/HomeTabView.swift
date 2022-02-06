@@ -14,7 +14,7 @@ struct HomeTabView: View {
     
     var body: some View {
         VStack(alignment: .leading) {
-            Text("Danas") // TODO: Next day of the week / today
+            Text(model.nextDayText ?? "")
                 .algebraFont(.StolzlMedium, size: 20)
                 .padding([.leading], 7)
                 .padding([.bottom], 14)
@@ -27,7 +27,7 @@ struct HomeTabView: View {
         
         var body: some View {
             List(model.weeks.onDay(model.nextDay)) { course in
-                    RasporedItem(item: course, attendance: model.attendance)
+                RasporedItem(item: course, attendance: model.attendance)
             }
             .padding(.horizontal, -10)
             .listStyle(.plain)
@@ -74,7 +74,7 @@ struct HomeTabView: View {
             HStack {
                 Text(physical ? hall : teams)
                     .algebraFont(.StolzlBook, size: 13)
-//                    .foregroundColor()
+                    .foregroundColor(Color(uiColor: .systemBackground))
                     .lineLimit(1)
                 Image(systemName: "video.bubble.left")
                     .algebrientForeground()
@@ -95,8 +95,13 @@ struct HomeTabView: View {
 
 struct HomeTabView_Previews: PreviewProvider {
     static var previews: some View {
-        HomeTabView()
-            .preferredColorScheme(.dark)
-            .environmentObject(MainViewModel.preview)
+        Group {
+            HomeTabView()
+                .preferredColorScheme(.dark)
+                
+            HomeTabView()
+                .preferredColorScheme(.light)
+        }
+        .environmentObject(MainViewModel.preview)
     }
 }
