@@ -69,22 +69,20 @@ struct ProfilePic: View {
             case .success(let image):
                 image
                     .resizable()
-                    .frame(maxWidth: .infinity)
-                    .aspectRatio(1, contentMode: .fit)
                     .clipShape(Circle())
             case .failure(_):
-                Image(systemName: "ant.circle.fill")
+                Image("algebrient.person.crop.circle.fill")
                     .resizable()
-                    .frame(maxWidth: .infinity)
             case .empty:
                 Circle()
                     .stroke()
-                    .algebrientForeground()
-                    .frame(maxWidth: .infinity)
+                    .fill(Color("AccentColor"))
             @unknown default:
                 ProgressView()
             }
         }
+        .aspectRatio(1, contentMode: .fit)
+        .frame(maxWidth: .infinity)
         .padding([.horizontal], 100)
     }
 }
