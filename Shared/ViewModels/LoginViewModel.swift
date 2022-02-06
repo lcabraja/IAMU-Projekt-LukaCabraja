@@ -7,7 +7,7 @@
 
 import Foundation
 
-class LoginViewModel: ObservableObject  {
+struct LoginViewModel  {
     
     // MARK: - Intents
     
