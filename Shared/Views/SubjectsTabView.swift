@@ -39,19 +39,33 @@ struct SubjectsTabView: View {
                     .algebraFont(.StolzlMedium, size: 17)
                     .padding(.bottom, 4)
                 HStack {
-                    VStack {
-                        DoubleText(lhs: "Ocjena", rhs: "3", rhsColor: .green )
-                        DoubleText(lhs: "Bodovi", rhs: "3", rhsColor: .green )
-                        DoubleText(lhs: "Potpis", rhs: "3", rhsColor: .green )
-                    }
+                    Group {
+                        VStack {
+                            Group {
+                                DoubleText(lhs: "Ocjena", rhs: "3", rhsColor: .green )
+                                DoubleText(lhs: "Bodovi", rhs: "3", rhsColor: .green )
+                                DoubleText(lhs: "Potpis", rhs: "3", rhsColor: .green )
+                            }
+                            .padding(1)
+                        }
+                        Spacer()
+                    }.layoutPriority(1)
                     VStack(alignment: .leading) {
-                        DoubleText(lhs: "Predavanja", rhs: "3", rhsColor: .green )
-                        DoubleText(lhs: "Vježbe", rhs: "3", rhsColor: .green )
+                        Group {
+                            DoubleText(lhs: "Predavanja", rhs: "3", rhsColor: .green )
+                            DoubleText(lhs: "Vježbe", rhs: "3", rhsColor: .green )
+                        }
+                        .padding(1)
                         if examIsAvailable {
                             ExamAvailable()
+                        } else {
+                            Spacer()
                         }
                     }
+                    .layoutPriority(2)
+                    
                 }
+                .lineLimit(1)
                 //                }
                 //                Image(systemName: "chevron.forward")
                 //                    .algebrientForeground()
