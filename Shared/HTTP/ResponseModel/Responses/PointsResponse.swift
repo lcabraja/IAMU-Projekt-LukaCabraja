@@ -5,13 +5,13 @@
 //  This file was generated from JSON Schema using quicktype, do not modify it directly.
 //  To parse the JSON, add this file to your project and do:
 //
-//  let bodoviResponseWelcome = try? newJSONDecoder().decode(BodoviResponseWelcome.self, from: jsonData)
+//  let bodoviResponseWelcome = try? newJSONDecoder().decode(PointsResponse.self, from: jsonData)
 //
 
 import Foundation
 
-// MARK: - BodoviResponseWelcome
-struct BodoviResponseWelcome: Codable, InfoedukaUrlGet {
+// MARK: - PointsResponse
+struct PointsResponse: Codable, InfoedukaUrlGet {
     static let endpoint: InfoedukaHttpEndpoints = .bodovi
     let data: [ResponseSemester]
 }

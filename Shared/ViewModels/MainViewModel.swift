@@ -65,7 +65,7 @@ class MainViewModel: ObservableObject {
     @Published var modelIspitiOdjava: IspitiOdjavaResponseWelcome?
     @Published var modelMaterijali: MaterijaliResponseWelcome?
     @Published var fetchingMaterijali: Bool = false
-    @Published var modelBodovi: BodoviResponseWelcome?
+    @Published var modelBodovi: PointsResponse?
     @Published var modelPrisustva: PrisustvaResponseWelcome?
     private let store = MainViewModelStore()
     

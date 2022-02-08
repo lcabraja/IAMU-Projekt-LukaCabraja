@@ -5,15 +5,19 @@
 //  This file was generated from JSON Schema using quicktype, do not modify it directly.
 //  To parse the JSON, add this file to your project and do:
 //
-//  let predmetiResponseWelcome = try? newJSONDecoder().decode(PredmetiResponseWelcome.self, from: jsonData)
+//  let predmetiResponseWelcome = try? newJSONDecoder().decode(SubjectsResponse.self, from: jsonData)
 //
 
 import Foundation
 
-// MARK: - PredmetiResponseWelcome (.)
-struct PredmetiResponseWelcome: Codable, InfoedukaUrlGet {
+// MARK: - SubjectsResponse (.)
+struct SubjectsResponse: Codable, InfoedukaUrlGet {
     static let endpoint: InfoedukaHttpEndpoints = .predmeti
-    let data: [ResponseSemester]
+    var data: [ResponseSemester]
+    
+    mutating func merge(points: PointsResponse) {
+        
+    }
 }
 
 // MARK: - ResponseSemester (data)
@@ -36,7 +40,7 @@ struct ResponseYears: Codable {
 }
 
 // MARK: - ResponseSubjects (data[*].godine[*].predmeti)
-struct ResponseSubjects: Codable {
+struct ResponseSubjects: Codable, Hashable, Equatable {
     let id: Int
     let subject: String
     let code: String
@@ -130,6 +134,15 @@ struct ResponseSubjects: Codable {
                   accepted: accepted,
                   acceptedCertificate: acceptedCertificate,
                   additionalData: additionalData)
+    }
+    
+    static func == (lhs: ResponseSubjects, rhs: ResponseSubjects) -> Bool {
+        lhs.id == rhs.id
+    }
+    
+    func hash(into hasher: inout Hasher) {
+        hasher.combine(self.id)
+        hasher.combine(self.code)
     }
 }
 
