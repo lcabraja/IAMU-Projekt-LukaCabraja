@@ -32,43 +32,38 @@ struct SubjectsTabView: View {
     struct SubjectListItem: View {
         var examIsAvailable: Bool = false
         
+        var columns: [GridItem] {
+            [GridItem(.flexible(minimum: 89)), GridItem(.flexible()), GridItem(.flexible(minimum: 144))]
+        }
+        
         var body: some View {
             //            HStack {
             VStack(alignment: .leading) {
                 Text("Organizacija i management")
                     .algebraFont(.StolzlMedium, size: 17)
+                    .lineLimit(1)
                     .padding(.bottom, 4)
-                HStack {
-                    Group {
-                        VStack {
-                            Group {
-                                DoubleText(lhs: "Ocjena", rhs: "3", rhsColor: .green )
-                                DoubleText(lhs: "Bodovi", rhs: "3", rhsColor: .green )
-                                DoubleText(lhs: "Potpis", rhs: "3", rhsColor: .green )
-                            }
-                            .padding(1)
+                LazyVGrid(columns: columns) {
+                    VStack {
+                        Group {
+                            DoubleText(lhs: "Ocjena", rhs: "3", rhsColor: .green )
+                            DoubleText(lhs: "Bodovi", rhs: "3", rhsColor: .green )
+                            DoubleText(lhs: "Potpis", rhs: "3", rhsColor: .green )
                         }
-                        Spacer()
-                    }.layoutPriority(1)
+                        .padding(1)
+                    }
+                    Spacer()
                     VStack(alignment: .leading) {
                         Group {
                             DoubleText(lhs: "Predavanja", rhs: "3", rhsColor: .green )
                             DoubleText(lhs: "Vježbe", rhs: "3", rhsColor: .green )
                         }
                         .padding(1)
-                        if examIsAvailable {
-                            ExamAvailable()
-                        } else {
-                            Spacer()
-                        }
+                        ExamAvailable()
+                            .opacity(examIsAvailable ? 1 : 0)
                     }
-                    .layoutPriority(2)
-                    
+                    .padding(.trailing, 15)
                 }
-                .lineLimit(1)
-                //                }
-                //                Image(systemName: "chevron.forward")
-                //                    .algebrientForeground()
             }
             .padding(.vertical, 8)
         }
@@ -98,6 +93,7 @@ struct SubjectsTabView: View {
             HStack {
                 Image(systemName: "doc.text.image")
                     .algebrientForeground()
+                Spacer()
                 Text("Dostupan ispit")
                     .algebraFont(.StolzlBook, size: 13)
             }
