@@ -8,22 +8,15 @@
 import SwiftUI
 
 struct SubjectsTabView: View {
-    //    @EnvironmentObject var model: MainViewModel
+    @EnvironmentObject var model: MainViewModel
     
     var body: some View {
         NavigationView {
-            List {
-                NavigationLink(destination: Subject(name: "Organizacija i management")) {
-                    SubjectListItem(examIsAvailable: true)
-                }
-                NavigationLink(destination: Subject(name: "Organizacija i management")) {
-                    SubjectListItem(examIsAvailable: false)
-                }
-                NavigationLink(destination: Subject(name: "Organizacija i management")) {
-                    SubjectListItem(examIsAvailable: false)
-                }
-                NavigationLink(destination: Subject(name: "Organizacija i management")) {
-                    SubjectListItem(examIsAvailable: true)
+            if let data = model.modelSubjects?.subjects {
+//                ForEach(data, id: \.self) { line in
+                    NavigationLink(destination: Subject(name: "Organizacija i management")) {
+                        SubjectListItem(examIsAvailable: true)
+//                    }
                 }
             }
         }

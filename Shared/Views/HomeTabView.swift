@@ -10,8 +10,6 @@ import SwiftUI
 struct HomeTabView: View {
     @EnvironmentObject var model: MainViewModel
     
-//    return self.gradientForeground(colors: [algeborange, algebred])
-    
     var body: some View {
         VStack(alignment: .leading) {
             Text(model.nextDayText ?? "")

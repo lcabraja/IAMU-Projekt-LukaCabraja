@@ -50,7 +50,7 @@ struct SubjectsResponse: Codable, InfoedukaUrlGet {
 }
 
 // MARK: - ResponseSemester (data)
-struct ResponseSemester: Codable {
+struct ResponseSemester: Hashable, Codable {
     let academicYear, semester: String
     var years: [ResponseYears]
     
@@ -58,6 +58,15 @@ struct ResponseSemester: Codable {
         case academicYear = "akademskaGodina"
         case semester = "semestar"
         case years = "godine"
+    }
+    
+    static func == (lhs: ResponseSemester, rhs: ResponseSemester) -> Bool {
+        lhs.semester == rhs.semester && lhs.academicYear == rhs.academicYear
+    }
+    
+    func hash(into hasher: inout Hasher) {
+        hasher.combine(academicYear)
+        hasher.combine(semester)
     }
 }
 

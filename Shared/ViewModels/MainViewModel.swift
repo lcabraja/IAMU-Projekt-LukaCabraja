@@ -15,7 +15,7 @@ private actor MainViewModelStore {
     private var loadedTjedni: TjedniResponseWelcome?
     private var loadedOsobno: OsobnoResponseWelcome?
     private var loadedVijesti: VijestiResponseWelcome?
-    private var loadedMaterijali: SupportingMaterialResponse?
+    private var loadedSubjects: SubjectsResponse?
     
     func loadLogin() throws -> LoginResponseWelcome {
         guard let loginResponse = SessionTracker.lastLogin else { throw DownloadError.failed }
@@ -43,11 +43,18 @@ private actor MainViewModelStore {
         return vijestiResponse
     }
     
-    func loadMaterijali() async throws -> SupportingMaterialResponse {
-        guard let materijaliResponse = await InfoedukaHttpRequest<SupportingMaterialResponse>.fetch()
+    func loadSubjects() async throws -> SubjectsResponse {
+        guard
+            var subjects = await InfoedukaHttpRequest<SubjectsResponse>.fetch(),
+            let points = await InfoedukaHttpRequest<PointsResponse>.fetch(),
+            let materials = await InfoedukaHttpRequest<SupportingMaterialResponse>.fetch(),
+            let attendance = await InfoedukaHttpRequest<AttendanceResponse>.fetch()
         else { throw DownloadError.failed }
-        loadedMaterijali = materijaliResponse
-        return materijaliResponse
+        subjects.merge(points: points)
+        subjects.merge(supportingMaterial: materials)
+        subjects.merge(attendance: attendance)
+        loadedSubjects = subjects
+        return subjects
     }
 }
 
@@ -61,12 +68,10 @@ class MainViewModel: ObservableObject {
     @Published var fetchingOsobno: Bool = false
     @Published var modelVijesti: VijestiResponseWelcome?
     @Published var fetchingVijesti: Bool = false
+    @Published var modelSubjects: SubjectsResponse?
+    @Published var fetchingSubjects: Bool = false
     @Published var modelIspitiPrijava: IspitiPrijavaResponseWelcome?
     @Published var modelIspitiOdjava: IspitiOdjavaResponseWelcome?
-    @Published var modelMaterijali: SupportingMaterialResponse?
-    @Published var fetchingMaterijali: Bool = false
-    @Published var modelBodovi: PointsResponse?
-    @Published var modelPrisustva: AttendanceResponse?
     private let store = MainViewModelStore()
     
     init() {
@@ -187,6 +192,15 @@ class MainViewModel: ObservableObject {
 
 extension MainViewModel {
     
+    func prepareModel() async throws {
+         let _ = await (
+            try fetchTjedni(),
+            try fetchOsobno(),
+            try fetchVijesti(),
+            try fetchAllSubjects()
+        )
+    }
+    
     @MainActor
     func fetchTjedni() async throws {
         fetchingTjedni = true
@@ -212,11 +226,11 @@ extension MainViewModel {
     }
     
     @MainActor
-    func fetchMaterijali() async throws {
-        fetchingMaterijali = true
-        defer { fetchingMaterijali = false }
-        let loadedMaterijali = try await store.loadMaterijali()
-        modelMaterijali = loadedMaterijali
+    func fetchAllSubjects() async throws {
+        fetchingSubjects = true
+        defer { fetchingSubjects = false }
+        let loadedSubjects = try await store.loadSubjects()
+        modelSubjects = loadedSubjects
     }
 }
 

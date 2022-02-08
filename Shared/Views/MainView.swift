@@ -55,12 +55,7 @@ struct MainView: View {
                 .tag(4)
         }
         .task {
-            let _ = try? await (
-                model.fetchTjedni(),
-                model.fetchOsobno(),
-                model.fetchVijesti(),
-                model.fetchMaterijali()
-            )
+            try? await model.prepareModel()
         }
         .environmentObject(model)
     }
