@@ -13,287 +13,190 @@ import Foundation
 // MARK: - BodoviResponseWelcome
 struct BodoviResponseWelcome: Codable, InfoedukaUrlGet {
     static let endpoint: InfoedukaHttpEndpoints = .bodovi
-    let data: [BodoviResponseDatum]
+    let data: [ResponseSemester]
 }
 
-// MARK: - BodoviResponseDatum
-struct BodoviResponseDatum: Codable {
-    let akademskaGodina, semestar: String
-    let godine: [BodoviResponseGodine]
+// MARK: - ResponseGrades (data[*].godine[*].predmeti[*].dodatno.bodovi)
+struct ResponsePoints: Codable {
+    let outcomes: [ResponseOutcome]
+    let outcomeCollections: [String: ResponseOutcomeCollection]?
+    let criteria: [ResponseCriteria]
+    let gradePointScale: [ResponseGradePointScale]
+    let definedPoints: Double
+    let earnedPoints: Double
+    let satisfied: Bool
+    
+    enum CodingKeys: String, CodingKey {
+        case outcomes = "ishodi"
+        case outcomeCollections = "ishodiSkupovi"
+        case criteria = "kriteriji"
+        case gradePointScale = "bodoviOcjene"
+        case definedPoints = "bodoviDefinirani"
+        case earnedPoints = "bodoviOsvojeni"
+        case satisfied = "bodoviZadovoljeno"
+    }
+    
+    init(
+        outcomes: [ResponseOutcome],
+        outcomeCollections: [String: ResponseOutcomeCollection]?,
+        criteria: [ResponseCriteria],
+        gradePointScale: [ResponseGradePointScale],
+        definedPoints: Double,
+        earnedPoints: Double,
+        satisfied: Bool
+    ) {
+        self.outcomes = outcomes
+        self.outcomeCollections = outcomeCollections
+        self.criteria = criteria
+        self.gradePointScale = gradePointScale
+        self.definedPoints = definedPoints
+        self.earnedPoints = earnedPoints
+        self.satisfied = satisfied
+    }
+    
+    init(from decoder: Decoder) throws {
+        let container = try decoder.container(keyedBy: CodingKeys.self)
+        let outcomes = try container.decode([ResponseOutcome].self, forKey: .outcomes)
+        let outcomeCollections = try? container.decode([String: ResponseOutcomeCollection]?.self, forKey: .outcomeCollections)
+        let criteria = try container.decode([ResponseCriteria].self, forKey: .criteria)
+        let gradePointScale = try container.decode([ResponseGradePointScale].self, forKey: .gradePointScale)
+        let definedPoints = try container.decode(Double.self, forKey: .definedPoints)
+        let earnedPoints = try container.decode(Double.self, forKey: .earnedPoints)
+        let satisfied = try container.decode(Bool.self, forKey: .satisfied)
+        
+        self.init(
+            outcomes: outcomes,
+            outcomeCollections: outcomeCollections,
+            criteria: criteria,
+            gradePointScale: gradePointScale,
+            definedPoints: definedPoints,
+            earnedPoints: earnedPoints,
+            satisfied: satisfied
+        )
+    }
 }
 
-// MARK: - BodoviResponseGodine
-struct BodoviResponseGodine: Codable {
-    let studij, godina, smjer, nacin: String
-    let grupa: String
-    let predmeti: [BodoviResponsePredmeti]
+// MARK: - ResponseOutcome (data[*].godine[*].predmeti[*].dodatno.bodovi.ishodi)
+struct ResponseOutcome: Codable {
+    let outcome: String
+    let definedPoints: Double
+    let earnedPoints: Double
+    let outcomeSatisfied: Bool
+    let outcomeCollectionIndex: Int
+    let outcomeShortName: String
+    let outcomeName: String
+    let outcomeCollectionSatisfied: Bool
+    let firstInCollection: Bool
+    let lastInCollection: Bool
+    let outcomeCollectionColor: OutcomeCollectionColor
+    
+    enum CodingKeys: String, CodingKey {
+        case outcome = "ishod"
+        case definedPoints = "bodoviUkupno"
+        case earnedPoints = "bodoviOsvojeno"
+        case outcomeSatisfied = "zadovoljeno"
+        case outcomeCollectionIndex = "skupIndeks"
+        case outcomeShortName = "skupKratkiNaziv"
+        case outcomeName = "skupNaziv"
+        case outcomeCollectionSatisfied = "skupZadovoljen"
+        case firstInCollection = "prviUSkupu"
+        case lastInCollection = "zadnjiUSkupu"
+        case outcomeCollectionColor = "skupBoja"
+    }
 }
 
-// MARK: - BodoviResponsePredmeti
-struct BodoviResponsePredmeti: Codable {
-    let idPredmet: Int
-    let predmet, sifra: String
-    let ects: Int
-    let potpis: Bool
-    let potpisDatum: String?
-    let ocjena: BodoviResponseOcjenaUnion
-    let ocjenaOpisno: BodoviResponseOcjenaOpisnoEnum
-    let ocjenaDatum: String?
-    let polozenBezOcjene, polozenBezOcjeneKolokviran, priznat, priznatCertifikat: Bool
-    let dodatno: BodoviResponseDodatno
+// MARK: - ResponseOutcomeCollection (data[*].godine[*].predmeti[*].dodatno.ishodiSkupovi)
+struct ResponseOutcomeCollection: Codable {
+    let index: Int
+    let shortName: String
+    let name: String
+    let satisfied: Bool
+    let color: OutcomeCollectionColor
+    let definedPoints: Double
+    let earnedPoints: Double
+    let outcomes: [String: Int]
+    
+    enum CodingKeys: String, CodingKey {
+        case index = "skupIndeks"
+        case shortName = "skupKratkiNaziv"
+        case name = "skupNaziv"
+        case satisfied = "skupZadovoljen"
+        case color = "skupBoja"
+        case definedPoints = "bodoviUkupno"
+        case earnedPoints = "bodoviOsvojeno"
+        case outcomes = "ishodi"
+    }
 }
 
-// MARK: - BodoviResponseDodatno
-struct BodoviResponseDodatno: Codable {
-    let bodovi: BodoviResponseBodovi
+// MARK: - ResponseCriteria (data[*].godine[*].predmeti[*].dodatno.bodovi.kriteriji)
+struct ResponseCriteria: Codable {
+    let criteria: String
+    let definedPoints: Int
+    let earnedPoints : Double?
+    let outcomes: [OutcomeCriteria]
+    
+    enum CodingKeys: String, CodingKey {
+        case criteria = "kriterij"
+        case definedPoints = "bodoviUkupno"
+        case earnedPoints = "bodoviOsvojeni"
+        case outcomes = "ishodi"
+    }
+    
+    // MARK: ResponseOutcomeCriteria (data[*].godine[*].predmeti[*].dodatno.bodovi.kriteriji[*].ishodi)
+    struct OutcomeCriteria: Codable {
+        let outcomeCollectionIndex: Int
+        let outcomeCollectionShortName: String
+        let outcomeCollectionName: String
+        let outcomeCollectionSatisfied: Bool
+        let outcomeCollectionColor: OutcomeCollectionColor
+        let definedPoints: Int?
+        let earnedPoints: Double
+        
+        enum CodingKeys: String, CodingKey {
+            case outcomeCollectionIndex = "skupIndeks"
+            case outcomeCollectionShortName = "skupKratkiNaziv"
+            case outcomeCollectionName = "skupNaziv"
+            case outcomeCollectionSatisfied = "skupZadovoljen"
+            case outcomeCollectionColor = "skupBoja"
+            case definedPoints = "bodoviUkupno"
+            case earnedPoints = "bodoviOsvojeno"
+            
+        }
+    }
 }
 
-// MARK: - BodoviResponseBodovi
-struct BodoviResponseBodovi: Codable {
-    let ishodi: [BodoviResponseIshodiElement]
-    let ishodiSkupovi: BodoviResponseIshodiSkupoviUnion
-    let kriteriji: [BodoviResponseKriteriji]
-    let bodoviOcjene: [BodoviResponseBodoviOcjene]
-    let bodoviDefinirani: Int
-    let bodoviOsvojeni: Double
-    let bodoviZadovoljeno: Bool
+// MARK: - BodoviResponseBodoviOcjene (data[*].godine.predmeti.dodatno.bodovi.bodoviOcjene)
+struct ResponseGradePointScale: Codable {
+    let fromInclusive: Double
+    let toInclusive: Double
+    let grade: ResponseGradeDescription
+    
+    enum CodingKeys: String, CodingKey {
+        case fromInclusive = "bodoviOd"
+        case toInclusive = "bodoviDo"
+        case grade = "ocjena"
+    }
 }
 
-// MARK: - BodoviResponseBodoviOcjene
-struct BodoviResponseBodoviOcjene: Codable {
-    let bodoviOd: Double
-    let bodoviDo: Int
-    let ocjena: BodoviResponseOcjenaOpisnoEnum
-}
-
-enum BodoviResponseOcjenaOpisnoEnum: String, Codable {
-    case dobar3 = "dobar (3)"
-    case dovoljan2 = "dovoljan (2)"
-    case empty = ""
-    case izvrstan5 = "izvrstan (5)"
-    case nedovoljan1 = "nedovoljan (1)"
-    case vrloDobar4 = "vrlo dobar (4)"
-}
-
-// MARK: - BodoviResponseIshodiElement
-struct BodoviResponseIshodiElement: Codable {
-    let ishod: BodoviResponseIshod
-    let bodoviUkupno: Int
-    let bodoviOsvojeno: Double
-    let zadovoljeno: Bool
-    let skupIndeks: Int
-    let skupKratkiNaziv: BodoviResponseSkupKratkiNaziv
-    let skupNaziv: String
-    let skupZadovoljen, prviUSkupu, zadnjiUSkupu: Bool
-    let skupBoja: BodoviResponseSkupBoja
-}
-
-enum BodoviResponseIshod: String, Codable {
-    case i1 = "I1"
-    case i2 = "I2"
-    case i3 = "I3"
-    case i4 = "I4"
-    case i5 = "I5"
-    case i6 = "I6"
-    case i7 = "I7"
-    case i8 = "I8"
-    case i9 = "I9"
-}
-
-enum BodoviResponseSkupBoja: String, Codable {
-    case the146199234020 = "146,199,234,0.20"
-    case the224113145020 = "224,113,145,0.20"
-    case the234146216020 = "234,146,216,0.20"
-    case the234181146020 = "234,181,146,0.20"
-}
-
-enum BodoviResponseSkupKratkiNaziv: String, Codable {
-    case s1 = "S1"
-    case s2 = "S2"
-    case s3 = "S3"
-    case s4 = "S4"
-}
-
-enum BodoviResponseIshodiSkupoviUnion: Codable {
-    case anythingArray([JSONAny])
-    case bodoviResponseIshodiSkupoviClass(BodoviResponseIshodiSkupoviClass)
-
+struct OutcomeCollectionColor: Codable {
+    let r, g, b: Int
+    let a: Double
+    
     init(from decoder: Decoder) throws {
         let container = try decoder.singleValueContainer()
-        if let x = try? container.decode([JSONAny].self) {
-            self = .anythingArray(x)
-            return
-        }
-        if let x = try? container.decode(BodoviResponseIshodiSkupoviClass.self) {
-            self = .bodoviResponseIshodiSkupoviClass(x)
-            return
-        }
-        throw DecodingError.typeMismatch(BodoviResponseIshodiSkupoviUnion.self, DecodingError.Context(codingPath: decoder.codingPath, debugDescription: "Wrong type for BodoviResponseIshodiSkupoviUnion"))
-    }
-
-    func encode(to encoder: Encoder) throws {
-        var container = encoder.singleValueContainer()
-        switch self {
-        case .anythingArray(let x):
-            try container.encode(x)
-        case .bodoviResponseIshodiSkupoviClass(let x):
-            try container.encode(x)
-        }
-    }
-}
-
-// MARK: - BodoviResponseIshodiSkupoviClass
-struct BodoviResponseIshodiSkupoviClass: Codable {
-    let s1: BodoviResponseS1
-    let s2: BodoviResponseS2
-    let s3: BodoviResponseS3?
-    let s4: BodoviResponseS4?
-
-    enum CodingKeys: String, CodingKey {
-        case s1 = "S1"
-        case s2 = "S2"
-        case s3 = "S3"
-        case s4 = "S4"
-    }
-}
-
-// MARK: - BodoviResponseS1
-struct BodoviResponseS1: Codable {
-    let skupIndeks: Int
-    let skupKratkiNaziv: BodoviResponseSkupKratkiNaziv
-    let skupNaziv: String
-    let skupZadovoljen: Bool
-    let skupBoja: BodoviResponseSkupBoja
-    let bodoviUkupno: Int?
-    let bodoviOsvojeno: Double
-    let ishodi: BodoviResponseS1Ishodi?
-    let ishod: BodoviResponseIshod?
-    let ispravljenKasnije: Bool?
-}
-
-// MARK: - BodoviResponseS1Ishodi
-struct BodoviResponseS1Ishodi: Codable {
-    let i1: Int
-    let i2, i3, i4: Int?
-
-    enum CodingKeys: String, CodingKey {
-        case i1 = "I1"
-        case i2 = "I2"
-        case i3 = "I3"
-        case i4 = "I4"
-    }
-}
-
-// MARK: - BodoviResponseS2
-struct BodoviResponseS2: Codable {
-    let skupIndeks: Int
-    let skupKratkiNaziv: BodoviResponseSkupKratkiNaziv
-    let skupNaziv: String
-    let skupZadovoljen: Bool
-    let skupBoja: BodoviResponseSkupBoja
-    let bodoviUkupno: Int
-    let bodoviOsvojeno: Double
-    let ishodi: BodoviResponseS2Ishodi
-}
-
-// MARK: - BodoviResponseS2Ishodi
-struct BodoviResponseS2Ishodi: Codable {
-    let i3, i4, i5, i6: Int?
-    let i7, i8, i2: Int?
-
-    enum CodingKeys: String, CodingKey {
-        case i3 = "I3"
-        case i4 = "I4"
-        case i5 = "I5"
-        case i6 = "I6"
-        case i7 = "I7"
-        case i8 = "I8"
-        case i2 = "I2"
-    }
-}
-
-// MARK: - BodoviResponseS3
-struct BodoviResponseS3: Codable {
-    let skupIndeks: Int
-    let skupKratkiNaziv: BodoviResponseSkupKratkiNaziv
-    let skupNaziv: String
-    let skupZadovoljen: Bool
-    let skupBoja: BodoviResponseSkupBoja
-    let bodoviUkupno: Int
-    let bodoviOsvojeno: Double
-    let ishodi: BodoviResponseS3Ishodi
-}
-
-// MARK: - BodoviResponseS3Ishodi
-struct BodoviResponseS3Ishodi: Codable {
-    let i5, i6, i7, i4: Int?
-    let i8: Int?
-
-    enum CodingKeys: String, CodingKey {
-        case i5 = "I5"
-        case i6 = "I6"
-        case i7 = "I7"
-        case i4 = "I4"
-        case i8 = "I8"
-    }
-}
-
-// MARK: - BodoviResponseS4
-struct BodoviResponseS4: Codable {
-    let skupIndeks: Int
-    let skupKratkiNaziv: BodoviResponseSkupKratkiNaziv
-    let skupNaziv: String
-    let skupZadovoljen: Bool
-    let skupBoja: BodoviResponseSkupBoja
-    let bodoviUkupno: Int
-    let bodoviOsvojeno: Double
-    let ishodi: BodoviResponseS4Ishodi
-}
-
-// MARK: - BodoviResponseS4Ishodi
-struct BodoviResponseS4Ishodi: Codable {
-    let i8, i9, i6, i7: Int?
-
-    enum CodingKeys: String, CodingKey {
-        case i8 = "I8"
-        case i9 = "I9"
-        case i6 = "I6"
-        case i7 = "I7"
-    }
-}
-
-// MARK: - BodoviResponseKriteriji
-struct BodoviResponseKriteriji: Codable {
-    let kriterij: String
-    let bodoviUkupno: Int
-    let bodoviOsvojeni: Double?
-    let ishodi: [BodoviResponseS1]
-}
-
-enum BodoviResponseOcjenaUnion: Codable {
-    case integer(Int)
-    case string(String)
-
-    init(from decoder: Decoder) throws {
-        let container = try decoder.singleValueContainer()
-        if let x = try? container.decode(Int.self) {
-            self = .integer(x)
-            return
-        }
         if let x = try? container.decode(String.self) {
-            self = .string(x)
+            let chars = x.split(separator: ",")
+            r = Int(chars[0])!
+            g = Int(chars[1])!
+            b = Int(chars[2])!
+            a = Double(chars[3])!
             return
         }
-        throw DecodingError.typeMismatch(BodoviResponseOcjenaUnion.self, DecodingError.Context(codingPath: decoder.codingPath, debugDescription: "Wrong type for BodoviResponseOcjenaUnion"))
+        throw DecodingError.typeMismatch(OutcomeCollectionColor.self, DecodingError.Context(codingPath: decoder.codingPath, debugDescription: "Wrong type for OutcomeCollectionColor"))
     }
-
+    
     func encode(to encoder: Encoder) throws {
         var container = encoder.singleValueContainer()
-        switch self {
-        case .integer(let x):
-            try container.encode(x)
-        case .string(let x):
-            try container.encode(x)
-        }
+        try container.encode("\(r),\(g),\(b),\(a)")
     }
 }

@@ -90,6 +90,8 @@
 		83540F24279CE41A0068BECB /* MainView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83540F22279CE41A0068BECB /* MainView.swift */; };
 		83540F2A279CF0600068BECB /* LoginView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83540F29279CF0600068BECB /* LoginView.swift */; };
 		83540F2B279CF0600068BECB /* LoginView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83540F29279CF0600068BECB /* LoginView.swift */; };
+		8359FC9A27B283A500B23A61 /* PredmetiResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8359FC9927B283A500B23A61 /* PredmetiResponse.swift */; };
+		8359FC9B27B283A500B23A61 /* PredmetiResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8359FC9927B283A500B23A61 /* PredmetiResponse.swift */; };
 		8386AB3127AEA9B70069479E /* OsobnoResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8386AB3027AEA9B70069479E /* OsobnoResponse.swift */; };
 		8386AB3227AEA9B70069479E /* OsobnoResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8386AB3027AEA9B70069479E /* OsobnoResponse.swift */; };
 		83973D2B27AD5D0600DD120D /* GradientExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83973D2A27AD5D0600DD120D /* GradientExtension.swift */; };
@@ -160,6 +162,7 @@
 		83540F0F279CDD670068BECB /* macOS.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = macOS.entitlements; sourceTree = "<group>"; };
 		83540F22279CE41A0068BECB /* MainView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainView.swift; sourceTree = "<group>"; };
 		83540F29279CF0600068BECB /* LoginView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginView.swift; sourceTree = "<group>"; };
+		8359FC9927B283A500B23A61 /* PredmetiResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PredmetiResponse.swift; sourceTree = "<group>"; };
 		8386AB3027AEA9B70069479E /* OsobnoResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OsobnoResponse.swift; sourceTree = "<group>"; };
 		83973D2A27AD5D0600DD120D /* GradientExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GradientExtension.swift; sourceTree = "<group>"; };
 		83973D2C27AD69BB00DD120D /* ColorExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorExtension.swift; sourceTree = "<group>"; };
@@ -258,8 +261,9 @@
 				8304A83527A080F9004D9CBF /* KnjiznicaPodrucjeOdabirResponse.swift */,
 				8304A83827A081B5004D9CBF /* KnjiznicaPosudbaResponse.swift */,
 				8304A83B27A0825B004D9CBF /* KnjiznicaVracenoResponse.swift */,
-				8304A83E27A082F7004D9CBF /* MaterijaliResponse.swift */,
+				8359FC9927B283A500B23A61 /* PredmetiResponse.swift */,
 				8304A84127A08373004D9CBF /* BodoviResponse.swift */,
+				8304A83E27A082F7004D9CBF /* MaterijaliResponse.swift */,
 				8304A84427A08412004D9CBF /* PrisustvaResponse.swift */,
 				8304A84727A08552004D9CBF /* GrupeResponse.swift */,
 				8304A84A27A0859B004D9CBF /* PraksaResponse.swift */,
@@ -539,6 +543,7 @@
 				8304A84B27A0859B004D9CBF /* PraksaResponse.swift in Sources */,
 				8304A7FA279DB0F2004D9CBF /* InfoedukaHttpRequest.swift in Sources */,
 				83540F2A279CF0600068BECB /* LoginView.swift in Sources */,
+				8359FC9A27B283A500B23A61 /* PredmetiResponse.swift in Sources */,
 				83A021AC27AB4D4C00A517AF /* MeTabView.swift in Sources */,
 				8304A85427A09194004D9CBF /* FilterEnum.swift in Sources */,
 				8318A4AD27AC62B200002BEF /* PreviewTjedniResponse.swift in Sources */,
@@ -610,6 +615,7 @@
 				8304A83127A07FC9004D9CBF /* IspitiOdjavaResponse.swift in Sources */,
 				8304A84027A082F7004D9CBF /* MaterijaliResponse.swift in Sources */,
 				8304A84927A08553004D9CBF /* GrupeResponse.swift in Sources */,
+				8359FC9B27B283A500B23A61 /* PredmetiResponse.swift in Sources */,
 				8304A80B279E4680004D9CBF /* SessionTracker.swift in Sources */,
 				8304A819279F2863004D9CBF /* LoginViewModel.swift in Sources */,
 				8304A808279E419D004D9CBF /* JsonHelper.swift in Sources */,
