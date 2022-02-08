@@ -1,11 +1,11 @@
 //
-//  PredmetiResponse.swift
+//  SubjectsResponse.swift
 //  Infoeduka
 //
 //  This file was generated from JSON Schema using quicktype, do not modify it directly.
 //  To parse the JSON, add this file to your project and do:
 //
-//  let predmetiResponseWelcome = try? newJSONDecoder().decode(SubjectsResponse.self, from: jsonData)
+//  let subjectsResponse = try? newJSONDecoder().decode(SubjectsResponse.self, from: jsonData)
 //
 
 import Foundation
@@ -16,7 +16,36 @@ struct SubjectsResponse: Codable, InfoedukaUrlGet {
     var data: [ResponseSemester]
     
     mutating func merge(points: PointsResponse) {
-        
+        for (index1, _) in self.data.enumerated() {
+            for (index2, _) in self.data[index1].years.enumerated() {
+                for (index3, _) in self.data[index1].years[index2].subjects.enumerated() {
+                    // TODO: this is horrible, too bad!
+                    self.data[index1].years[index2].subjects[index3].additionalData.points = points.data[index1].years[index2].subjects[index3].additionalData.points
+                }
+            }
+        }
+    }
+    
+    mutating func merge(supportingMaterial: SupportingMaterialResponse) {
+        for (index1, _) in self.data.enumerated() {
+            for (index2, _) in self.data[index1].years.enumerated() {
+                for (index3, _) in self.data[index1].years[index2].subjects.enumerated() {
+                    // TODO: this is horrible, too bad!
+                    self.data[index1].years[index2].subjects[index3].additionalData.supportingMaterial = supportingMaterial.data[index1].years[index2].subjects[index3].additionalData.supportingMaterial
+                }
+            }
+        }
+    }
+    
+    mutating func merge(attendance: AttendanceResponse) {
+        for (index1, _) in self.data.enumerated() {
+            for (index2, _) in self.data[index1].years.enumerated() {
+                for (index3, _) in self.data[index1].years[index2].subjects.enumerated() {
+                    // TODO: this is horrible, too bad!
+                    self.data[index1].years[index2].subjects[index3].additionalData.attendance = attendance.data[index1].years[index2].subjects[index3].additionalData.attendance
+                }
+            }
+        }
     }
 }
 
@@ -34,13 +63,22 @@ struct ResponseSemester: Codable {
 
 // MARK: - ResponseYears (data[*].godine)
 struct ResponseYears: Codable {
-    let studij, godina, smjer, nacin: String
-    let grupa: String
-    var predmeti: [ResponseSubjects]
+    let study, year, program, regular: String
+    let group: String
+    var subjects: [ResponseSubject]
+    
+    enum CodingKeys: String, CodingKey {
+        case study = "studij"
+        case year = "godina"
+        case program = "smjer"
+        case regular = "nacin"
+        case group = "grupa"
+        case subjects = "predmeti"
+    }
 }
 
-// MARK: - ResponseSubjects (data[*].godine[*].predmeti)
-struct ResponseSubjects: Codable, Hashable, Equatable {
+// MARK: - ResponseSubject (data[*].godine[*].predmeti)
+struct ResponseSubject: Codable, Hashable, Equatable {
     let id: Int
     let subject: String
     let code: String
@@ -54,7 +92,7 @@ struct ResponseSubjects: Codable, Hashable, Equatable {
     let passedWithoutGradeByColloquium: Bool
     let accepted: Bool
     let acceptedCertificate: Bool
-    var additionalData: ResponseAdditionalData?
+    var additionalData: ResponseAdditionalData
     
     enum CodingKeys: String, CodingKey {
         case id = "idPredmet"
@@ -86,7 +124,7 @@ struct ResponseSubjects: Codable, Hashable, Equatable {
          passedWithoutGradeByColloquium: Bool,
          accepted: Bool,
          acceptedCertificate: Bool,
-         additionalData: ResponseAdditionalData?) {
+         additionalData: ResponseAdditionalData) {
         self.id = id
         self.subject = subject
         self.code = code
@@ -118,7 +156,7 @@ struct ResponseSubjects: Codable, Hashable, Equatable {
         let passedWithoutGradeByColloquium = try container.decode(Bool.self, forKey: .passedWithoutGradeByColloquium)
         let accepted = try container.decode(Bool.self, forKey: .accepted)
         let acceptedCertificate = try container.decode(Bool.self, forKey: .acceptedCertificate)
-        let additionalData = try? container.decode(ResponseAdditionalData.self, forKey: .additionalData)
+        let additionalData = (try? container.decode(ResponseAdditionalData.self, forKey: .additionalData)) ?? ResponseAdditionalData()
         
         self.init(id: id,
                   subject: subject,
@@ -136,7 +174,7 @@ struct ResponseSubjects: Codable, Hashable, Equatable {
                   additionalData: additionalData)
     }
     
-    static func == (lhs: ResponseSubjects, rhs: ResponseSubjects) -> Bool {
+    static func == (lhs: ResponseSubject, rhs: ResponseSubject) -> Bool {
         lhs.id == rhs.id
     }
     
@@ -158,13 +196,13 @@ enum ResponseGradeDescription: String, Codable {
 
 // MARK: - ResponseAdditionalData (data[*].godine[*].predmeti[*].dodatno.bodovi)
 struct ResponseAdditionalData: Codable {
-    var grades: ResponsePoints?
-    var supportingMaterial: MaterijaliResponseDodatnoMaterijali?
-    var absences: PrisustvaResponsePrisustva?
+    var points: ResponsePoints?
+    var supportingMaterial: ResponseSupportingMaterial?
+    var attendance: ResponseAttendance?
     
     enum CodingKeys: String, CodingKey {
-        case grades = "bodovi"
+        case points = "bodovi"
         case supportingMaterial = "materijali"
-        case absences = "prisustva"
+        case attendance = "prisustva"
     }
 }

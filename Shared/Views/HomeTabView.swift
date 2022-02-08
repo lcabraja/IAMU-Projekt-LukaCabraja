@@ -27,7 +27,7 @@ struct HomeTabView: View {
         
         var body: some View {
             List(model.weeks.onDay(model.nextDay)) { course in
-                RasporedItem(item: course, attendance: model.attendance)
+                RasporedItem(item: course)
             }
             .padding(.horizontal, -10)
             .listStyle(.plain)
@@ -39,7 +39,6 @@ struct HomeTabView: View {
     
     struct RasporedItem: View {
         var item: MainViewModel.IdentifiableScheduleItem
-        var attendance: (String, TjedniResponseTip) -> Double?
         
         private var color: Color {
             switch self.item.tip {

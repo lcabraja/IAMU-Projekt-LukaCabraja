@@ -47,7 +47,7 @@ struct MeTabView: View {
                 .algebraFont(.StolzlMedium, size: 17, relativeTo: .title)
                 .foregroundColor(.secondary)
                 .padding(.bottom, 1)
-            Text(model.modelMaterijali?.data.first?.godine.first?.smjer ?? "Programsko Inženjerstvo")
+            Text(model.modelMaterijali?.data.first?.years.first?.program ?? "")
                 .algebraFont(.StolzlMedium, size: 17, relativeTo: .title)
                 .foregroundColor(.primary)
         }

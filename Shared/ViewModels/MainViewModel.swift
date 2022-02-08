@@ -15,7 +15,7 @@ private actor MainViewModelStore {
     private var loadedTjedni: TjedniResponseWelcome?
     private var loadedOsobno: OsobnoResponseWelcome?
     private var loadedVijesti: VijestiResponseWelcome?
-    private var loadedMaterijali: MaterijaliResponseWelcome?
+    private var loadedMaterijali: SupportingMaterialResponse?
     
     func loadLogin() throws -> LoginResponseWelcome {
         guard let loginResponse = SessionTracker.lastLogin else { throw DownloadError.failed }
@@ -43,8 +43,8 @@ private actor MainViewModelStore {
         return vijestiResponse
     }
     
-    func loadMaterijali() async throws -> MaterijaliResponseWelcome {
-        guard let materijaliResponse = await InfoedukaHttpRequest<MaterijaliResponseWelcome>.fetch()
+    func loadMaterijali() async throws -> SupportingMaterialResponse {
+        guard let materijaliResponse = await InfoedukaHttpRequest<SupportingMaterialResponse>.fetch()
         else { throw DownloadError.failed }
         loadedMaterijali = materijaliResponse
         return materijaliResponse
@@ -63,10 +63,10 @@ class MainViewModel: ObservableObject {
     @Published var fetchingVijesti: Bool = false
     @Published var modelIspitiPrijava: IspitiPrijavaResponseWelcome?
     @Published var modelIspitiOdjava: IspitiOdjavaResponseWelcome?
-    @Published var modelMaterijali: MaterijaliResponseWelcome?
+    @Published var modelMaterijali: SupportingMaterialResponse?
     @Published var fetchingMaterijali: Bool = false
     @Published var modelBodovi: PointsResponse?
-    @Published var modelPrisustva: PrisustvaResponseWelcome?
+    @Published var modelPrisustva: AttendanceResponse?
     private let store = MainViewModelStore()
     
     init() {
@@ -74,10 +74,6 @@ class MainViewModel: ObservableObject {
     }
     
     // MARK: - ui translation
-    
-    private var subjectsAttendance: [PrisustvaResponsePredmeti]? {
-        modelPrisustva?.flatten()
-    }
     
     var weeks: [IdentifiableScheduleItem] {
         guard let data = modelTjedni?.data else { return [] }
@@ -126,16 +122,6 @@ class MainViewModel: ObservableObject {
                 let rhs = dateFormatter.date(from: $1.id)
             else { return false }
             return lhs < rhs
-        }
-    }
-    
-    func attendance(for className: String, type: TjedniResponseTip) -> Double? {
-        guard type != TjedniResponseTip.ispit else { return nil }
-        guard let attendance = subjectsAttendance?.findByName(className)?.dodatno.prisustva else { return nil }
-        switch type {
-        case .predavanje: return attendance.predavanja.postotakOdradjeno
-        case .vježbe: return attendance.vjezbe.postotakOdradjeno
-        default: return nil
         }
     }
     
@@ -241,8 +227,8 @@ extension Array where Element == MainViewModel.IdentifiableScheduleItem {
     }
 }
 
-extension Array where Element == PrisustvaResponsePredmeti {
+extension Array where Element == ResponseSubject {
     func findByName(_ subjectName: String) -> Element? {
-        self.filter({ "\($0.predmet) (\($0.sifra))" == subjectName }).first
+        self.filter({ "\($0.subject) (\($0.code))" == subjectName }).first
     }
 }

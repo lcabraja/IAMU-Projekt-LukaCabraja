@@ -1,11 +1,11 @@
 //
-//  BodoviResponse.swift
+//  PointsResponse.swift
 //  Infoeduka
 //
 //  This file was generated from JSON Schema using quicktype, do not modify it directly.
 //  To parse the JSON, add this file to your project and do:
 //
-//  let bodoviResponseWelcome = try? newJSONDecoder().decode(PointsResponse.self, from: jsonData)
+//  let pointsResponse = try? newJSONDecoder().decode(PointsResponse.self, from: jsonData)
 //
 
 import Foundation
