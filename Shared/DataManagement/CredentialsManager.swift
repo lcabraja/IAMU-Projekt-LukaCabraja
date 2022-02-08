@@ -41,21 +41,6 @@ class CredentialsManager: ObservableObject {
         }
     }
     
-//    public typealias subscriber = () -> Void
-//
-//    func subscribe(subscriber: @escaping subscriber) {
-//        self.subscribers.append(subscriber)
-//    }
-//
-//    private var subscribers = [subscriber]()
-//
-//    private func notifySubscribers() {
-//        print("notifying...")
-//        for subscriber in self.subscribers {
-//            subscriber()
-//        }
-//    }
-    
     var credentialsJSON:  [String: String]? {
         guard
             let username = self.credentials?.username,
