@@ -11,45 +11,56 @@ struct SubjectsTabView: View {
     @EnvironmentObject var model: MainViewModel
     
     var body: some View {
-        NavigationView {
-            if let data = model.modelSubjects?.subjects {
-//                ForEach(data, id: \.self) { line in
-                    NavigationLink(destination: Subject(name: "Organizacija i management")) {
-                        SubjectListItem(examIsAvailable: true)
-//                    }
-                }
+            NavigationView {
+                VStack(alignment: .leading) {
+                Text("Predmeti")
+                    .algebraFont(.StolzlMedium, size: 20)
+                    .padding([.leading], 7)
+                    .padding([.bottom], 14)
             }
         }
     }
     
     struct SubjectListItem: View {
-        var examIsAvailable: Bool = false
+        let examIsAvailable: Bool = false
+        let subject: ResponseSubject
+        
         
         var columns: [GridItem] {
-            [GridItem(.flexible(minimum: 89)), GridItem(.flexible()), GridItem(.flexible(minimum: 144))]
+            [GridItem(.flexible(minimum: 89, maximum: 100)), GridItem(.flexible(minimum: 144))]
         }
         
         var body: some View {
-            //            HStack {
             VStack(alignment: .leading) {
-                Text("Organizacija i management")
+                Text(subject.subject)
                     .algebraFont(.StolzlMedium, size: 17)
-                    .lineLimit(1)
-                    .padding(.bottom, 4)
+                    .lineLimit(2)
+                //                    .padding(.bottom, 4)
                 LazyVGrid(columns: columns) {
                     VStack {
                         Group {
-                            DoubleText(lhs: "Ocjena", rhs: "3", rhsColor: .green )
-                            DoubleText(lhs: "Bodovi", rhs: "3", rhsColor: .green )
-                            DoubleText(lhs: "Potpis", rhs: "3", rhsColor: .green )
+                            DoubleText(
+                                lhs: "Ocjena",
+                                rhs: String(subject.grade ?? 0), rhsColor: subject.grade ?? 0 > 1 ? .green : .red
+                            )
+                            DoubleText(
+                                lhs: "Bodovi",
+                                rhs: String(subject.additionalData.points?.earnedPoints ?? 00.00),
+                                rhsColor: subject.additionalData.points?.satisfied ?? false ? .green : .red
+                            )
+                            DoubleText(
+                                lhs: "Potpis",
+                                rhs: subject.signature ? "Da" : "Ne" ,
+                                rhsColor: subject.signature ? .green : .red
+                            )
                         }
                         .padding(1)
                     }
-                    Spacer()
+//                    Spacer()
                     VStack(alignment: .leading) {
                         Group {
-                            DoubleText(lhs: "Predavanja", rhs: "3", rhsColor: .green )
-                            DoubleText(lhs: "Vježbe", rhs: "3", rhsColor: .green )
+                            DoubleText(lhs: "Predavanja", rhs: "\(subject.additionalData.attendance?.lectures.percentComplete ?? 0)%", rhsColor: .green )
+                            DoubleText(lhs: "Vježbe", rhs: "\(subject.additionalData.attendance?.labs.percentComplete ?? 0)%", rhsColor: .green )
                         }
                         .padding(1)
                         ExamAvailable()

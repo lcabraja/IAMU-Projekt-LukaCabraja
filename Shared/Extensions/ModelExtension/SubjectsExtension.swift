@@ -9,7 +9,7 @@ import Foundation
 
 extension SubjectsResponse {
     var subjects: [ResponseSubject] {
-        let _subjects = [ResponseSubject]()
+        var _subjects = [ResponseSubject]()
         self.data.forEach {
             $0.years.forEach {
                 $0.subjects.forEach {
@@ -17,6 +17,9 @@ extension SubjectsResponse {
                 }
             }
         }
+//        _subjects.forEach {
+//            print("\($0.id) - \($0.subject)")
+//        }
         return _subjects
     }
 }

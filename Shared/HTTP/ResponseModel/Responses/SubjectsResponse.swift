@@ -87,7 +87,7 @@ struct ResponseYears: Codable {
 }
 
 // MARK: - ResponseSubject (data[*].godine[*].predmeti)
-struct ResponseSubject: Codable, Hashable, Equatable {
+struct ResponseSubject: Identifiable, Codable, Hashable, Equatable {
     let id: Int
     let subject: String
     let code: String
